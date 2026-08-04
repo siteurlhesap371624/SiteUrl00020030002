@@ -67,6 +67,9 @@ export default function Chat() {
 
   const hasMessages = messages.length > 0
 
+  const lastMessage = messages.length > 0 ? messages[messages.length - 1] : null
+  const showPendingBubble = isSending && (!lastMessage || lastMessage.role === 'user')
+
   const activeChatTitle = useMemo(() => {
     if (activeChatId && activeChatId !== 'new') {
       const found = chats.find((c) => c.id === activeChatId)
@@ -166,10 +169,10 @@ export default function Chat() {
                     authorName={user?.name}
                   />
                 ))}
-                {isSending ? (
+                {showPendingBubble ? (
                   <div className="flex gap-3">
-                    <div className="hidden md:flex shrink-0 h-8 w-8 items-center justify-center rounded-md bg-[color:var(--color-surface-2)] border border-[color:var(--color-border)]">
-                      <Logo size={18} showText={false} />
+                    <div className="mt-0.5 hidden md:flex h-7 w-7 shrink-0 items-center justify-center">
+                      <Logo size={28} showText={false} rounded={false} />
                     </div>
                     <TypingDots />
                   </div>

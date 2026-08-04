@@ -5,9 +5,10 @@ interface LogoProps {
   showText?: boolean
   textClassName?: string
   className?: string
+  rounded?: boolean
 }
 
-export function Logo({ size = 28, showText = true, textClassName, className }: LogoProps) {
+export function Logo({ size = 28, showText = true, textClassName, className, rounded = true }: LogoProps) {
   return (
     <span className={cn('inline-flex items-center gap-2.5', className)}>
       <img
@@ -17,7 +18,7 @@ export function Logo({ size = 28, showText = true, textClassName, className }: L
         alt="Marul AI"
         loading="eager"
         decoding="async"
-        className="rounded-[8px]"
+        className={cn(rounded && 'rounded-[8px]')}
         style={{ width: size, height: size }}
       />
       {showText ? (

@@ -3,6 +3,7 @@ import { m } from 'framer-motion'
 import { Check, Copy, Hash } from 'lucide-react'
 import { Logo } from '@/components/ui/Logo'
 import { Markdown } from './Markdown'
+import { TypingDots } from './TypingDots'
 import { AgentTimeline, ArtifactList, SourceList, ThinkingPanel } from './AgentPanels'
 import { copyToClipboard, getInitials } from '@/lib/utils'
 import { useChatStore } from '@/lib/store/chat'
@@ -56,6 +57,14 @@ export function Message({ message, authorName }: MessageProps) {
     )
   }
 
+  const steps = message.steps ?? []
+  const streaming = Boolean(message.streaming)
+  const isAgent = Boolean(message.agentMode)
+  const hasReasoning = Boolean(message.reasoning && message.reasoning.trim())
+  const awaitingText = streaming && !message.content
+  const timelinePending = awaitingText && isAgent && (steps.length > 0 || !hasReasoning)
+  const showDots = awaitingText && !isAgent && !hasReasoning && steps.length === 0
+
   return (
     <m.div
       initial={{ opacity: 0, y: 6 }}
@@ -63,30 +72,14 @@ export function Message({ message, authorName }: MessageProps) {
       transition={{ duration: 0.25 }}
       className="flex gap-3"
     >
-      <div className="mt-1 hidden md:flex shrink-0 h-8 w-8 items-center justify-center rounded-md bg-[color:var(--color-surface-2)] border border-[color:var(--color-border)]">
-        <Logo size={18} showText={false} />
+      <div className="mt-0.5 hidden md:flex h-7 w-7 shrink-0 items-center justify-center">
+        <Logo size={28} showText={false} rounded={false} />
       </div>
       <div className="group min-w-0 flex-1">
-        <ThinkingPanel text={message.reasoning ?? ''} streaming={Boolean(message.streaming)} />
-        <AgentTimeline steps={message.steps ?? []} />
-        {message.content ? (
-          <Markdown content={message.content} />
-        ) : message.streaming && !message.reasoning && (message.steps?.length ?? 0) === 0 ? (
-          <div className="flex items-center gap-2 py-1 text-[13px] text-fg-dim">
-            <span className="inline-flex gap-1">
-              <span className="h-1.5 w-1.5 rounded-full bg-[color:var(--color-fg-dim)] animate-typing-dot" />
-              <span
-                className="h-1.5 w-1.5 rounded-full bg-[color:var(--color-fg-dim)] animate-typing-dot"
-                style={{ animationDelay: '0.15s' }}
-              />
-              <span
-                className="h-1.5 w-1.5 rounded-full bg-[color:var(--color-fg-dim)] animate-typing-dot"
-                style={{ animationDelay: '0.3s' }}
-              />
-            </span>
-          </div>
-        ) : null}
-        {message.streaming && message.content ? (
+        <ThinkingPanel text={message.reasoning ?? ''} streaming={streaming} />
+        <AgentTimeline steps={steps} pending={timelinePending} />
+        {message.content ? <Markdown content={message.content} /> : showDots ? <TypingDots /> : null}
+        {streaming && message.content ? (
           <span className="ml-0.5 inline-block h-[1.05em] w-[2px] translate-y-[2px] bg-[color:var(--color-brand-hover)] animate-pulse-dot align-middle" />
         ) : null}
         <SourceList sources={message.sources ?? []} />
