@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+Disallow: /sohbet
+Disallow: /giris
+Disallow: /kayit
+Disallow: /e-posta-dogrula
+Disallow: /sifre-sifirla
+Disallow: /sifre-yenile
+Disallow: /oauth/
+Disallow: /forum
+
+Sitemap: https://marulai.com.tr/sitemap.xml

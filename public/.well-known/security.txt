@@ -1,0 +1,3 @@
+Contact: mailto:marulai.resmi@gmail.com
+Preferred-Languages: tr, en
+Canonical: https://marulai.com.tr/.well-known/security.txt

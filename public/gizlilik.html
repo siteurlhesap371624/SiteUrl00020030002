@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#06070a" />
+    <meta name="color-scheme" content="dark" />
+    <title>Gizlilik Politikası — Marul AI</title>
+    <meta name="description" content="Marul AI gizlilik politikası: hangi verileri topladığımız, nasıl kullandığımız, kullanıcı hakları ve hesap silme prosedürü." />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://marulai.com.tr/gizlilik.html" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" />
+    <style>
+      :root {
+        --bg: #06070a;
+        --surface: #0e1117;
+        --surface-2: #131720;
+        --border: rgba(255, 255, 255, 0.08);
+        --border-strong: rgba(255, 255, 255, 0.14);
+        --fg: #e8eaed;
+        --fg-muted: #9ba1ac;
+        --fg-dim: #6b7280;
+        --brand: #10b981;
+        --brand-hover: #34d399;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        -webkit-text-size-adjust: 100%;
+        color-scheme: dark;
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--fg);
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-size: 15px;
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+      }
+      a {
+        color: var(--brand-hover);
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        background: rgba(6, 7, 10, 0.85);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        border-bottom: 1px solid var(--border);
+      }
+      .container {
+        max-width: 760px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+      .topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 64px;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--fg);
+        font-weight: 600;
+        letter-spacing: -0.01em;
+      }
+      .brand img {
+        width: 26px;
+        height: 26px;
+        border-radius: 7px;
+      }
+      .nav-link {
+        font-size: 13px;
+        color: var(--fg-muted);
+      }
+      main {
+        padding: 56px 0 96px;
+      }
+      .eyebrow {
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--fg-dim);
+      }
+      h1 {
+        margin: 12px 0 16px;
+        font-size: clamp(2rem, 4vw, 2.75rem);
+        letter-spacing: -0.025em;
+        line-height: 1.08;
+        font-weight: 600;
+      }
+      .meta {
+        color: var(--fg-dim);
+        font-size: 13px;
+      }
+      .intro {
+        margin: 24px 0 0;
+        color: var(--fg-muted);
+        font-size: 16px;
+        line-height: 1.65;
+      }
+      section {
+        margin: 36px 0 0;
+      }
+      h2 {
+        margin: 0 0 14px;
+        font-size: 18px;
+        font-weight: 600;
+        letter-spacing: -0.01em;
+        color: var(--fg);
+      }
+      section p,
+      section ul {
+        margin: 10px 0;
+        color: var(--fg-muted);
+        font-size: 14.5px;
+        line-height: 1.7;
+      }
+      ul {
+        padding-left: 22px;
+      }
+      li {
+        margin: 6px 0;
+      }
+      strong {
+        color: var(--fg);
+        font-weight: 600;
+      }
+      .callout {
+        margin: 22px 0;
+        padding: 18px 20px;
+        background: var(--surface);
+        border: 1px solid var(--border-strong);
+        border-radius: 14px;
+      }
+      .callout h3 {
+        margin: 0 0 8px;
+        font-size: 14.5px;
+        font-weight: 600;
+        color: var(--fg);
+      }
+      .callout p {
+        margin: 0;
+        color: var(--fg-muted);
+        font-size: 13.5px;
+        line-height: 1.7;
+      }
+      .divider {
+        height: 1px;
+        background: var(--border);
+        margin: 56px 0 32px;
+      }
+      footer {
+        color: var(--fg-dim);
+        font-size: 12.5px;
+        text-align: center;
+      }
+      footer a {
+        color: var(--fg-muted);
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container topbar">
+        <a class="brand" href="/" aria-label="Marul AI ana sayfa">
+          <img src="/favicon.png" alt="" />
+          Marul AI
+        </a>
+        <a class="nav-link" href="/">Ana sayfa</a>
+      </div>
+    </header>
+
+    <main>
+      <div class="container">
+        <p class="eyebrow">Yasal</p>
+        <h1>Gizlilik politikası</h1>
+        <p class="meta">Son güncelleme: 14 Mayıs 2026</p>
+        <p class="intro">
+          Marul AI olarak kullanıcı verilerinin gizliliğini ön planda tutuyoruz. Bu belge; hangi
+          verileri topladığımızı, nasıl kullandığımızı ve hangi haklara sahip olduğunuzu açıklar.
+        </p>
+
+        <section>
+          <h2>Toplanan veriler</h2>
+          <p>Hesap oluşturduğunuzda yalnızca ad-soyad, e-posta adresi ve şifrenizin güvenli özetini (hash) saklarız.</p>
+          <p>
+            Sohbet sürecinde gönderdiğiniz mesajlar ve modelin verdiği yanıtlar, sohbet geçmişinizi
+            sunmak amacıyla veritabanında tutulur. Hesabınızı sildiğinizde bu veriler kalıcı olarak
+            silinir.
+          </p>
+          <p>
+            IP adresi gibi teknik veriler kötüye kullanımı önlemek için geçici olarak işlenir;
+            kalıcı olarak saklanmaz.
+          </p>
+        </section>
+
+        <section>
+          <h2>Verilerin kullanım amacı</h2>
+          <p>Veriler aşağıdaki amaçlar için kullanılır:</p>
+          <ul>
+            <li>Hesap oluşturma ve oturum yönetimi</li>
+            <li>Sohbet servisinin sağlanması ve geçmişin saklanması</li>
+            <li>Hizmetin kalitesini ölçmek için anonim teknik ölçümler</li>
+            <li>
+              <strong>Anonimleştirildikten sonra</strong> kendi geliştirdiğimiz Marul AI modellerinin Türkçe performansını artırmak için eğitim verisi olarak kullanılması (detay aşağıda)
+            </li>
+            <li>Yasal yükümlülüklerin yerine getirilmesi</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Model eğitimi için veri kullanımı</h2>
+          <p>
+            Marul AI, sohbet kayıtlarını <strong>anonimleştirildikten sonra</strong> kendi
+            geliştirdiğimiz dil modellerinin (Yedikule ve sonraki sürümler) eğitiminde kullanma
+            hakkını saklı tutar. Bu kullanım yalnızca aşağıdaki şartlar altında gerçekleşir:
+          </p>
+          <ul>
+            <li>
+              <strong>Anonimleştirme:</strong> ad-soyad, e-posta, IP adresi ve hesabı tanımlayabilecek herhangi bir kişisel kimlik bilgisi sohbet verisinden ayrılır; veriler hesabınızla ilişkilendirilemeyecek şekilde işlenir.
+            </li>
+            <li>
+              <strong>Hassas içerik filtrelemesi:</strong> kişisel bilgi, sağlık verisi, finansal hesap bilgisi gibi içerikler insan veya otomatik filtre ile temizlenir, eğitim setine girmez.
+            </li>
+            <li>
+              <strong>Üçüncü tarafa devredilmez:</strong> Veriler yalnızca Karakuş Tech bünyesinde, Marul AI modellerinin geliştirilmesi amacıyla kullanılır.
+            </li>
+            <li>
+              Hesabınızı sildiğinizde sohbet kayıtlarınız sistemden kalıcı olarak silinir; silmeden önce eğitim setine eklenmiş anonimleştirilmiş kopyalar geri çekilemeyebilir (anonim olduğu için zaten sizinle ilişkilendirilemez).
+            </li>
+            <li>
+              <strong>Opt-out:</strong> Bu kullanımı tercih etmiyorsanız <a href="mailto:marulai.resmi@gmail.com?subject=EGITIM%20VERISI%20OPT-OUT">marulai.resmi@gmail.com</a> adresine yazarak hesabınızı eğitim havuzundan çıkarmamızı talep edebilirsiniz.
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Veri paylaşımı</h2>
+          <p>
+            Kişisel verileriniz hiçbir reklam ağıyla ya da üçüncü taraf veri komisyoncusuyla
+            paylaşılmaz. Yalnızca aşağıdaki teknik altyapı sağlayıcılarıyla iş birliği yapılır:
+          </p>
+          <ul>
+            <li>Cloudflare (sunucu altyapısı, bot koruma)</li>
+            <li>Groq (Llama 3 modelinin sunulması için anonim API çağrıları)</li>
+            <li>Resend (e-posta doğrulama ve şifre sıfırlama bildirimleri)</li>
+            <li>Google (yalnızca Google ile giriş yapmayı tercih ederseniz)</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Veri güvenliği</h2>
+          <p>
+            Tüm iletişim HTTPS / TLS 1.3 üzerinden şifreli olarak gerçekleştirilir. Şifreleriniz
+            geri çevrilemez algoritmalarla saklanır, sunucu tarafında düz metin olarak tutulmaz.
+            Oturum açma jetonları (JWT) süresi sınırlı olacak şekilde imzalanır.
+          </p>
+        </section>
+
+        <section>
+          <h2>Çocukların gizliliği</h2>
+          <p>
+            Marul AI, 13 yaşın altındaki kullanıcıları hedeflememektedir. 13 yaş altı kullanıcıların
+            hesap oluşturmaması rica olunur.
+          </p>
+        </section>
+
+        <section>
+          <h2>Kullanıcı hakları ve hesap silme</h2>
+          <p>KVKK kapsamında aşağıdaki haklara sahipsiniz:</p>
+          <ul>
+            <li>Verilerinize erişim talep etme</li>
+            <li>Verilerin düzeltilmesini isteme</li>
+            <li>Verilerin silinmesini talep etme</li>
+            <li>İşleme amaçları hakkında bilgi alma</li>
+          </ul>
+
+          <div class="callout">
+            <h3>Hesabımı nasıl silerim?</h3>
+            <p>
+              Hesabınızı uygulama veya web üzerinden kendi başınıza, tek tıkla kalıcı olarak
+              silebilirsiniz:
+            </p>
+            <p style="margin-top: 10px">
+              <strong>Web:</strong> Sohbet ekranı → sol alttaki profil kartı → Abonelik → Hesabımı sil
+            </p>
+            <p>
+              <strong>Android:</strong> Profil ekranı → "Hesabımı sil" → "HESABIMI SIL" onayı
+            </p>
+            <p style="margin-top: 10px">
+              Alternatif olarak
+              <a href="mailto:marulai.resmi@gmail.com?subject=HESAP%20SILME%20TALEBI">marulai.resmi@gmail.com</a>
+              adresine talep gönderebilirsiniz. 30 gün içinde tüm verileriniz kalıcı olarak silinir.
+            </p>
+          </div>
+        </section>
+
+        <section>
+          <h2>Çerezler</h2>
+          <p>
+            Web sürümünde yalnızca oturum yönetimi için zorunlu teknik çerezler kullanılır. Üçüncü
+            taraf izleme, reklam veya analiz çerezleri kullanılmaz.
+          </p>
+        </section>
+
+        <section>
+          <h2>İletişim</h2>
+          <p>
+            Gizlilikle ilgili tüm sorularınızı
+            <a href="mailto:marulai.resmi@gmail.com">marulai.resmi@gmail.com</a>
+            adresine iletebilirsiniz.
+          </p>
+        </section>
+
+        <div class="divider"></div>
+        <footer>
+          © <span id="year"></span> Karakuş Tech · Marul AI · Tüm hakları saklıdır.
+        </footer>
+      </div>
+    </main>
+
+    <script>
+      document.getElementById('year').textContent = new Date().getFullYear()
+    </script>
+  </body>
+</html>
