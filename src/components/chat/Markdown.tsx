@@ -1,4 +1,5 @@
-import { memo, useState, type ReactNode, type ReactElement } from 'react'
+import { memo, useMemo, useState, type ReactNode, type ReactElement } from 'react'
+import hljs from 'highlight.js/lib/core'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import rehypeHighlight from 'rehype-highlight'
@@ -46,6 +47,67 @@ const HIGHLIGHT_LANGUAGES = {
   c: cpp,
   markdown,
   md: markdown,
+}
+
+let languagesRegistered = false
+
+function ensureLanguages() {
+  if (languagesRegistered) return
+  for (const [name, definition] of Object.entries(HIGHLIGHT_LANGUAGES)) {
+    if (!hljs.getLanguage(name)) hljs.registerLanguage(name, definition)
+  }
+  languagesRegistered = true
+}
+
+function escapeHtml(value: string): string {
+  return value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+}
+
+export function RawFileView({ code, language }: { code: string; language: string }) {
+  const [copied, setCopied] = useState(false)
+
+  const html = useMemo(() => {
+    ensureLanguages()
+    if (language && hljs.getLanguage(language)) {
+      try {
+        return hljs.highlight(code, { language, ignoreIllegals: true }).value
+      } catch {
+        return escapeHtml(code)
+      }
+    }
+    return escapeHtml(code)
+  }, [code, language])
+
+  const handleCopy = async () => {
+    const ok = await copyToClipboard(code)
+    if (ok) {
+      setCopied(true)
+      setTimeout(() => setCopied(false), 1600)
+    }
+  }
+
+  return (
+    <div>
+      <div className="flex items-center justify-between border-b border-[color:var(--color-border)] bg-[color:var(--color-surface-2)] px-3 py-1.5">
+        <span className="font-mono text-[11px] uppercase tracking-wider text-fg-dim">{language || 'text'}</span>
+        <button
+          type="button"
+          onClick={handleCopy}
+          className="inline-flex items-center gap-1.5 rounded-md px-2 py-1 text-[11.5px] text-fg-muted transition-colors hover:bg-white/[0.05] hover:text-fg"
+          aria-label="Dosya içeriğini kopyala"
+        >
+          {copied ? <Check className="h-3.5 w-3.5" /> : <Copy className="h-3.5 w-3.5" />}
+          {copied ? 'Kopyalandı' : 'Kopyala'}
+        </button>
+      </div>
+      <pre className="!my-0 max-h-[380px] overflow-auto !rounded-none bg-[color:var(--color-code-bg,#0d1117)] px-3 py-2.5">
+        <code
+          className="hljs !bg-transparent !p-0 text-[12px] leading-relaxed"
+          dangerouslySetInnerHTML={{ __html: html }}
+        />
+      </pre>
+    </div>
+  )
 }
 
 function CodeBlock({ children, className }: { children?: ReactNode; className?: string }) {

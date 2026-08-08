@@ -17,7 +17,7 @@ import {
 } from 'lucide-react'
 import { cn, formatBytes } from '@/lib/utils'
 import { workspaceApi } from '@/lib/api'
-import { Markdown } from './Markdown'
+import { RawFileView } from './Markdown'
 import type { AgentArtifact, AgentFile, AgentSource, AgentStep, WorkspaceListing } from '@/lib/api'
 
 function lastLine(text: string, max: number): string {
@@ -474,28 +474,41 @@ const LANGUAGE_BY_EXTENSION: Record<string, string> = {
   js: 'javascript',
   mjs: 'javascript',
   cjs: 'javascript',
+  jsx: 'javascript',
   ts: 'typescript',
-  tsx: 'tsx',
-  jsx: 'jsx',
+  tsx: 'typescript',
   py: 'python',
   html: 'html',
   htm: 'html',
+  vue: 'html',
+  svelte: 'html',
+  svg: 'xml',
+  xml: 'xml',
   css: 'css',
+  scss: 'css',
   json: 'json',
   md: 'markdown',
+  markdown: 'markdown',
   sh: 'bash',
-  yml: 'yaml',
-  yaml: 'yaml',
+  bash: 'bash',
   sql: 'sql',
   java: 'java',
+  kt: 'kotlin',
+  kts: 'kotlin',
   go: 'go',
   rs: 'rust',
+  c: 'cpp',
+  h: 'cpp',
+  cpp: 'cpp',
+  hpp: 'cpp',
+  cs: 'cpp',
 }
 
 function languageOf(path: string): string {
-  const dot = path.lastIndexOf('.')
-  if (dot === -1) return 'text'
-  return LANGUAGE_BY_EXTENSION[path.slice(dot + 1).toLowerCase()] ?? 'text'
+  const name = path.split('/').pop() ?? path
+  const dot = name.lastIndexOf('.')
+  if (dot <= 0) return 'text'
+  return LANGUAGE_BY_EXTENSION[name.slice(dot + 1).toLowerCase()] ?? 'text'
 }
 
 function lineCount(text: string): number {
@@ -565,7 +578,7 @@ function FileCard({ file, chatId }: { file: AgentFile; chatId: number | null }) 
       </div>
       {open ? (
         <div className="border-t border-[color:var(--color-border)]">
-          <Markdown content={`\`\`\`${languageOf(file.path)}\n${file.content}\n\`\`\``} />
+          <RawFileView code={file.content} language={languageOf(file.path)} />
         </div>
       ) : null}
       {failed && file.error ? (
