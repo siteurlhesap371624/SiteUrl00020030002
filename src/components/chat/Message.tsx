@@ -4,7 +4,7 @@ import { Check, Copy, Hash } from 'lucide-react'
 import { Logo } from '@/components/ui/Logo'
 import { Markdown } from './Markdown'
 import { TypingDots } from './TypingDots'
-import { AgentTimeline, ArtifactList, SourceList, ThinkingPanel } from './AgentPanels'
+import { AgentTimeline, ArtifactList, FileStream, SourceList, ThinkingPanel } from './AgentPanels'
 import { copyToClipboard, getInitials } from '@/lib/utils'
 import { useChatStore } from '@/lib/store/chat'
 import type { ChatMessage } from '@/lib/api'
@@ -61,9 +61,12 @@ export function Message({ message, authorName }: MessageProps) {
   const streaming = Boolean(message.streaming)
   const isAgent = Boolean(message.agentMode)
   const hasReasoning = Boolean(message.reasoning && message.reasoning.trim())
+  const files = message.files ?? []
+  const streamedPaths = new Set(files.map((f) => f.path))
+  const otherArtifacts = (message.artifacts ?? []).filter((a) => !streamedPaths.has(a.path))
   const awaitingText = streaming && !message.content
-  const timelinePending = awaitingText && isAgent && (steps.length > 0 || !hasReasoning)
-  const showDots = awaitingText && !isAgent && !hasReasoning && steps.length === 0
+  const timelinePending = awaitingText && isAgent && files.length === 0 && (steps.length > 0 || !hasReasoning)
+  const showDots = awaitingText && !isAgent && !hasReasoning && steps.length === 0 && files.length === 0
 
   return (
     <m.div
@@ -78,12 +81,13 @@ export function Message({ message, authorName }: MessageProps) {
       <div className="group min-w-0 flex-1">
         <ThinkingPanel text={message.reasoning ?? ''} streaming={streaming} />
         <AgentTimeline steps={steps} pending={timelinePending} />
+        <FileStream files={message.files ?? []} chatId={activeChatId} />
         {message.content ? <Markdown content={message.content} /> : showDots ? <TypingDots /> : null}
         {streaming && message.content ? (
           <span className="ml-0.5 inline-block h-[1.05em] w-[2px] translate-y-[2px] bg-[color:var(--color-brand-hover)] animate-pulse-dot align-middle" />
         ) : null}
         <SourceList sources={message.sources ?? []} />
-        <ArtifactList artifacts={message.artifacts ?? []} chatId={activeChatId} />
+        <ArtifactList artifacts={otherArtifacts} chatId={activeChatId} />
         <div className="mt-2 flex items-center gap-3 text-[11px] text-fg-dim">
           {message.usage && message.model === 'yedikule' ? (
             <span

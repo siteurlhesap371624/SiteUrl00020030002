@@ -49,6 +49,18 @@ export interface AgentArtifact {
   kind?: string
 }
 
+export type AgentFileStatus = 'writing' | 'done' | 'error'
+
+export interface AgentFile {
+  id: string
+  path: string
+  content: string
+  status: AgentFileStatus
+  mode: 'write' | 'append'
+  size?: number
+  error?: string | null
+}
+
 export type AgentStepStatus = 'running' | 'done' | 'error'
 
 export interface AgentStep {
@@ -72,6 +84,7 @@ export interface ChatMessage {
   streaming?: boolean
   sources?: AgentSource[]
   artifacts?: AgentArtifact[]
+  files?: AgentFile[]
   steps?: AgentStep[]
   agentMode?: 'agent' | 'deep_research' | null
   stopReason?: string

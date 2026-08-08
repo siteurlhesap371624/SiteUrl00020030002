@@ -4,6 +4,7 @@ import {
   streamRequest,
   workspaceApi,
   type AgentArtifact,
+  type AgentFile,
   type AgentSource,
   type AgentStep,
   type ChatMessage,
@@ -103,6 +104,7 @@ function createPatcher(set: SetState, get: () => ChatState) {
   let contentBuffer = ''
   let reasoningBuffer = ''
   let scheduled = false
+  const fileBuffers = new Map<string, string>()
 
   const applyToLast = (mutate: (msg: ChatMessage) => ChatMessage) => {
     set((s) => {
@@ -119,16 +121,28 @@ function createPatcher(set: SetState, get: () => ChatState) {
 
   const flush = () => {
     scheduled = false
-    if (!contentBuffer && !reasoningBuffer) return
+    if (!contentBuffer && !reasoningBuffer && fileBuffers.size === 0) return
     const c = contentBuffer
     const r = reasoningBuffer
+    const pendingFiles = new Map(fileBuffers)
     contentBuffer = ''
     reasoningBuffer = ''
-    applyToLast((m) => ({
-      ...m,
-      content: c ? m.content + c : m.content,
-      reasoning: r ? (m.reasoning ?? '') + r : m.reasoning,
-    }))
+    fileBuffers.clear()
+    applyToLast((m) => {
+      const files =
+        pendingFiles.size > 0 && m.files
+          ? m.files.map((f) => {
+              const extra = pendingFiles.get(f.id)
+              return extra ? { ...f, content: f.content + extra } : f
+            })
+          : m.files
+      return {
+        ...m,
+        content: c ? m.content + c : m.content,
+        reasoning: r ? (m.reasoning ?? '') + r : m.reasoning,
+        files,
+      }
+    })
   }
 
   const schedule = () => {
@@ -181,6 +195,28 @@ function createPatcher(set: SetState, get: () => ChatState) {
     applyToLast((m) => {
       const artifacts = (m.artifacts ?? []).filter((a) => a.path !== artifact.path)
       return { ...m, artifacts: [...artifacts, artifact] }
+    })
+  }
+
+  patch.startFile = (file: AgentFile) => {
+    flush()
+    applyToLast((m) => {
+      const files = (m.files ?? []).filter((f) => f.id !== file.id)
+      return { ...m, files: [...files, file] }
+    })
+  }
+
+  patch.appendFile = (id: string, text: string) => {
+    if (!text) return
+    fileBuffers.set(id, (fileBuffers.get(id) ?? '') + text)
+    schedule()
+  }
+
+  patch.finishFile = (id: string, patchData: Partial<AgentFile>) => {
+    flush()
+    applyToLast((m) => {
+      const files = (m.files ?? []).map((f) => (f.id === id ? { ...f, ...patchData } : f))
+      return { ...m, files }
     })
   }
 
@@ -380,6 +416,7 @@ export const useChatStore = create<ChatState>((set, get) => ({
       reasoning: '',
       sources: [],
       artifacts: [],
+      files: [],
       steps: [],
       agentMode: useAgent ? 'agent' : null,
     }
@@ -441,6 +478,25 @@ export const useChatStore = create<ChatState>((set, get) => ({
               case 'artifact':
                 sawArtifact = true
                 patch.addArtifact(data)
+                break
+              case 'file_start':
+                patch.startFile({
+                  id: String(data?.id ?? Math.random()),
+                  path: String(data?.path ?? 'dosya'),
+                  content: '',
+                  status: 'writing',
+                  mode: data?.mode === 'append' ? 'append' : 'write',
+                })
+                break
+              case 'file_delta':
+                patch.appendFile(String(data?.id ?? ''), String(data?.text ?? ''))
+                break
+              case 'file_end':
+                patch.finishFile(String(data?.id ?? ''), {
+                  status: data?.ok ? 'done' : 'error',
+                  size: typeof data?.size === 'number' ? data.size : undefined,
+                  error: data?.error ? String(data.error) : null,
+                })
                 break
               case 'notice':
                 break

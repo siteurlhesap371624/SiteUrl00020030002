@@ -17,7 +17,8 @@ import {
 } from 'lucide-react'
 import { cn, formatBytes } from '@/lib/utils'
 import { workspaceApi } from '@/lib/api'
-import type { AgentArtifact, AgentSource, AgentStep, WorkspaceListing } from '@/lib/api'
+import { Markdown } from './Markdown'
+import type { AgentArtifact, AgentFile, AgentSource, AgentStep, WorkspaceListing } from '@/lib/api'
 
 function lastLine(text: string, max: number): string {
   const flat = text.replace(/\s+/g, ' ').trim()
@@ -465,6 +466,124 @@ export function WorkspacePanel({ listing, chatId, onRefresh }: WorkspacePanelPro
           </p>
         ) : null}
       </div>
+    </div>
+  )
+}
+
+const LANGUAGE_BY_EXTENSION: Record<string, string> = {
+  js: 'javascript',
+  mjs: 'javascript',
+  cjs: 'javascript',
+  ts: 'typescript',
+  tsx: 'tsx',
+  jsx: 'jsx',
+  py: 'python',
+  html: 'html',
+  htm: 'html',
+  css: 'css',
+  json: 'json',
+  md: 'markdown',
+  sh: 'bash',
+  yml: 'yaml',
+  yaml: 'yaml',
+  sql: 'sql',
+  java: 'java',
+  go: 'go',
+  rs: 'rust',
+}
+
+function languageOf(path: string): string {
+  const dot = path.lastIndexOf('.')
+  if (dot === -1) return 'text'
+  return LANGUAGE_BY_EXTENSION[path.slice(dot + 1).toLowerCase()] ?? 'text'
+}
+
+function lineCount(text: string): number {
+  if (!text) return 0
+  return text.split('\n').length
+}
+
+function FileCard({ file, chatId }: { file: AgentFile; chatId: number | null }) {
+  const [open, setOpen] = useState(false)
+  const [busy, setBusy] = useState(false)
+  const writing = file.status === 'writing'
+  const failed = file.status === 'error'
+  const lines = lineCount(file.content)
+
+  return (
+    <div
+      className={cn(
+        'overflow-hidden rounded-lg border transition-colors',
+        writing
+          ? 'border-[color:var(--color-brand)]/30 bg-[color:var(--color-brand)]/[0.04]'
+          : failed
+            ? 'border-[color:var(--color-danger)]/30 bg-[color:var(--color-surface)]'
+            : 'border-[color:var(--color-border)] bg-[color:var(--color-surface)]',
+      )}
+    >
+      <div className="flex items-center gap-2 px-3 py-1.5">
+        <button
+          type="button"
+          onClick={() => setOpen((v) => !v)}
+          aria-expanded={open}
+          className="flex min-w-0 flex-1 items-center gap-2 text-left"
+        >
+          {writing ? (
+            <Loader2 className="h-3.5 w-3.5 shrink-0 animate-spin text-[color:var(--color-brand-hover)]" />
+          ) : failed ? (
+            <TriangleAlert className="h-3.5 w-3.5 shrink-0 text-[color:var(--color-danger)]" />
+          ) : (
+            <Check className="h-3.5 w-3.5 shrink-0 text-[color:var(--color-brand-hover)]" />
+          )}
+          <span className={cn('truncate font-mono text-[12px]', writing ? 'text-fg' : 'text-fg-muted')}>
+            {file.path}
+          </span>
+          <span className={cn('shrink-0 text-[11px] text-fg-dim', writing && 'shimmer-text')}>
+            {writing
+              ? file.mode === 'append' ? 'ekleniyor' : 'yazılıyor'
+              : failed
+                ? 'yazılamadı'
+                : `${lines} satır`}
+          </span>
+          <ChevronRight className={cn('ml-auto h-3.5 w-3.5 shrink-0 text-fg-dim transition-transform', open && 'rotate-90')} />
+        </button>
+        {!writing && !failed && chatId ? (
+          <button
+            type="button"
+            disabled={busy}
+            onClick={() => {
+              setBusy(true)
+              void workspaceApi.downloadFile(chatId, file.path).finally(() => setBusy(false))
+            }}
+            aria-label={`${file.path} dosyasını indir`}
+            title="İndir"
+            className="shrink-0 rounded p-1 text-fg-dim transition-colors hover:text-fg disabled:opacity-60"
+          >
+            <Download className="h-3 w-3" />
+          </button>
+        ) : null}
+      </div>
+      {open ? (
+        <div className="border-t border-[color:var(--color-border)]">
+          <Markdown content={`\`\`\`${languageOf(file.path)}\n${file.content}\n\`\`\``} />
+        </div>
+      ) : null}
+      {failed && file.error ? (
+        <p className="border-t border-[color:var(--color-border)] px-3 py-1.5 text-[11px] text-[color:var(--color-danger)]">
+          {file.error}
+        </p>
+      ) : null}
+    </div>
+  )
+}
+
+export function FileStream({ files, chatId }: { files: AgentFile[]; chatId: number | null }) {
+  if (!files || files.length === 0) return null
+  return (
+    <div className="mb-3 space-y-1.5">
+      {files.map((file) => (
+        <FileCard key={file.id} file={file} chatId={chatId} />
+      ))}
     </div>
   )
 }
