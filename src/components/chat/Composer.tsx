@@ -71,17 +71,25 @@ export function Composer({ disabled, onSent }: ComposerProps) {
             value={value}
             onChange={(e) => setValue(e.target.value)}
             onKeyDown={handleKey}
-            placeholder="Marul AI'ye mesaj gönder..."
+            disabled={isSending}
+            placeholder={
+              isSending
+                ? agentMode
+                  ? 'Görev sürüyor, bitmesini bekleyin veya durdurun...'
+                  : 'Yanıt üretiliyor...'
+                : "Marul AI'ye mesaj gönder..."
+            }
             rows={1}
             maxLength={LIMITS.composerMaxChars}
-            className="block w-full resize-none bg-transparent px-4 pt-3.5 pb-2 text-[15px] leading-snug text-fg placeholder:text-fg-dim outline-none"
+            className="block w-full resize-none bg-transparent px-4 pt-3.5 pb-2 text-[15px] leading-snug text-fg placeholder:text-fg-dim outline-none disabled:cursor-not-allowed disabled:text-fg-muted"
           />
           <div className="flex items-center justify-between gap-2 px-2 pb-2">
             <div className="flex items-center gap-1.5">
-              <ModelPickerInline value={model} onChange={(v) => setModel(v)} />
+              <ModelPickerInline value={model} onChange={(v) => setModel(v)} disabled={isSending} />
               {model === 'qwen' ? (
                 <button
                   type="button"
+                  disabled={isSending}
                   onClick={() => {
                     if (!token) {
                       toast('Agent modu için giriş yapmanız gerekiyor.', { variant: 'warn' })
@@ -164,21 +172,29 @@ export function Composer({ disabled, onSent }: ComposerProps) {
 function ModelPickerInline({
   value,
   onChange,
+  disabled,
 }: {
   value: string
   onChange: (id: ModelId) => void
+  disabled?: boolean
 }) {
   return (
-    <div className="inline-flex items-center rounded-full border border-[color:var(--color-border)] bg-[color:var(--color-bg-elevated)] p-0.5">
+    <div
+      className={cn(
+        'inline-flex items-center rounded-full border border-[color:var(--color-border)] bg-[color:var(--color-bg-elevated)] p-0.5',
+        disabled && 'opacity-60',
+      )}
+    >
       {MODELS.map((m) => {
         const active = value === m.id
         return (
           <button
             key={m.id}
             type="button"
+            disabled={disabled}
             onClick={() => onChange(m.id)}
             className={cn(
-              'rounded-full px-2.5 py-1 text-[12px] transition-colors',
+              'rounded-full px-2.5 py-1 text-[12px] transition-colors disabled:cursor-not-allowed',
               active
                 ? 'bg-white/[0.08] text-fg'
                 : 'text-fg-muted hover:text-fg',
