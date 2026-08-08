@@ -53,7 +53,7 @@ export function ModelInfoDialog({ open, onClose }: ModelInfoDialogProps) {
           </ul>
           <p className="mt-3 text-[12.5px] text-fg-dim">
             Ürettiği dosyalar sohbetin çalışma klasöründe birikir; dilediğiniz an tek dosya ya da
-            tümünü zip olarak indirebilirsiniz. Kod sunucuda çalıştırılmaz.
+            tümünü zip olarak indirebilirsiniz.
           </p>
         </section>
       </div>

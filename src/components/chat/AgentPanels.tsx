@@ -358,10 +358,7 @@ export function ArtifactList({ artifacts, chatId }: { artifacts: AgentArtifact[]
           )
         })}
       </ul>
-      <p className="mt-2 text-[11px] leading-relaxed text-fg-dim">
-        Dosyalar sunucuda çalıştırılmaz, yalnızca saklanır. İndirmeden önce içeriği gözden geçirin.
-      </p>
-      {error ? <p className="mt-1 text-[11px] text-[color:var(--color-danger)]">{error}</p> : null}
+      {error ? <p className="mt-2 text-[11px] text-[color:var(--color-danger)]">{error}</p> : null}
     </div>
   )
 }
@@ -456,7 +453,7 @@ export function WorkspacePanel({ listing, chatId, onRefresh }: WorkspacePanelPro
               ))}
             </ul>
             <p className="border-t border-[color:var(--color-border)] px-3 py-1.5 text-[11px] text-fg-dim">
-              Bu klasör sohbete özeldir, kotanın %{usedPercent} kadarı dolu. Dosyalar sunucuda çalıştırılmaz.
+              Bu klasör sohbete özeldir, kotanın %{usedPercent} kadarı dolu.
             </p>
           </div>
         ) : null}
