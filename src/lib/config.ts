@@ -81,7 +81,7 @@ export const MODELS = [
     name: 'Qwen3.6',
     tagline: 'Açık kaynak · 27B',
     description:
-      'Apache 2.0 lisanslı, akıl yürüten açık kaynak model. Web araması yapar, çok adımlı görevleri yürütür, dosya ve belge üretir.',
+      'Apache 2.0 lisanslı, akıl yürüten açık kaynak model. Web araması yapar, çok adımlı görevleri yürütür, kod ve tablo dosyaları üretir.',
     badge: 'Agent',
   },
 ] as const

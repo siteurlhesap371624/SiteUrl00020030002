@@ -2,11 +2,13 @@ import { create } from 'zustand'
 import {
   chatApi,
   streamRequest,
+  workspaceApi,
   type AgentArtifact,
   type AgentSource,
   type AgentStep,
   type ChatMessage,
   type ChatSummary,
+  type WorkspaceListing,
 } from '@/lib/api'
 import { LIMITS, MODELS, STORAGE_KEYS, type ChatMode, type ModelId } from '@/lib/config'
 import { safeJsonParse } from '@/lib/utils'
@@ -30,6 +32,7 @@ interface ChatState {
   mode: ChatMode
   agentMode: boolean
   streamingId: string | null
+  workspace: WorkspaceListing | null
 
   guestChats: GuestChat[]
   guestActiveId: string | null
@@ -41,6 +44,7 @@ interface ChatState {
   setAgentMode: (on: boolean) => void
   stopGeneration: () => void
 
+  loadWorkspace: (chatId: number | 'new' | null) => Promise<void>
   loadChats: () => Promise<void>
   selectChat: (id: number | 'new') => Promise<void>
   createNew: () => void
@@ -86,8 +90,6 @@ const TOOL_LABELS: Record<string, string> = {
   dosya_oku: 'Dosyayı okuyor',
   dosya_listele: 'Klasörü listeliyor',
   dosya_sil: 'Dosyayı siliyor',
-  pdf_olustur: 'PDF hazırlıyor',
-  sunum_olustur: 'Sunum hazırlıyor',
   tablo_olustur: 'Tablo hazırlıyor',
 }
 
@@ -207,6 +209,7 @@ export const useChatStore = create<ChatState>((set, get) => ({
   mode: DEFAULT_MODE,
   agentMode: false,
   streamingId: null,
+  workspace: null,
 
   guestChats: [],
   guestActiveId: null,
@@ -233,11 +236,25 @@ export const useChatStore = create<ChatState>((set, get) => ({
 
   setModel: (model) => {
     persistModelPrefs(model, get().mode)
-    set({ model })
+    set({ model, agentMode: model === 'qwen' ? get().agentMode : false })
   },
   setMode: (mode) => {
     persistModelPrefs(get().model, mode)
     set({ mode })
+  },
+
+  loadWorkspace: async (chatId) => {
+    if (typeof chatId !== 'number' || !useAuthStore.getState().token) {
+      set({ workspace: null })
+      return
+    }
+    try {
+      const listing = await workspaceApi.list(chatId)
+      if (get().activeChatId !== chatId) return
+      set({ workspace: listing.count > 0 ? listing : null })
+    } catch {
+      set({ workspace: null })
+    }
   },
 
   loadChats: async () => {
@@ -255,10 +272,10 @@ export const useChatStore = create<ChatState>((set, get) => ({
 
   selectChat: async (id) => {
     if (id === 'new') {
-      set({ activeChatId: 'new', messages: [] })
+      set({ activeChatId: 'new', messages: [], workspace: null })
       return
     }
-    set({ activeChatId: id, isLoadingMessages: true, messages: [] })
+    set({ activeChatId: id, isLoadingMessages: true, messages: [], workspace: null })
     try {
       const messages = await chatApi.messages(id)
       set({ messages })
@@ -267,10 +284,11 @@ export const useChatStore = create<ChatState>((set, get) => ({
     } finally {
       set({ isLoadingMessages: false })
     }
+    await get().loadWorkspace(id)
   },
 
   createNew: () => {
-    set({ activeChatId: 'new', messages: [] })
+    set({ activeChatId: 'new', messages: [], workspace: null })
   },
 
   removeChat: async (id) => {
@@ -279,6 +297,7 @@ export const useChatStore = create<ChatState>((set, get) => ({
       chats: s.chats.filter((c) => c.id !== id),
       activeChatId: s.activeChatId === id ? null : s.activeChatId,
       messages: s.activeChatId === id ? [] : s.messages,
+      workspace: s.activeChatId === id ? null : s.workspace,
     }))
   },
 
@@ -376,6 +395,7 @@ export const useChatStore = create<ChatState>((set, get) => ({
     let resolvedChatId: number | null = typeof activeChatId === 'number' ? activeChatId : null
     let sawTitle: string | null = null
     let failed: string | null = null
+    let sawArtifact = false
 
     try {
       await streamRequest(
@@ -419,6 +439,7 @@ export const useChatStore = create<ChatState>((set, get) => ({
                 patch.addSource(data)
                 break
               case 'artifact':
+                sawArtifact = true
                 patch.addArtifact(data)
                 break
               case 'notice':
@@ -466,6 +487,7 @@ export const useChatStore = create<ChatState>((set, get) => ({
     patch.finish({})
     set({ isSending: false, streamingId: null })
     if (resolvedChatId) set({ activeChatId: resolvedChatId })
+    if (sawArtifact && resolvedChatId) await get().loadWorkspace(resolvedChatId)
 
     if (activeChatId === 'new' || sawTitle) {
       await get().loadChats()
@@ -483,7 +505,7 @@ export const useChatStore = create<ChatState>((set, get) => ({
     return failed ? { ok: false, error: failed } : { ok: true }
   },
 
-  setAgentMode: (on) => set({ agentMode: on }),
+  setAgentMode: (on) => set({ agentMode: on && get().model === 'qwen' }),
 
   stopGeneration: () => {
     if (abortController) {
@@ -527,6 +549,7 @@ export const useChatStore = create<ChatState>((set, get) => ({
       chats: [],
       activeChatId: null,
       messages: [],
+      workspace: null,
       isLoadingChats: false,
       isLoadingMessages: false,
       isSending: false,

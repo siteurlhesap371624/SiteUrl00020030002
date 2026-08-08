@@ -14,7 +14,7 @@ const items: Item[] = [
   },
   {
     q: 'Yedikule ile Qwen3.6 arasındaki fark nedir?',
-    a: 'Yedikule Türkçe için özel olarak eğitilmiş yerli modelimizdir; günlük sohbetlerde hafif ve hızlıdır, çok turlu sohbeti ve bağlam hafızasını destekler. Qwen3.6 ise 27 milyar parametreli, akıl yürüten açık kaynak modeldir; web araması yapabilir, çok adımlı görevleri yürütebilir, sunum ve rapor gibi dosyalar üretebilir.',
+    a: 'Yedikule Türkçe için özel olarak eğitilmiş yerli modelimizdir; günlük sohbetlerde hafif ve hızlıdır, çok turlu sohbeti ve bağlam hafızasını destekler. Qwen3.6 ise 27 milyar parametreli, akıl yürüten açık kaynak modeldir; web araması yapabilir, çok adımlı görevleri yürütebilir, kod projesi ve tablo gibi dosyalar üretebilir.',
   },
   {
     q: 'Ücretsiz planda hangi sınırlar var?',

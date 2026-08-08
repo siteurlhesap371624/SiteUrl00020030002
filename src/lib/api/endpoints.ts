@@ -1,5 +1,5 @@
 import { api } from './client'
-import { config } from '@/lib/config'
+import { downloadProtectedFile } from './download'
 import type {
   AuthResponse,
   SkillInfo,
@@ -155,10 +155,14 @@ export const workspaceApi = {
   remove: (chatId: number, path: string) =>
     api.del<{ path: string; removed: boolean }>(`/workspace/${chatId}/file?path=${encodeURIComponent(path)}`),
 
-  fileUrl: (chatId: number, path: string) =>
-    `${config.apiBaseUrl}/workspace/${chatId}/file?path=${encodeURIComponent(path)}`,
+  downloadFile: (chatId: number, path: string) =>
+    downloadProtectedFile(
+      `/workspace/${chatId}/file?path=${encodeURIComponent(path)}`,
+      path.split('/').pop() || 'dosya',
+    ),
 
-  downloadUrl: (chatId: number) => `${config.apiBaseUrl}/workspace/${chatId}/download`,
+  downloadZip: (chatId: number) =>
+    downloadProtectedFile(`/workspace/${chatId}/download`, `marul-sohbet-${chatId}.zip`),
 }
 
 export const skillsApi = {

@@ -7,6 +7,7 @@ import type { ModelId } from '@/lib/config'
 import { useUIStore } from '@/lib/store/ui'
 import { Sidebar } from '@/components/chat/Sidebar'
 import { Composer } from '@/components/chat/Composer'
+import { WorkspacePanel } from '@/components/chat/AgentPanels'
 import { Message } from '@/components/chat/Message'
 import { TypingDots } from '@/components/chat/TypingDots'
 import { WelcomeView } from '@/components/chat/WelcomeView'
@@ -29,6 +30,8 @@ export default function Chat() {
   const setModel = useChatStore((s) => s.setModel)
   const loadChats = useChatStore((s) => s.loadChats)
   const sendMessage = useChatStore((s) => s.sendMessage)
+  const workspace = useChatStore((s) => s.workspace)
+  const loadWorkspace = useChatStore((s) => s.loadWorkspace)
 
   const [searchParams, setSearchParams] = useSearchParams()
 
@@ -181,6 +184,14 @@ export default function Chat() {
             </div>
           )}
         </div>
+
+        {workspace && typeof activeChatId === 'number' ? (
+          <WorkspacePanel
+            listing={workspace}
+            chatId={activeChatId}
+            onRefresh={() => void loadWorkspace(activeChatId)}
+          />
+        ) : null}
 
         <Composer />
       </main>

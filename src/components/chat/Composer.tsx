@@ -89,7 +89,7 @@ export function Composer({ disabled, onSent }: ComposerProps) {
                     }
                     setAgentMode(!agentMode)
                   }}
-                  title="Agent modu: internette araştırır, dosya ve belge üretir"
+                  title="Agent modu: internette araştırır, kod ve tablo dosyaları üretir"
                   aria-pressed={agentMode && Boolean(token)}
                   className={cn(
                     'inline-flex h-7 items-center gap-1.5 rounded-full border py-0 pr-2 pl-2.5 text-[11.5px] font-medium tracking-[0.01em] transition-colors duration-200 ease-snappy',
@@ -143,7 +143,7 @@ export function Composer({ disabled, onSent }: ComposerProps) {
         <div className="mt-2 flex items-center justify-between gap-3 px-1 text-[11.5px] text-fg-dim">
           <span className="truncate">
             {agentMode && model === 'qwen'
-              ? "Agent modu açık: gerektiğinde internette araştırır, dosya ve belge üretir."
+              ? "Agent modu açık: gerektiğinde internette araştırır, kod ve tablo dosyaları üretir."
               : 'Marul AI hata yapabilir. Önemli bilgileri doğrulayın.'}
           </span>
           {!token ? (

@@ -47,7 +47,7 @@ export function ModelInfoDialog({ open, onClose }: ModelInfoDialogProps) {
           </p>
           <ul className="mt-3 space-y-1.5 text-[13.5px] text-fg-muted">
             <li>· Güncel bilgi için otomatik web araması ve kaynak gösterimi</li>
-            <li>· Sunum, PDF rapor ve Excel tablosu hazırlama</li>
+            <li>· Excel tablosu ve veri dosyası hazırlama</li>
             <li>· Kod projesi yazıp dosya olarak teslim etme</li>
             <li>· Çok adımlı derin araştırma</li>
           </ul>

@@ -8,15 +8,16 @@ import {
   FileSpreadsheet,
   FileText,
   FileType,
+  FolderOpen,
   Globe,
   ListChecks,
   Loader2,
-  Presentation,
+  Trash2,
   TriangleAlert,
 } from 'lucide-react'
 import { cn, formatBytes } from '@/lib/utils'
 import { workspaceApi } from '@/lib/api'
-import type { AgentArtifact, AgentSource, AgentStep } from '@/lib/api'
+import type { AgentArtifact, AgentSource, AgentStep, WorkspaceListing } from '@/lib/api'
 
 function lastLine(text: string, max: number): string {
   const flat = text.replace(/\s+/g, ' ').trim()
@@ -92,8 +93,6 @@ const STEP_ICONS: Record<string, typeof Globe> = {
   dosya_oku: FileType,
   dosya_listele: FileType,
   dosya_sil: FileType,
-  pdf_olustur: FileText,
-  sunum_olustur: Presentation,
   tablo_olustur: FileSpreadsheet,
 }
 
@@ -105,8 +104,6 @@ const STEP_DONE_LABELS: Record<string, string> = {
   dosya_oku: 'Dosyayı okudu',
   dosya_listele: 'Klasörü listeledi',
   dosya_sil: 'Dosyayı sildi',
-  pdf_olustur: 'PDF hazırladı',
-  sunum_olustur: 'Sunum hazırladı',
   tablo_olustur: 'Tablo hazırladı',
 }
 
@@ -288,9 +285,10 @@ export function SourceList({ sources }: { sources: AgentSource[] }) {
 }
 
 const ARTIFACT_ICONS: Record<string, typeof FileText> = {
-  pdf: FileText,
-  pptx: Presentation,
   xlsx: FileSpreadsheet,
+  csv: FileSpreadsheet,
+  md: FileText,
+  txt: FileText,
 }
 
 function artifactKind(path: string): string {
@@ -299,21 +297,40 @@ function artifactKind(path: string): string {
 }
 
 export function ArtifactList({ artifacts, chatId }: { artifacts: AgentArtifact[]; chatId: number | null }) {
+  const [busy, setBusy] = useState<string | null>(null)
+  const [error, setError] = useState<string | null>(null)
+
   if (!artifacts || artifacts.length === 0 || !chatId) return null
+
+  const totalBytes = artifacts.reduce((sum, a) => sum + (a.size ?? 0), 0)
+
+  const run = async (key: string, action: () => Promise<void>) => {
+    setBusy(key)
+    setError(null)
+    try {
+      await action()
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Dosya indirilemedi.')
+    } finally {
+      setBusy(null)
+    }
+  }
 
   return (
     <div className="mt-3 rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-3">
       <div className="mb-2 flex items-center justify-between gap-3">
         <p className="text-[11px] font-semibold uppercase tracking-[0.1em] text-fg-dim">
-          Üretilen dosyalar · {artifacts.length}
+          Üretilen dosyalar · {artifacts.length} · {formatBytes(totalBytes)}
         </p>
-        <a
-          href={workspaceApi.downloadUrl(chatId)}
-          className="inline-flex items-center gap-1.5 rounded-md border border-[color:var(--color-brand)]/30 bg-[color:var(--color-brand)]/10 px-2.5 py-1 text-[11.5px] font-medium text-[color:var(--color-brand-hover)] transition-colors hover:bg-[color:var(--color-brand)]/15"
+        <button
+          type="button"
+          disabled={busy !== null}
+          onClick={() => void run('zip', () => workspaceApi.downloadZip(chatId))}
+          className="inline-flex items-center gap-1.5 rounded-md border border-[color:var(--color-brand)]/30 bg-[color:var(--color-brand)]/10 px-2.5 py-1 text-[11.5px] font-medium text-[color:var(--color-brand-hover)] transition-colors hover:bg-[color:var(--color-brand)]/15 disabled:opacity-60"
         >
-          <Download className="h-3 w-3" />
-          Tümünü indir
-        </a>
+          {busy === 'zip' ? <Loader2 className="h-3 w-3 animate-spin" /> : <Download className="h-3 w-3" />}
+          {busy === 'zip' ? 'Hazırlanıyor' : 'ZIP indir'}
+        </button>
       </div>
       <ul className="space-y-1">
         {artifacts.map((artifact) => {
@@ -321,19 +338,133 @@ export function ArtifactList({ artifacts, chatId }: { artifacts: AgentArtifact[]
           const Icon = ARTIFACT_ICONS[kind] ?? FileType
           return (
             <li key={artifact.path}>
-              <a
-                href={workspaceApi.fileUrl(chatId, artifact.path)}
-                className="flex items-center gap-2.5 rounded-md px-2 py-1.5 text-[12.5px] text-fg-muted transition-colors hover:bg-white/[0.04] hover:text-fg"
+              <button
+                type="button"
+                disabled={busy !== null}
+                onClick={() => void run(artifact.path, () => workspaceApi.downloadFile(chatId, artifact.path))}
+                className="flex w-full items-center gap-2.5 rounded-md px-2 py-1.5 text-left text-[12.5px] text-fg-muted transition-colors hover:bg-white/[0.04] hover:text-fg disabled:opacity-60"
               >
                 <Icon className="h-3.5 w-3.5 shrink-0 text-fg-dim" />
                 <span className="min-w-0 flex-1 truncate font-mono text-[11.5px]">{artifact.path}</span>
                 <span className="shrink-0 text-[11px] text-fg-dim tabular-nums">{formatBytes(artifact.size)}</span>
-                <Download className="h-3 w-3 shrink-0 text-fg-dim" />
-              </a>
+                {busy === artifact.path ? (
+                  <Loader2 className="h-3 w-3 shrink-0 animate-spin text-fg-dim" />
+                ) : (
+                  <Download className="h-3 w-3 shrink-0 text-fg-dim" />
+                )}
+              </button>
             </li>
           )
         })}
       </ul>
+      <p className="mt-2 text-[11px] leading-relaxed text-fg-dim">
+        Dosyalar sunucuda çalıştırılmaz, yalnızca saklanır. İndirmeden önce içeriği gözden geçirin.
+      </p>
+      {error ? <p className="mt-1 text-[11px] text-[color:var(--color-danger)]">{error}</p> : null}
+    </div>
+  )
+}
+
+interface WorkspacePanelProps {
+  listing: WorkspaceListing
+  chatId: number
+  onRefresh?: () => void
+}
+
+export function WorkspacePanel({ listing, chatId, onRefresh }: WorkspacePanelProps) {
+  const [open, setOpen] = useState(false)
+  const [busy, setBusy] = useState<string | null>(null)
+  const [error, setError] = useState<string | null>(null)
+
+  if (!listing || listing.count === 0) return null
+
+  const quota = listing.limits?.maxChatBytes ?? 0
+  const usedBytes = listing.diskBytes ?? listing.bytes
+  const usedPercent = quota > 0 ? Math.min(100, Math.round((usedBytes / quota) * 100)) : 0
+
+  const run = async (key: string, action: () => Promise<void>) => {
+    setBusy(key)
+    setError(null)
+    try {
+      await action()
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'İşlem tamamlanamadı.')
+    } finally {
+      setBusy(null)
+    }
+  }
+
+  return (
+    <div className="mx-auto w-full max-w-3xl px-3 pt-3 md:px-6">
+      <div className="overflow-hidden rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-surface)]">
+        <div className="flex items-center gap-2 px-3 py-1.5">
+          <button
+            type="button"
+            onClick={() => setOpen((v) => !v)}
+            aria-expanded={open}
+            className="flex min-w-0 flex-1 items-center gap-2 text-left text-[12px] text-fg-muted transition-colors hover:text-fg"
+          >
+            <FolderOpen className="h-3.5 w-3.5 shrink-0 text-fg-dim" />
+            <span className="truncate font-medium">Çalışma klasörü · {listing.count} dosya</span>
+            <span className="shrink-0 font-mono text-[11px] text-fg-dim tabular-nums">
+              {formatBytes(listing.bytes)}
+            </span>
+            <ChevronRight className={cn('h-3.5 w-3.5 shrink-0 transition-transform', open && 'rotate-90')} />
+          </button>
+          <button
+            type="button"
+            disabled={busy !== null}
+            onClick={() => void run('zip', () => workspaceApi.downloadZip(chatId))}
+            className="inline-flex shrink-0 items-center gap-1.5 rounded-md border border-[color:var(--color-brand)]/30 bg-[color:var(--color-brand)]/10 px-2.5 py-1 text-[11.5px] font-medium text-[color:var(--color-brand-hover)] transition-colors hover:bg-[color:var(--color-brand)]/15 disabled:opacity-60"
+          >
+            {busy === 'zip' ? <Loader2 className="h-3 w-3 animate-spin" /> : <Download className="h-3 w-3" />}
+            ZIP indir
+          </button>
+        </div>
+        {open ? (
+          <div className="border-t border-[color:var(--color-border)]">
+            <ul className="max-h-56 overflow-y-auto py-1">
+              {listing.files.map((file) => (
+                <li key={file.path} className="flex items-center gap-2 px-3 py-1">
+                  <FileType className="h-3.5 w-3.5 shrink-0 text-fg-dim" />
+                  <button
+                    type="button"
+                    disabled={busy !== null}
+                    onClick={() => void run(file.path, () => workspaceApi.downloadFile(chatId, file.path))}
+                    className="min-w-0 flex-1 truncate text-left font-mono text-[11.5px] text-fg-muted transition-colors hover:text-fg disabled:opacity-60"
+                  >
+                    {file.path}
+                  </button>
+                  <span className="shrink-0 text-[11px] text-fg-dim tabular-nums">{formatBytes(file.size)}</span>
+                  <button
+                    type="button"
+                    disabled={busy !== null}
+                    onClick={() =>
+                      void run(`sil:${file.path}`, async () => {
+                        await workspaceApi.remove(chatId, file.path)
+                        onRefresh?.()
+                      })
+                    }
+                    aria-label={`${file.path} dosyasını sil`}
+                    title="Sil"
+                    className="shrink-0 rounded p-1 text-fg-dim transition-colors hover:text-[color:var(--color-danger)] disabled:opacity-60"
+                  >
+                    <Trash2 className="h-3 w-3" />
+                  </button>
+                </li>
+              ))}
+            </ul>
+            <p className="border-t border-[color:var(--color-border)] px-3 py-1.5 text-[11px] text-fg-dim">
+              Bu klasör sohbete özeldir, kotanın %{usedPercent} kadarı dolu. Dosyalar sunucuda çalıştırılmaz.
+            </p>
+          </div>
+        ) : null}
+        {error ? (
+          <p className="border-t border-[color:var(--color-border)] px-3 py-1.5 text-[11px] text-[color:var(--color-danger)]">
+            {error}
+          </p>
+        ) : null}
+      </div>
     </div>
   )
 }

@@ -88,6 +88,7 @@ export interface WorkspaceListing {
   files: WorkspaceFile[]
   count: number
   bytes: number
+  diskBytes?: number
   limits: { maxChatBytes: number; maxChatFiles: number; maxFileBytes: number }
 }
 
