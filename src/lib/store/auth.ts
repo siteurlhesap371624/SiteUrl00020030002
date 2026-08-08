@@ -67,8 +67,9 @@ export const useAuthStore = create<AuthState>((set, get) => ({
         useForumStore.getState().reset()
       } else if (res.user) {
         const merged = { ...(get().user ?? {}), ...res.user } as AuthUser
-        persist(get().token, merged)
-        set({ user: merged, isPremium: !!res.isPremium })
+        const token = res.token ?? get().token
+        persist(token, merged)
+        set({ token, user: merged, isPremium: !!res.isPremium })
       }
     } catch {
       return

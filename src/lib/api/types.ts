@@ -16,6 +16,7 @@ export interface SessionResponse {
   user?: AuthUser
   isPremium?: boolean
   subscriptionEndDate?: string | null
+  token?: string
 }
 
 export interface ChatSummary {
