@@ -1,4 +1,4 @@
-import { ArrowUpRight, Globe, Smartphone } from 'lucide-react'
+import { ArrowUpRight, Boxes, Globe, Smartphone } from 'lucide-react'
 import { Logo } from '@/components/ui/Logo'
 import { SeoHead } from '@/components/ui/SeoHead'
 import { InstagramIcon, XIcon, YouTubeIcon } from '@/components/ui/SocialIcons'
@@ -18,6 +18,12 @@ const items: LinkItem[] = [
     href: 'https://marulai.com.tr',
     icon: <Globe className="h-5 w-5" />,
     description: 'marulai.com.tr',
+  },
+  {
+    label: 'Hugging Face',
+    href: config.huggingFaceUrl,
+    icon: <Boxes className="h-5 w-5" />,
+    description: 'Yedikule model ağırlıkları',
   },
   {
     label: 'Android uygulaması',

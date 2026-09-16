@@ -11,6 +11,7 @@ export default function PricingPage() {
         path="/fiyatlandirma"
       />
       <div className="pt-16">
+        <h1 className="sr-only">Marul AI fiyatlandırma · ücretsiz plan ve Plus aboneliği</h1>
         <Pricing />
         <Faq />
       </div>

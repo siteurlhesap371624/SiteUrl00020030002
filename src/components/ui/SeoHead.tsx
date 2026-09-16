@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import { BASE_DESCRIPTION, BASE_TITLE, SITE_URL, findSeoRoute } from '@/seo/site'
 
 interface SeoHeadProps {
   title?: string
@@ -8,16 +9,11 @@ interface SeoHeadProps {
   noindex?: boolean
 }
 
-const BASE_TITLE = "Marul AI · Türkiye'nin yapay zeka asistanı"
-const BASE_DESC =
-  'Marul AI; Türkçe konuşan, hızlı, güvenli ve özel olarak geliştirilmiş bir yapay zeka asistanıdır.'
-const SITE = 'https://marulai.com.tr'
-
 function setMeta(selector: string, attr: string, value: string) {
   let el = document.head.querySelector<HTMLMetaElement>(selector)
   if (!el) {
     el = document.createElement('meta')
-    const [keyAttr, keyVal] = selector.replace(/[\[\]"']/g, '').split('=')
+    const [keyAttr, keyVal] = selector.replace(/[[\]"']/g, '').split('=')
     if (keyAttr && keyVal) el.setAttribute(keyAttr, keyVal)
     document.head.appendChild(el)
   }
@@ -36,10 +32,11 @@ function setLink(rel: string, href: string) {
 
 export function SeoHead({ title, description, path, image, noindex }: SeoHeadProps) {
   useEffect(() => {
-    const fullTitle = title ? `${title} · Marul AI` : BASE_TITLE
-    const desc = description ?? BASE_DESC
-    const url = `${SITE}${path ?? ''}`
-    const img = image ?? `${SITE}/og.png`
+    const route = path ? findSeoRoute(path) : undefined
+    const fullTitle = route?.title ?? (title ? `${title} · Marul AI` : BASE_TITLE)
+    const desc = route?.description ?? description ?? BASE_DESCRIPTION
+    const url = `${SITE_URL}${path ?? ''}`
+    const img = image ?? `${SITE_URL}/og.png`
 
     document.title = fullTitle
     setMeta('meta[name="description"]', 'content', desc)
@@ -52,12 +49,11 @@ export function SeoHead({ title, description, path, image, noindex }: SeoHeadPro
     setMeta('meta[name="twitter:image"]', 'content', img)
     setLink('canonical', url)
 
-    if (noindex) {
-      setMeta('meta[name="robots"]', 'content', 'noindex, nofollow')
-    } else {
-      const robots = document.head.querySelector('meta[name="robots"]')
-      if (robots) robots.remove()
-    }
+    setMeta(
+      'meta[name="robots"]',
+      'content',
+      noindex ? 'noindex, nofollow' : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1',
+    )
   }, [title, description, path, image, noindex])
 
   return null

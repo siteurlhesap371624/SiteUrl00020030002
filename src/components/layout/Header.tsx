@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
-import { Menu, X, MessageSquare, Download } from 'lucide-react'
+import { Menu, X, MessageSquare, Download, Boxes } from 'lucide-react'
 import { Logo } from '@/components/ui/Logo'
 import { Button } from '@/components/ui/Button'
 import { useAuthStore } from '@/lib/store/auth'
@@ -70,6 +70,16 @@ export function Header() {
         </div>
 
         <div className="flex items-center gap-2">
+          <a
+            href={config.huggingFaceUrl}
+            target="_blank"
+            rel="noreferrer"
+            title="Yedikule model ağırlıkları · Hugging Face"
+            className="hidden lg:inline-flex items-center gap-1.5 rounded-md px-3 py-1.5 text-[13px] text-fg-muted hover:text-fg hover:bg-white/[0.04] transition-colors"
+          >
+            <Boxes className="h-3.5 w-3.5" />
+            Hugging Face
+          </a>
           <a
             href={config.playStoreUrl}
             target="_blank"

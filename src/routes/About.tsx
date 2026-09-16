@@ -7,19 +7,19 @@ const sections = [
   },
   {
     title: 'Yaklaşımımız',
-    body: 'Marul AI, açık kaynak modelleri kendi geliştirdiğimiz Yedikule modeliyle birleştirir. Sade arayüz, sürdürülebilir altyapı ve şeffaf gizlilik anlayışı önceliğimizdir.',
+    body: 'Marul AI, açık kaynak modelleri kendi geliştirdiğimiz Yedikule modeliyle birleştirir. Yedikule ağırlıkları Hugging Face üzerinde herkese açıktır; sade arayüz, sürdürülebilir altyapı ve şeffaf gizlilik anlayışı önceliğimizdir.',
   },
   {
     title: 'Karakuş Tech',
-    body: 'Marul AI, bağımsız bir geliştirici ekibi olan Karakuş Tech tarafından yürütülmektedir. Tüm kararlar kullanıcı deneyimi ve veri güvenliği gözetilerek alınır.',
+    body: 'Marul AI, Karakuş Tech adıyla çalışan bağımsız bir geliştirici olan Ahmet Karakuş tarafından yürütülmektedir. Tüm kararlar kullanıcı deneyimi ve veri güvenliği gözetilerek alınır.',
   },
 ]
 
 const stats = [
-  { label: 'Aktif kullanıcı', value: '500+' },
-  { label: 'Aylık mesaj', value: '2K+' },
-  { label: 'Ortalama yanıt', value: '1.2 sn' },
-  { label: 'Erişilebilirlik', value: '%99.9' },
+  { label: 'Yedikule parametre', value: '202M' },
+  { label: 'Eğitim verisi', value: '24,33B token' },
+  { label: 'Açık ağırlık', value: 'Hugging Face' },
+  { label: 'Platform', value: 'Web · Android' },
 ]
 
 export default function About() {

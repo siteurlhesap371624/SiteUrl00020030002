@@ -10,6 +10,7 @@ const linkGroups = [
       { to: '/sohbet', label: 'Sohbet' },
       { to: '/forum', label: 'Sosyal' },
       { to: '/modeller', label: 'Modeller' },
+      { to: '/modeller/yedikule', label: 'Yedikule modeli' },
       { to: '/fiyatlandirma', label: 'Fiyatlandırma' },
       { to: '/baglantilar', label: 'Bağlantılar' },
     ],
@@ -18,6 +19,8 @@ const linkGroups = [
     title: 'Kurumsal',
     links: [
       { to: '/hakkimizda', label: 'Hakkımızda' },
+      { to: '/sss', label: 'Sık sorulan sorular' },
+      { to: '/turkiye-yapay-zeka-modelleri', label: "Türkiye'de yapay zeka modelleri" },
       { to: '/iletisim', label: 'İletişim' },
       { href: config.playStoreUrl, label: 'Mobil uygulama', external: true },
     ],

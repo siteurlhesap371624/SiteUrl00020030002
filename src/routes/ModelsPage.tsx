@@ -10,6 +10,9 @@ export default function ModelsPage() {
         path="/modeller"
       />
       <div className="pt-16">
+        <h1 className="sr-only">
+          Marul AI yapay zeka modelleri · Yedikule ve Qwen3.6
+        </h1>
         <Models />
       </div>
     </>

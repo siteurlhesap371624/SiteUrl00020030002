@@ -4,6 +4,7 @@ interface AppConfig {
   playStoreUrl: string
   appPackage: string
   siteUrl: string
+  huggingFaceUrl: string
   supportEmail: string
   legalEmail: string
   googleClientId: string
@@ -25,6 +26,7 @@ export const config: AppConfig = {
   playStoreUrl: 'https://play.google.com/store/apps/details?id=ai.marul.com',
   appPackage: 'ai.marul.com',
   siteUrl: 'https://marulai.com.tr',
+  huggingFaceUrl: 'https://huggingface.co/MarulAI',
   supportEmail: 'marulai.resmi@gmail.com',
   legalEmail: 'marulai.resmi@gmail.com',
   googleClientId:

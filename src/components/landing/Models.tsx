@@ -22,15 +22,15 @@ const cards: ModelCard[] = [
     badge: 'Yerli model',
     tagline: 'Türkçe için sıfırdan eğitilmiş yeni nesil yerli model.',
     specs: [
-      { label: 'Mimari', value: 'Transformer · TR-tokenizer' },
-      { label: 'Eğitim verisi', value: 'Türkçe odaklı' },
+      { label: 'Parametre', value: '202 milyon' },
+      { label: 'Eğitim verisi', value: '24,33B Türkçe token' },
       { label: 'Bağlam', value: 'Çok turlu · 2048 token' },
       { label: 'Servis', value: 'Karakuş Tech' },
     ],
     capabilities: ['Çok turlu sohbet', 'Türkçe dilbilgisi', 'Düşük gecikme'],
     description:
-      'Türkçe dilbilgisi, yerel terminoloji ve günlük diyaloglarda doğal performans gösteren deneysel modelimiz.',
-    footnote: 'Kendi altyapımızda çalışır, sürekli geliştirilir.',
+      'Türkçe dilbilgisi, yerel terminoloji ve günlük diyaloglarda doğal performans gösteren deneysel modelimiz. Ağırlıkları Hugging Face üzerinde herkese açıktır.',
+    footnote: 'Ağırlıkları Hugging Face üzerinde açık, kendi altyapımızda çalışır.',
     highlight: true,
   },
   {
@@ -40,7 +40,7 @@ const cards: ModelCard[] = [
     tagline: 'Karmaşık görevler için çok dilli, akıl yürütebilen güçlü model.',
     specs: [
       { label: 'Parametre', value: '27B' },
-      { label: 'Bağlam', value: '131K token' },
+      { label: 'Bağlam', value: 'Uzun bağlam' },
       { label: 'Lisans', value: 'Apache 2.0' },
       { label: 'Servis', value: 'Groq · düşük gecikme' },
     ],

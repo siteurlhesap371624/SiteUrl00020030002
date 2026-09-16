@@ -13,6 +13,9 @@ const Privacy = lazy(() => import('@/routes/legal/Privacy'))
 const Terms = lazy(() => import('@/routes/legal/Terms'))
 const Kvkk = lazy(() => import('@/routes/legal/Kvkk'))
 const Links = lazy(() => import('@/routes/Links'))
+const Sss = lazy(() => import('@/routes/Sss'))
+const Yedikule = lazy(() => import('@/routes/Yedikule'))
+const TurkishModels = lazy(() => import('@/routes/TurkishModels'))
 const NotFound = lazy(() => import('@/routes/NotFound'))
 
 const Forum = lazy(() => import('@/routes/Forum'))
@@ -47,6 +50,9 @@ export const router = createBrowserRouter([
       { path: '/', element: withSuspense(<Home />) },
       { path: '/modeller', element: withSuspense(<ModelsPage />) },
       { path: '/fiyatlandirma', element: withSuspense(<PricingPage />) },
+      { path: '/modeller/yedikule', element: withSuspense(<Yedikule />) },
+      { path: '/turkiye-yapay-zeka-modelleri', element: withSuspense(<TurkishModels />) },
+      { path: '/sss', element: withSuspense(<Sss />) },
       { path: '/hakkimizda', element: withSuspense(<About />) },
       { path: '/iletisim', element: withSuspense(<Contact />) },
       { path: '/gizlilik', element: withSuspense(<Privacy />) },

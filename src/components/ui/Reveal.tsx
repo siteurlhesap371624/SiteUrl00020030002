@@ -33,7 +33,7 @@ export function Reveal({
 }: RevealProps) {
   const Component = (as ?? 'div') as ElementType
   const ref = useRef<HTMLElement | null>(null)
-  const [visible, setVisible] = useState(false)
+  const [visible, setVisible] = useState(typeof window === 'undefined')
 
   useEffect(() => {
     const node = ref.current

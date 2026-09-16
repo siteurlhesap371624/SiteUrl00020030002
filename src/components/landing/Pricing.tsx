@@ -46,7 +46,7 @@ const plans: Plan[] = [
       'Konuşma geçmişi senkron',
       'Kişiselleştirme talimatları',
       'Günde 25 agent görevi',
-      'Yeni özelliklere ilk erişim',
+      'Web araması ve agent modu',
     ],
   },
   {
@@ -58,11 +58,9 @@ const plans: Plan[] = [
     ctaHref: config.playStoreUrl,
     external: true,
     features: [
-      'Sınırsız mesaj',
+      'Sohbet başına sınırsız mesaj',
       'Günde 150 agent görevi',
-      'Derin araştırma modu',
-      'Öncelikli yanıt kuyruğu',
-      'Yeni model önizlemeleri',
+      'Tek seferlik ödeme, abonelik yok',
       'Birebir e-posta desteği',
     ],
     footnote: 'Tek seferlik ödeme, yenileme yok. Şu an yalnızca Android uygulaması üzerinden.',

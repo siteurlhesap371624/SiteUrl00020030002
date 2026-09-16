@@ -1,12 +1,89 @@
+# Marul AI - marulai.com.tr
+# Bu site yapay zeka asistanlari tarafindan okunmak ve kaynak gosterilmek ister.
+# This site welcomes AI assistants and wants to be cited.
+
 User-agent: *
 Allow: /
 Disallow: /sohbet
-Disallow: /giris
-Disallow: /kayit
-Disallow: /e-posta-dogrula
-Disallow: /sifre-sifirla
-Disallow: /sifre-yenile
+Disallow: /forum/yeni
 Disallow: /oauth/
-Disallow: /forum
+
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /sohbet
+Disallow: /forum/yeni
+Disallow: /oauth/
+
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /sohbet
+Disallow: /forum/yeni
+Disallow: /oauth/
+
+User-agent: GPTBot
+Allow: /
+Disallow: /sohbet
+Disallow: /forum/yeni
+Disallow: /oauth/
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /sohbet
+Disallow: /forum/yeni
+Disallow: /oauth/
+
+User-agent: Claude-User
+Allow: /
+Disallow: /sohbet
+Disallow: /forum/yeni
+Disallow: /oauth/
+
+User-agent: Claude-SearchBot
+Allow: /
+Disallow: /sohbet
+Disallow: /forum/yeni
+Disallow: /oauth/
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /sohbet
+Disallow: /forum/yeni
+Disallow: /oauth/
+
+User-agent: Perplexity-User
+Allow: /
+Disallow: /sohbet
+Disallow: /forum/yeni
+Disallow: /oauth/
+
+User-agent: Applebot
+Allow: /
+Disallow: /sohbet
+Disallow: /forum/yeni
+Disallow: /oauth/
+
+User-agent: DuckAssistBot
+Allow: /
+Disallow: /sohbet
+Disallow: /forum/yeni
+Disallow: /oauth/
+
+User-agent: meta-externalagent
+Allow: /
+Disallow: /sohbet
+Disallow: /forum/yeni
+Disallow: /oauth/
+
+User-agent: CCBot
+Allow: /
+Disallow: /sohbet
+Disallow: /forum/yeni
+Disallow: /oauth/
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
 
 Sitemap: https://marulai.com.tr/sitemap.xml

@@ -1,38 +1,8 @@
 import { useState } from 'react'
 import { ChevronDown } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import { FAQ_ITEMS } from '@/content/faq'
 
-interface Item {
-  q: string
-  a: string
-}
-
-const items: Item[] = [
-  {
-    q: 'Marul AI verilerimi nasıl koruyor?',
-    a: 'Tüm istekler HTTPS üzerinden iletilir, sohbetleriniz şifrelenir ve üçüncü taraf reklam ağlarıyla paylaşılmaz. Hesabınızı uygulama içinden tek tıkla silebilir veya marulai.resmi@gmail.com adresine talep iletebilirsiniz.',
-  },
-  {
-    q: 'Yedikule ile Qwen3.6 arasındaki fark nedir?',
-    a: 'Yedikule Türkçe için özel olarak eğitilmiş yerli modelimizdir; günlük sohbetlerde hafif ve hızlıdır, çok turlu sohbeti ve bağlam hafızasını destekler. Qwen3.6 ise 27 milyar parametreli, akıl yürüten açık kaynak modeldir; web araması yapabilir, çok adımlı görevleri yürütebilir, kod projesi ve tablo gibi dosyalar üretebilir.',
-  },
-  {
-    q: 'Ücretsiz planda hangi sınırlar var?',
-    a: 'Hesabınız varsa sohbet başına 25 mesaj, sınırsız sohbet oluşturma hakkınız vardır. Misafir modunda oturum başına 10 deneme verilir.',
-  },
-  {
-    q: 'Plus aboneliği nasıl alınır?',
-    a: 'Plus aboneliği şu anda yalnızca Android uygulamamız üzerinden Google Play satın alma sistemiyle alınabilir. Web tarafından satın alma yakında eklenecektir.',
-  },
-  {
-    q: 'Mobil uygulama ile web aynı hesabı paylaşır mı?',
-    a: 'Evet. Aynı e-posta ile giriş yaparsanız konuşma geçmişiniz, kişiselleştirme ayarlarınız ve aboneliğiniz her iki platformda da geçerlidir.',
-  },
-  {
-    q: 'Hangi durumlarda Marul AI cevap vermez?',
-    a: 'Yasa dışı içerik üretimi, zararlı yazılım talimatları, kişisel veri ifşası gibi istekleri reddeder. Bunlar dışında geniş bir konu yelpazesinde yardımcı olur.',
-  },
-]
 
 export function Faq() {
   const [open, setOpen] = useState<number | null>(0)
@@ -52,7 +22,7 @@ export function Faq() {
             </p>
           </div>
           <div className="divide-y divide-[color:var(--color-border)] rounded-[var(--radius-xl)] border border-[color:var(--color-border-strong)] bg-[color:var(--color-surface)] overflow-hidden">
-            {items.map((item, i) => {
+            {FAQ_ITEMS.map((item, i) => {
               const isOpen = open === i
               return (
                 <div key={item.q}>
