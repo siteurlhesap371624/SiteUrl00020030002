@@ -44,11 +44,11 @@ export function Header() {
       )}
     >
       <div className="container-content flex h-16 items-center justify-between gap-6">
-        <div className="flex items-center gap-8 min-w-0">
-          <Link to="/" className="flex items-center gap-2.5 min-w-0" aria-label="Marul AI ana sayfa">
-            <Logo size={26} />
+        <div className="flex items-center gap-6 min-w-0">
+          <Link to="/" className="flex shrink-0 items-center gap-2.5" aria-label="Marul AI ana sayfa">
+            <Logo size={26} textClassName="whitespace-nowrap" />
           </Link>
-          <nav className="hidden lg:flex items-center gap-1">
+          <nav className="hidden lg:flex items-center gap-0.5 xl:gap-1">
             {navItems.map((item) => (
               <NavLink
                 key={item.to}
@@ -56,7 +56,7 @@ export function Header() {
                 end={item.end}
                 className={({ isActive }) =>
                   cn(
-                    'rounded-md px-3 py-1.5 text-[13.5px] transition-colors',
+                    'whitespace-nowrap rounded-md px-2 xl:px-2.5 py-1.5 text-[13.5px] transition-colors',
                     isActive
                       ? 'text-fg bg-white/[0.05]'
                       : 'text-fg-muted hover:text-fg hover:bg-white/[0.03]',
@@ -69,25 +69,28 @@ export function Header() {
           </nav>
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex shrink-0 items-center gap-2">
           <a
             href={config.huggingFaceUrl}
             target="_blank"
             rel="noreferrer"
             title="Yedikule model ağırlıkları · Hugging Face"
-            className="hidden lg:inline-flex items-center gap-1.5 rounded-md px-3 py-1.5 text-[13px] text-fg-muted hover:text-fg hover:bg-white/[0.04] transition-colors"
+            aria-label="Hugging Face"
+            className="hidden lg:inline-flex items-center gap-1.5 whitespace-nowrap rounded-md px-3 py-1.5 text-[13px] text-fg-muted hover:text-fg hover:bg-white/[0.04] transition-colors"
           >
             <Boxes className="h-3.5 w-3.5" />
-            Hugging Face
+            <span className="hidden min-[1120px]:inline">Hugging Face</span>
           </a>
           <a
             href={config.playStoreUrl}
             target="_blank"
             rel="noreferrer"
-            className="hidden md:inline-flex items-center gap-1.5 rounded-md px-3 py-1.5 text-[13px] text-fg-muted hover:text-fg hover:bg-white/[0.04] transition-colors"
+            title="Mobil uygulama · Google Play"
+            aria-label="Mobil uygulama"
+            className="hidden md:inline-flex items-center gap-1.5 whitespace-nowrap rounded-md px-3 py-1.5 text-[13px] text-fg-muted hover:text-fg hover:bg-white/[0.04] transition-colors"
           >
             <Download className="h-3.5 w-3.5" />
-            Mobil uygulama
+            <span className="lg:hidden">Mobil uygulama</span>
           </a>
           {user ? (
             <Link to="/sohbet">
@@ -150,6 +153,15 @@ export function Header() {
             >
               <span>Mobil uygulama</span>
               <Download className="h-4 w-4" />
+            </a>
+            <a
+              href={config.huggingFaceUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="flex items-center justify-between rounded-md px-3 py-2.5 text-[14.5px] text-fg-muted"
+            >
+              <span>Hugging Face</span>
+              <Boxes className="h-4 w-4" />
             </a>
           </nav>
         </div>

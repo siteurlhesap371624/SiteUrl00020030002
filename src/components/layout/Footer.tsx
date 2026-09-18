@@ -45,7 +45,7 @@ export function Footer() {
             <Logo size={28} />
             <p className="mt-4 text-[13.5px] leading-relaxed text-fg-muted max-w-sm">
               Marul AI, Karakuş Tech tarafından Türkiye için geliştirilen yapay zeka asistanıdır.
-              Konuşmalarınız şifrelenir, üçüncü taraflarla paylaşılmaz.
+              Konuşmalarınız HTTPS ile şifreli iletilir, üçüncü taraflarla paylaşılmaz.
             </p>
             <div className="mt-5 flex items-center gap-2">
               <a
@@ -119,9 +119,10 @@ export function Footer() {
               <li>
                 <a
                   href={`mailto:${config.supportEmail}`}
-                  className="hover:text-fg transition-colors"
+                  className="min-[1100px]:whitespace-nowrap hover:text-fg transition-colors"
                 >
-                  {config.supportEmail}
+                  <span className="inline-block">{config.supportEmail.split('@')[0]}</span>
+                  <span className="inline-block">@{config.supportEmail.split('@')[1]}</span>
                 </a>
               </li>
               <li className="text-fg-dim">İstanbul, Türkiye</li>
