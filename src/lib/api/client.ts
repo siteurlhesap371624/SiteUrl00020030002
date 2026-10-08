@@ -27,6 +27,14 @@ function readToken(): string | null {
   }
 }
 
+function isApiUrl(url: string): boolean {
+  try {
+    return new URL(url).origin === new URL(config.apiBaseUrl).origin
+  } catch {
+    return false
+  }
+}
+
 function clearAuthLocal() {
   try {
     localStorage.removeItem(STORAGE_KEYS.token)
@@ -50,12 +58,12 @@ export async function request<T = unknown>(
     finalHeaders['Content-Type'] = 'application/json'
   }
 
-  if (auth) {
+  const url = path.startsWith('http') ? path : `${config.apiBaseUrl}${path}`
+
+  if (auth && isApiUrl(url)) {
     const token = readToken()
     if (token) finalHeaders.Authorization = `Bearer ${token}`
   }
-
-  const url = path.startsWith('http') ? path : `${config.apiBaseUrl}${path}`
 
   let res: Response
   try {

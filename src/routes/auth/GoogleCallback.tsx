@@ -23,6 +23,14 @@ function decodeStatePlatform(state: string): 'mobile' | 'web' {
   }
 }
 
+function readStoredState(): string | null {
+  try {
+    return sessionStorage.getItem('marul.oauth.state')
+  } catch {
+    return null
+  }
+}
+
 export default function GoogleCallback() {
   const [params] = useSearchParams()
   const navigate = useNavigate()
@@ -54,9 +62,16 @@ export default function GoogleCallback() {
       return () => clearTimeout(t)
     }
 
+    const expectedState = readStoredState()
     sessionStorage.removeItem('marul.oauth.state')
     const redirect = safeRedirectPath(sessionStorage.getItem('marul.oauth.redirect'))
     sessionStorage.removeItem('marul.oauth.redirect')
+    window.history.replaceState(null, '', window.location.pathname)
+
+    if (!expectedState || expectedState !== state) {
+      setError('Giriş isteği bu tarayıcıda başlatılmadığı için güvenlik nedeniyle durduruldu. Lütfen tekrar deneyin.')
+      return
+    }
 
     authApi
       .googleCallback({ code, state })

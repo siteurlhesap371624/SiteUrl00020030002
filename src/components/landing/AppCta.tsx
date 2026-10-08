@@ -26,7 +26,7 @@ export function AppCta() {
               </h2>
               <p className="mt-4 text-[15.5px] text-fg-muted leading-relaxed max-w-md">
                 Android uygulamamızla aynı hesabınız, aynı sohbet geçmişiniz; bildirimler, hızlı
-                paylaşım menüsü ve abonelik satın alma uygulamada hazır.
+                paylaşım menüsü ve Plus satın alma uygulamada hazır.
               </p>
               <div className="mt-7 flex flex-wrap items-center gap-3">
                 <a href={config.playStoreUrl} target="_blank" rel="noreferrer">

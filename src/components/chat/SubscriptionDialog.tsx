@@ -15,10 +15,10 @@ interface SubscriptionDialogProps {
 }
 
 const features = [
-  'Sınırsız mesaj',
-  'Tüm modellere erişim',
-  'Öncelikli yanıt',
-  'Yeni özelliklere ilk erişim',
+  'Sohbet başına sınırsız mesaj',
+  'Günde 150 agent görevi',
+  'Tek seferlik ödeme, yenileme yok',
+  'Birebir e-posta desteği',
 ]
 
 export function SubscriptionDialog({ open, onClose }: SubscriptionDialogProps) {
@@ -43,7 +43,7 @@ export function SubscriptionDialog({ open, onClose }: SubscriptionDialogProps) {
   }, [open])
 
   return (
-    <Dialog open={open} onClose={onClose} title="Abonelik & hesap" size="lg">
+    <Dialog open={open} onClose={onClose} title="Plan ve hesap" size="lg">
       <div className="space-y-6">
         <div className="rounded-[var(--radius-lg)] border border-[color:var(--color-border)] bg-[color:var(--color-surface-2)] p-5">
           <div className="flex items-center justify-between">
@@ -53,14 +53,14 @@ export function SubscriptionDialog({ open, onClose }: SubscriptionDialogProps) {
                 {isPremium ? 'Plus' : 'Ücretsiz'}
               </p>
             </div>
-            <Badge variant={isPremium ? 'brand' : 'outline'}>{isPremium ? 'Aktif' : 'Free tier'}</Badge>
+            <Badge variant={isPremium ? 'brand' : 'outline'}>{isPremium ? 'Aktif' : 'Ücretsiz'}</Badge>
           </div>
           {!isPremium ? (
             <p className="mt-3 text-[12.5px] text-fg-muted">
-              Sohbet başına 25 mesajla sınırlı. Plus aboneliği yalnızca Android uygulaması üzerinden.
+              Sohbet başına 25 mesajla sınırlı. Plus yalnızca Android uygulaması üzerinden, tek seferlik ödemeyle alınır.
             </p>
           ) : (
-            <p className="mt-3 text-[12.5px] text-fg-muted">Sınırsız mesaj. Aboneliğiniz aktif.</p>
+            <p className="mt-3 text-[12.5px] text-fg-muted">Sohbet başına sınırsız mesaj. Plus hakkınız hesabınızda tanımlı.</p>
           )}
         </div>
 
@@ -74,7 +74,7 @@ export function SubscriptionDialog({ open, onClose }: SubscriptionDialogProps) {
 
         {!isPremium ? (
           <div className="rounded-[var(--radius-lg)] border border-[color:var(--color-brand)]/30 bg-[linear-gradient(180deg,rgba(16,185,129,0.06),rgba(16,185,129,0))] p-5">
-            <h3 className="text-[15.5px] font-semibold tracking-[-0.01em]">Plus aboneliği</h3>
+            <h3 className="text-[15.5px] font-semibold tracking-[-0.01em]">Plus</h3>
             <ul className="mt-3 space-y-1.5">
               {features.map((f) => (
                 <li key={f} className="flex items-center gap-2 text-[13.5px] text-fg-muted">
@@ -95,7 +95,8 @@ export function SubscriptionDialog({ open, onClose }: SubscriptionDialogProps) {
         ) : (
           <div className="rounded-[var(--radius-lg)] border border-[color:var(--color-border)] p-5">
             <p className="text-[13px] text-fg-muted">
-              Aboneliğinizi iptal etmek için Google Play hesap ayarlarınızı kullanın.
+              Plus tek seferlik bir satın almadır; otomatik olarak yenilenmez. İade talepleriniz Google Play’in iade
+              süreci üzerinden değerlendirilir.
             </p>
           </div>
         )}
@@ -112,8 +113,8 @@ export function SubscriptionDialog({ open, onClose }: SubscriptionDialogProps) {
         <div className="rounded-[var(--radius-lg)] border border-[color:var(--color-danger)]/30 p-5">
           <h3 className="text-[14.5px] font-semibold text-[color:var(--color-danger)]">Tehlikeli alan</h3>
           <p className="mt-1 text-[13px] text-fg-muted">
-            Hesabınızı silerseniz tüm konuşma geçmişiniz, kişiselleştirme ayarlarınız ve aboneliğiniz kalıcı
-            olarak silinir. Bu işlem geri alınamaz.
+            Hesabınızı silerseniz tüm konuşma geçmişiniz, kişiselleştirme ayarlarınız, Sosyal bölüm paylaşımlarınız ve
+            Plus hakkınız kalıcı olarak silinir. Bu işlem geri alınamaz.
           </p>
           {!deleteOpen ? (
             <Button

@@ -6,7 +6,7 @@ export interface FaqItem {
 export const FAQ_ITEMS: FaqItem[] = [
   {
     q: 'Marul AI verilerimi nasıl koruyor?',
-    a: 'Tüm istekler HTTPS üzerinden şifreli iletilir ve sohbetleriniz üçüncü taraf reklam ağlarıyla paylaşılmaz. Hesabınızı uygulama içinden tek tıkla silebilir veya marulai.resmi@gmail.com adresine talep iletebilirsiniz. Verilerin nasıl işlendiği gizlilik ve KVKK sayfalarımızda ayrıntılı olarak açıklanır.',
+    a: 'Tüm istekler HTTPS üzerinden şifreli iletilir. Verileriniz satılmaz ve reklam amacıyla kullanılmaz; sitede analiz veya izleme çerezi yoktur. Mesajlarınız yalnızca yanıt üretilmesi için seçtiğiniz modele iletilir: Yedikule kendi bilgisayarımızda, Qwen3.6 ise Groq altyapısında çalışır. Sohbetleriniz yalnızca ayrıca açık rıza verirseniz model geliştirmede kullanılır. Hesabınızı uygulama içinden tek tıkla silebilir veya marulai.resmi@gmail.com adresine talep iletebilirsiniz. Ayrıntılar gizlilik politikası ve KVKK aydınlatma metninde yer alır.',
   },
   {
     q: 'Yedikule ile Qwen3.6 arasındaki fark nedir?',
@@ -22,7 +22,7 @@ export const FAQ_ITEMS: FaqItem[] = [
   },
   {
     q: 'Mobil uygulama ile web aynı hesabı paylaşır mı?',
-    a: 'Evet. Aynı e-posta ile giriş yaparsanız konuşma geçmişiniz, kişiselleştirme ayarlarınız ve aboneliğiniz her iki platformda da geçerlidir.',
+    a: 'Evet. Aynı e-posta ile giriş yaparsanız konuşma geçmişiniz, kişiselleştirme ayarlarınız ve Plus hakkınız her iki platformda da geçerlidir.',
   },
   {
     q: 'Hangi durumlarda Marul AI cevap vermez?',

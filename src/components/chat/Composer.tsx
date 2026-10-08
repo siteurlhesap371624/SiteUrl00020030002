@@ -164,6 +164,19 @@ export function Composer({ disabled, onSent }: ComposerProps) {
             <span className="shrink-0">{LIMITS.freeMessagesPerChat} mesaj / sohbet</span>
           )}
         </div>
+        {!token ? (
+          <p className="mt-1 px-1 text-[11px] leading-snug text-fg-dim">
+            Mesaj göndererek{' '}
+            <a href="/sartlar" target="_blank" rel="noopener noreferrer" className="text-fg-muted hover:underline">
+              Kullanım Koşulları
+            </a>
+            ’nı kabul etmiş olursunuz. Mesajlarınız yanıt üretilmesi için seçtiğiniz modele iletilir;{' '}
+            <a href="/gizlilik" target="_blank" rel="noopener noreferrer" className="text-fg-muted hover:underline">
+              Gizlilik Politikası
+            </a>
+            .
+          </p>
+        ) : null}
       </div>
     </div>
   )

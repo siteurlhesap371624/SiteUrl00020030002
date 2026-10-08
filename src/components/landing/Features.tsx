@@ -14,7 +14,7 @@ const points: Point[] = [
   {
     num: '02',
     lead: 'Verin reklam ağına satılmaz.',
-    body: 'Üçüncü tarafa kişisel veri devredilmez. Sohbetlerin yalnızca anonimleştirildikten sonra modelin Türkçeyi daha iyi konuşması için kullanılabilir; istemiyorsan bir mail ile çıkarırız. Hesabını da tek tıkla kalıcı silersin.',
+    body: 'Reklam yok, izleme çerezi yok. Sohbetlerin yalnızca ayrıca açık rıza verirsen ve anonim hale getirildikten sonra modeli geliştirmek için kullanılır; bu seçenek varsayılan olarak kapalı. Hesabını da tek tıkla kalıcı silersin.',
   },
   {
     num: '03',
@@ -29,7 +29,7 @@ const points: Point[] = [
   {
     num: '05',
     lead: 'Web ile mobil tek hesap.',
-    body: 'Tarayıcıda başladığın bir sohbete Android’den devam edebilirsin. Aynı geçmiş, aynı kişiselleştirme, aynı abonelik.',
+    body: 'Tarayıcıda başladığın bir sohbete Android’den devam edebilirsin. Aynı geçmiş, aynı kişiselleştirme, aynı Plus hakkı.',
   },
   {
     num: '06',

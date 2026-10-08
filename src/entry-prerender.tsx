@@ -17,6 +17,11 @@ import Yedikule from '@/routes/Yedikule'
 import TurkishModels from '@/routes/TurkishModels'
 import Terms from '@/routes/legal/Terms'
 import Kvkk from '@/routes/legal/Kvkk'
+import Privacy from '@/routes/legal/Privacy'
+import ExplicitConsent from '@/routes/legal/ExplicitConsent'
+import Cookies from '@/routes/legal/Cookies'
+import PlusSale from '@/routes/legal/PlusSale'
+import LegalArchive from '@/routes/legal/LegalArchive'
 
 const pages: Record<string, () => ReactElement> = {
   '/': () => <Home />,
@@ -30,6 +35,11 @@ const pages: Record<string, () => ReactElement> = {
   '/baglantilar': () => <Links />,
   '/sartlar': () => <Terms />,
   '/kvkk': () => <Kvkk />,
+  '/gizlilik': () => <Privacy />,
+  '/acik-riza': () => <ExplicitConsent />,
+  '/cerez-politikasi': () => <Cookies />,
+  '/plus-satis-sozlesmesi': () => <PlusSale />,
+  '/yasal-arsiv': () => <LegalArchive />,
 }
 
 export function renderPath(path: string): string | null {

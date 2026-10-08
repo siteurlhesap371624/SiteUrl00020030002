@@ -71,7 +71,7 @@ export const SEO_ROUTES: SeoRoute[] = [
     file: 'sss.html',
     title: 'Sık sorulan sorular · Marul AI',
     description:
-      'Marul AI hakkında sık sorulan sorular: ücretsiz mi, hangi modelleri kullanıyor, verileriniz nasıl korunuyor, agent modu ne yapar, Plus aboneliği neler sunar.',
+      'Marul AI hakkında sık sorulan sorular: ücretsiz mi, hangi modelleri kullanıyor, verileriniz nasıl korunuyor, agent modu ne yapar, Plus neler sunar.',
     priority: '0.8',
     changefreq: 'monthly',
     breadcrumb: 'Sık sorulan sorular',
@@ -81,7 +81,7 @@ export const SEO_ROUTES: SeoRoute[] = [
     file: 'fiyatlandirma.html',
     title: 'Fiyatlandırma · Ücretsiz ve Plus planları · Marul AI',
     description:
-      'Marul AI ücretsiz planı ve Plus aboneliğinin karşılaştırması: mesaj limitleri, agent görevleri, web araştırması ve dosya üretimi hakları.',
+      'Marul AI ücretsiz planı ile tek seferlik Plus satın alımının karşılaştırması: mesaj limitleri, agent görevleri, web araştırması ve dosya üretimi hakları.',
     priority: '0.8',
     changefreq: 'monthly',
     breadcrumb: 'Fiyatlandırma',
@@ -119,21 +119,71 @@ export const SEO_ROUTES: SeoRoute[] = [
   {
     path: '/sartlar',
     file: 'sartlar.html',
-    title: 'Kullanım şartları · Marul AI',
-    description: 'Marul AI kullanım şartları, hizmet koşulları ve kullanıcı sorumlulukları.',
+    title: 'Kullanım koşulları · Marul AI',
+    description:
+      'Marul AI kullanım koşulları: üyelik, yapay zeka çıktılarının niteliği, kullanım kuralları, Sosyal bölüm, Plus satın alımı, sorumluluk ve uyuşmazlık hükümleri.',
     priority: '0.3',
     changefreq: 'yearly',
-    breadcrumb: 'Kullanım şartları',
+    breadcrumb: 'Kullanım koşulları',
+  },
+  {
+    path: '/gizlilik',
+    file: 'gizlilik.html',
+    title: 'Gizlilik politikası · Marul AI',
+    description:
+      'Marul AI gizlilik politikası: hangi verileri işlediğimiz, yapay zeka modellerine neyin iletildiği, verilerin aktarıldığı hizmet sağlayıcılar, saklama süreleri, haklarınız ve hesap silme.',
+    priority: '0.3',
+    changefreq: 'yearly',
+    breadcrumb: 'Gizlilik politikası',
   },
   {
     path: '/kvkk',
     file: 'kvkk.html',
     title: 'KVKK aydınlatma metni · Marul AI',
     description:
-      'Marul AI KVKK aydınlatma metni: işlenen kişisel veriler, işleme amaçları, saklama süreleri ve veri sahibi hakları.',
+      'Marul AI KVKK aydınlatma metni: veri sorumlusu, işlenen kişisel veriler, işleme amaçları ve hukuki sebepler, aktarım, saklama ve KVKK 11. madde kapsamındaki haklar ile başvuru yöntemi.',
     priority: '0.3',
     changefreq: 'yearly',
     breadcrumb: 'KVKK',
+  },
+  {
+    path: '/acik-riza',
+    file: 'acik-riza.html',
+    title: 'Açık rıza metni · Marul AI',
+    description:
+      'Sohbet içeriklerinin Marul AI dil modellerinin geliştirilmesinde kullanılmasına ilişkin isteğe bağlı açık rızanın kapsamı, güvenceler ve rızanın geri alınması.',
+    priority: '0.2',
+    changefreq: 'yearly',
+    breadcrumb: 'Açık rıza metni',
+  },
+  {
+    path: '/cerez-politikasi',
+    file: 'cerez-politikasi.html',
+    title: 'Çerez ve yerel depolama politikası · Marul AI',
+    description:
+      'Marul AI internet sitesinde kullanılan zorunlu yerel depolama kayıtları ve güvenlik çerezleri. Reklam, analiz veya izleme çerezi kullanılmaz.',
+    priority: '0.2',
+    changefreq: 'yearly',
+    breadcrumb: 'Çerez politikası',
+  },
+  {
+    path: '/plus-satis-sozlesmesi',
+    file: 'plus-satis-sozlesmesi.html',
+    title: 'Plus ön bilgilendirme formu ve mesafeli satış sözleşmesi · Marul AI',
+    description:
+      'Marul AI Plus satın alımına ilişkin ön bilgilendirme formu ve mesafeli satış sözleşmesi: satıcı bilgileri, fiyat, ödeme, ifa, cayma hakkı istisnası ve uyuşmazlık çözümü.',
+    priority: '0.2',
+    changefreq: 'yearly',
+    breadcrumb: 'Plus satış sözleşmesi',
+  },
+  {
+    path: '/yasal-arsiv',
+    file: 'yasal-arsiv.html',
+    title: 'Yasal metin arşivi · Marul AI',
+    description: 'Marul AI kullanım şartları, gizlilik politikası ve KVKK aydınlatma metninin önceki sürümleri.',
+    priority: '0.1',
+    changefreq: 'yearly',
+    breadcrumb: 'Yasal metin arşivi',
   },
 ]
 

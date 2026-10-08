@@ -39,9 +39,6 @@ export const authApi = {
   registerVerify: (data: { email: string; code: string }) =>
     api.post<AuthResponse>('/auth/register/verify', data, { auth: false }),
 
-  registerLegacy: (data: { name: string; email: string; password: string; turnstileToken: string }) =>
-    api.post<AuthResponse>('/register', data, { auth: false }),
-
   login: (data: { email: string; password: string; turnstileToken: string }) =>
     api.post<AuthResponse>('/login', data, { auth: false }),
 

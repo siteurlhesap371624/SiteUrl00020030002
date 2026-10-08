@@ -12,6 +12,10 @@ const Contact = lazy(() => import('@/routes/Contact'))
 const Privacy = lazy(() => import('@/routes/legal/Privacy'))
 const Terms = lazy(() => import('@/routes/legal/Terms'))
 const Kvkk = lazy(() => import('@/routes/legal/Kvkk'))
+const ExplicitConsent = lazy(() => import('@/routes/legal/ExplicitConsent'))
+const Cookies = lazy(() => import('@/routes/legal/Cookies'))
+const PlusSale = lazy(() => import('@/routes/legal/PlusSale'))
+const LegalArchive = lazy(() => import('@/routes/legal/LegalArchive'))
 const Links = lazy(() => import('@/routes/Links'))
 const Sss = lazy(() => import('@/routes/Sss'))
 const Yedikule = lazy(() => import('@/routes/Yedikule'))
@@ -58,6 +62,10 @@ export const router = createBrowserRouter([
       { path: '/gizlilik', element: withSuspense(<Privacy />) },
       { path: '/sartlar', element: withSuspense(<Terms />) },
       { path: '/kvkk', element: withSuspense(<Kvkk />) },
+      { path: '/acik-riza', element: withSuspense(<ExplicitConsent />) },
+      { path: '/cerez-politikasi', element: withSuspense(<Cookies />) },
+      { path: '/plus-satis-sozlesmesi', element: withSuspense(<PlusSale />) },
+      { path: '/yasal-arsiv', element: withSuspense(<LegalArchive />) },
       { path: '/forum', element: withSuspense(<Forum />) },
       { path: '/forum/yeni', element: withSuspense(<ForumNewPost />) },
       { path: '/forum/:id', element: withSuspense(<ForumPost />) },

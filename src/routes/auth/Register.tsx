@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { useForm } from 'react-hook-form'
+import { useForm, useWatch } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import { Mail, Lock, User as UserIcon, Eye, EyeOff } from 'lucide-react'
@@ -10,6 +10,7 @@ import { Button } from '@/components/ui/Button'
 import { Turnstile } from '@/components/auth/Turnstile'
 import { GoogleButton } from '@/components/auth/GoogleButton'
 import { SeoHead } from '@/components/ui/SeoHead'
+import { ConsentChecks } from '@/components/legal/ConsentChecks'
 import { ApiError, authApi } from '@/lib/api'
 import { useUIStore } from '@/lib/store/ui'
 
@@ -25,7 +26,8 @@ const schema = z
       .min(8, 'Şifre en az 8 karakter olmalı')
       .regex(/[A-Za-z]/, 'En az bir harf içermeli')
       .regex(/\d/, 'En az bir rakam içermeli'),
-    accept: z.literal(true, { error: 'Şartları kabul edin' }),
+    accept: z.literal(true, { error: 'Devam etmek için Kullanım Koşulları’nı onaylamanız gerekiyor' }),
+    notice: z.literal(true, { error: 'Devam etmek için Aydınlatma Metni’ni okuduğunuzu belirtmeniz gerekiyor' }),
   })
 
 type FormValues = z.infer<typeof schema>
@@ -40,11 +42,16 @@ export default function Register() {
   const {
     register,
     handleSubmit,
+    control,
+    setValue,
     formState: { errors },
   } = useForm<FormValues>({
     resolver: zodResolver(schema),
-    defaultValues: { accept: false as unknown as true },
+    defaultValues: { accept: false as unknown as true, notice: false as unknown as true },
   })
+
+  const accepted = useWatch({ control, name: 'accept' })
+  const noticed = useWatch({ control, name: 'notice' })
 
   const onSubmit = async (data: FormValues) => {
     if (!tsToken) {
@@ -130,26 +137,18 @@ export default function Register() {
             {...register('password')}
           />
 
-          <label className="flex items-start gap-2.5 text-[12.5px] text-fg-muted leading-snug">
-            <input
-              type="checkbox"
-              className="mt-0.5 h-4 w-4 rounded border border-[color:var(--color-border-strong)] bg-[color:var(--color-surface-2)] accent-[color:var(--color-brand)]"
-              {...register('accept')}
-            />
-            <span>
-              <Link to="/sartlar" className="text-fg hover:underline">
-                Kullanım şartlarını
-              </Link>{' '}
-              ve{' '}
-              <Link to="/gizlilik" className="text-fg hover:underline">
-                gizlilik politikasını
-              </Link>{' '}
-              okudum ve kabul ediyorum.
-            </span>
-          </label>
-          {errors.accept?.message ? (
-            <p className="text-[12px] text-[color:var(--color-danger)]">{errors.accept.message}</p>
-          ) : null}
+          <ConsentChecks
+            terms={accepted === true}
+            onTermsChange={(value) =>
+              setValue('accept', value as true, { shouldValidate: value || !!errors.accept })
+            }
+            notice={noticed === true}
+            onNoticeChange={(value) =>
+              setValue('notice', value as true, { shouldValidate: value || !!errors.notice })
+            }
+            termsError={errors.accept?.message}
+            noticeError={errors.notice?.message}
+          />
 
           <Turnstile onToken={setTsToken} onExpire={() => setTsToken(null)} />
 

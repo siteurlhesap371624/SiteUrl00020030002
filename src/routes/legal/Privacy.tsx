@@ -1,6 +1,26 @@
-import { LegalPage, Section } from '@/components/legal/LegalPage'
+import { Callout, LegalPage, LegalTable, List, MailLink, Section, SubSection } from '@/components/legal/LegalPage'
 import { SeoHead } from '@/components/ui/SeoHead'
-import { config } from '@/lib/config'
+import { CONTROLLER, CONTROLLER_LINE, LEGAL_UPDATED, LEGAL_VERSIONS } from '@/content/legal/entity'
+import { DOMESTIC_RECIPIENTS, PAST_RECIPIENTS, RECIPIENTS_ABROAD, RETENTION } from '@/content/legal/data'
+
+const TOC = [
+  { id: 'ozet', title: 'Kısaca' },
+  { id: 'sorumlu', title: 'Veri sorumlusu ve kapsam' },
+  { id: 'veriler', title: 'Hangi verileri işliyoruz' },
+  { id: 'amaclar', title: 'Verileri ne için kullanıyoruz' },
+  { id: 'yapay-zeka', title: 'Yapay zeka modelleri ve mesajlarınız' },
+  { id: 'android', title: 'Android uygulaması' },
+  { id: 'egitim', title: 'Model geliştirme' },
+  { id: 'aktarim', title: 'Kimlerle paylaşıyoruz' },
+  { id: 'gecmis', title: 'Geçmişte kullanılan hizmetler' },
+  { id: 'saklama', title: 'Ne kadar saklıyoruz' },
+  { id: 'guvenlik', title: 'Güvenlik' },
+  { id: 'otomatik', title: 'Otomatik kararlar' },
+  { id: 'cocuklar', title: 'Çocuklar' },
+  { id: 'haklar', title: 'Haklarınız ve hesap silme' },
+  { id: 'ihlal', title: 'Veri ihlali' },
+  { id: 'degisiklik', title: 'Değişiklikler ve iletişim' },
+]
 
 export default function Privacy() {
   return (
@@ -8,125 +28,271 @@ export default function Privacy() {
       <SeoHead title="Gizlilik politikası" path="/gizlilik" />
       <LegalPage
         title="Gizlilik politikası"
-        lastUpdated="14 Mayıs 2026"
-        intro="Marul AI olarak kullanıcı verilerinin gizliliğini ön planda tutuyoruz. Bu belge; hangi verileri topladığımızı, nasıl kullandığımızı, hangi haklara sahip olduğunuzu açıklar."
+        lastUpdated={LEGAL_UPDATED}
+        version={LEGAL_VERSIONS.privacy}
+        toc={TOC}
+        intro={
+          <p>
+            Bu politika; Marul AI internet sitesini, Android uygulamasını ve bunlara bağlı hizmetleri kullandığınızda
+            hangi kişisel verileri işlediğimizi, neden işlediğimizi, kimlere aktardığımızı, ne kadar sakladığımızı ve
+            haklarınızı açıklar. 6698 sayılı Kişisel Verilerin Korunması Kanunu (KVKK) kapsamındaki resmi
+            bilgilendirmemiz <a className="text-fg hover:underline" href="/kvkk">KVKK Aydınlatma Metni</a>’nde yer alır.
+          </p>
+        }
       >
-        <Section title="Toplanan veriler">
-          <p>Hesap oluşturduğunuzda yalnızca ad-soyad, e-posta adresi ve şifrenizin güvenli özetini (hash) saklarız.</p>
+        <Section id="ozet" number={1} title="Kısaca">
+          <Callout>
+            <List
+              items={[
+                'Verilerinizi satmıyoruz, reklam amacıyla kullanmıyor ve reklam ağlarıyla paylaşmıyoruz.',
+                'Sitede analiz, reklam veya izleme çerezi bulunmuyor.',
+                'Mesajlarınız, yanıt üretilebilmesi için seçtiğiniz modele iletilir. Qwen3.6 ABD’deki Groq altyapısında, Yedikule ise kontrolümüzdeki bir bilgisayarda çalışır.',
+                'Sohbetleriniz yalnızca ayrıca açık rıza verirseniz model geliştirmede kullanılır; bu seçenek varsayılan olarak kapalıdır.',
+                'Hesabınızı uygulama veya web üzerinden dilediğiniz zaman kalıcı olarak silebilirsiniz.',
+              ]}
+            />
+          </Callout>
+        </Section>
+
+        <Section id="sorumlu" number={2} title="Veri sorumlusu ve kapsam">
           <p>
-            Sohbet sürecinde gönderdiğiniz mesajlar ve modelin verdiği yanıtlar, sohbet geçmişinizi
-            sunmak amacıyla veritabanında tutulur. Hesabınızı sildiğinizde bu veriler kalıcı olarak
-            silinir.
+            Veri sorumlusu {CONTROLLER_LINE}. Bize <MailLink email={CONTROLLER.email} /> adresinden
+            ulaşabilirsiniz.
           </p>
           <p>
-            IP adresi gibi teknik veriler kötüye kullanımı önlemek için geçici olarak işlenir;
-            kalıcı olarak saklanmaz.
+            Bu politika marulai.com.tr, api.marulai.com.tr, Marul AI Android uygulaması ve Sosyal (forum) bölümü
+            için geçerlidir. Bağlantı verdiğimiz üçüncü taraf sitelerin (ör. Hugging Face, Google Play, sosyal medya
+            hesaplarımız) veri uygulamaları kendi politikalarına tabidir.
           </p>
         </Section>
 
-        <Section title="Verilerin kullanım amacı">
-          <p>Veriler aşağıdaki amaçlar için kullanılır:</p>
-          <ul className="list-disc pl-5 space-y-1.5">
-            <li>Hesap oluşturma ve oturum yönetimi</li>
-            <li>Sohbet servisinin sağlanması ve geçmişin saklanması</li>
-            <li>Hizmetin kalitesini ölçmek için anonim teknik ölçümler</li>
-            <li>
-              <strong>Anonimleştirildikten sonra</strong> kendi geliştirdiğimiz Marul AI modellerinin
-              Türkçe performansını artırmak için eğitim verisi olarak kullanılması (detay aşağıda)
-            </li>
-            <li>Yasal yükümlülüklerin yerine getirilmesi</li>
-          </ul>
-        </Section>
-
-        <Section title="Model eğitimi için veri kullanımı">
-          <p>
-            Marul AI, sohbet kayıtlarını <strong>anonimleştirildikten sonra</strong> kendi
-            geliştirdiğimiz dil modellerinin (Yedikule ve sonraki sürümler) eğitiminde kullanma
-            hakkını saklı tutar. Bu kullanım yalnızca aşağıdaki şartlar altında gerçekleşir:
-          </p>
-          <ul className="list-disc pl-5 space-y-1.5">
-            <li>
-              Anonimleştirme: ad-soyad, e-posta, IP adresi ve hesabı tanımlayabilecek herhangi bir
-              kişisel kimlik bilgisi sohbet verisinden ayrılır; veriler hesabınızla
-              ilişkilendirilemeyecek şekilde işlenir.
-            </li>
-            <li>
-              Hassas içerik filtrelemesi: kişisel bilgi, sağlık verisi, finansal hesap bilgisi gibi
-              içerikler insan veya otomatik filtre ile temizlenir, eğitim setine girmez.
-            </li>
-            <li>
-              Üçüncü tarafa satılmaz veya devredilmez. Veriler yalnızca Karakuş Tech bünyesinde,
-              Marul AI modellerinin geliştirilmesi amacıyla kullanılır.
-            </li>
-            <li>
-              Hesabınızı sildiğinizde sohbet kayıtlarınız sistemden kalıcı olarak silinir; ancak
-              silmeden önce eğitim setine eklenmiş anonimleştirilmiş kopyalar geri çekilemeyebilir
-              (anonim olduğu için sizinle ilişkilendirilemez zaten).
-            </li>
-            <li>
-              Bu kullanımı tercih etmiyorsanız <a className="text-fg hover:underline" href={`mailto:${config.legalEmail}?subject=EGITIM%20VERISI%20OPT-OUT`}>{config.legalEmail}</a> adresine yazarak hesabınızı eğitim havuzundan çıkarmamızı talep
+        <Section id="veriler" number={3} title="Hangi verileri işliyoruz">
+          <LegalTable
+            caption="İşlenen kişisel veri kategorileri"
+            head={['Kategori', 'Veriler', 'Nasıl toplanır']}
+            rows={[
+              ['Hesap', 'Ad soyad, e-posta adresi, şifrenin geri döndürülemez özeti, Google ile girişte Google hesap kimliği, kayıt tarihi, son kullanım tarihi', 'Kayıt formu, Google ile giriş'],
+              ['Sohbet', 'Mesajlarınız, model yanıtları, sohbet başlıkları, seçilen model ve mod, kişiselleştirme talimatınız, mesaj ve token kullanım istatistikleri', 'Hizmeti kullanmanızla'],
+              ['Agent ve web araması', 'Görev metinleri, modelin oluşturduğu arama sorguları, okunan sayfa adresleri ve içerikleri, üretilen dosyalar', 'Agent veya web araması özelliğini kullanmanızla'],
+              ['Sosyal bölüm', 'Kullanıcı adı, paylaşımlar, yanıtlar, beğeniler, yüklenen görseller, yaptığınız bildirimler, moderasyon kayıtları', 'Sosyal bölümü kullanmanızla'],
+              ['Satın alma', 'Google Play satın alma anahtarı, sipariş numarası, ürün ve durum bilgisi. Kart bilgileriniz bize iletilmez.', 'Android uygulaması ve Google Play'],
+              ['Teknik ve güvenlik', 'IP adresi, tarayıcı ve cihaz bilgisi, istek zamanı, oturum anahtarı kimliği, bot koruma doğrulama sonucu, hata kayıtları', 'Otomatik olarak, hizmeti kullandığınızda'],
+              ['Onay kayıtları', 'Onayladığınız metin ve sürümü, onay tarihi, IP adresi, tarayıcı bilgisi, e-posta adresinizin geri döndürülemez özeti', 'Kayıt ve onay ekranları'],
+              ['İletişim', 'Bize gönderdiğiniz e-postalar ve ekleri', 'E-posta'],
+            ]}
+          />
+          <SubSection title="Misafir kullanım">
+            <p>
+              Hesap açmadan kullandığınızda mesajlarınız yalnızca yanıt üretilmesi için sunucumuza ve seçtiğiniz
+              modele iletilir, sunucumuzda kaydedilmez. Misafir sohbet geçmişi yalnızca cihazınızda tutulur.
+              Kötüye kullanımı önlemek için IP adresiniz kısa süreli sayaçlarda işlenir.
+            </p>
+          </SubSection>
+          <SubSection title="Özel nitelikli kişisel veriler">
+            <p>
+              Sağlık, din, etnik köken, siyasi düşünce, cinsel hayat veya biyometrik veri gibi özel nitelikli
+              kişisel verileri sizden talep etmiyoruz ve sohbetlerde paylaşmamanızı öneriyoruz. Bu tür verilerin
+              sohbetlerde işlenmesi yalnızca{' '}
+              <a className="text-fg hover:underline" href="/acik-riza#ozel-nitelikli">isteğe bağlı açık rızanıza</a>{' '}
+              dayanır. Rıza vermeniz halinde bu veriler yalnızca size yanıt üretilmesi ve sohbet geçmişinizin
+              saklanması amacıyla işlenir; başka bir amaçla kullanılmaz, sınıflandırılmaz, profil çıkarmak için
+              değerlendirilmez ve model geliştirmede kullanılmaz. Rıza vermediyseniz bu tür verileri mesajlarınıza
+              yazmamalısınız; yazdığınızı fark ederseniz ilgili sohbeti silebilir veya silinmesini bizden talep
               edebilirsiniz.
-            </li>
-          </ul>
+            </p>
+          </SubSection>
         </Section>
 
-        <Section title="Veri paylaşımı">
-          <p>
-            Kişisel verileriniz hiçbir reklam ağıyla ya da üçüncü taraf veri komisyoncusuyla
-            paylaşılmaz. Yalnızca aşağıdaki teknik altyapı sağlayıcılarıyla işbirliği yapılır:
-          </p>
-          <ul className="list-disc pl-5 space-y-1.5">
-            <li>Cloudflare (sunucu altyapısı, bot koruma)</li>
-            <li>Groq (Qwen3.6 modelinin sunulması için anonim API çağrıları)</li>
-            <li>Resend (e-posta doğrulama ve şifre sıfırlama bildirimleri)</li>
-            <li>Google (yalnızca Google ile giriş yapmayı tercih ederseniz)</li>
-          </ul>
+        <Section id="amaclar" number={4} title="Verileri ne için kullanıyoruz">
+          <List
+            items={[
+              'Hesabınızı oluşturmak, kimliğinizi doğrulamak ve oturumunuzu yönetmek',
+              'Mesajlarınıza yanıt üretmek, sohbet geçmişinizi saklamak ve cihazlarınız arasında eşitlemek',
+              'Agent görevlerini yürütmek, web araması yapmak ve istediğiniz dosyaları üretmek',
+              'Sosyal bölümü işletmek, paylaşımları yayımlamak ve topluluk kurallarını uygulamak',
+              'Plus satın alımlarını doğrulamak ve hesabınıza tanımlamak',
+              'Kullanım sınırlarını uygulamak, kötüye kullanımı, spam’i ve saldırıları önlemek, hizmetin güvenliğini sağlamak',
+              'Hataları tespit etmek ve hizmetin çalışmasını izlemek',
+              'Talep ve şikâyetlerinizi yanıtlamak, sizi hizmetteki önemli değişiklikler hakkında bilgilendirmek',
+              'Hukuki yükümlülüklerimizi yerine getirmek, yetkili makamların taleplerini karşılamak ve haklarımızı korumak',
+              'Açık rıza vermeniz halinde dil modellerimizi geliştirmek',
+            ]}
+          />
+          <p>Size pazarlama e-postası göndermiyoruz. Bunu ileride yapmak istersek önceden onayınızı alırız.</p>
         </Section>
 
-        <Section title="Veri güvenliği">
+        <Section id="yapay-zeka" number={5} title="Yapay zeka modelleri ve mesajlarınız">
+          <List
+            items={[
+              <><strong className="text-fg">Yedikule:</strong> Kendi geliştirdiğimiz bu model, kontrolümüzdeki bir bilgisayarda çalışır. Mesajlarınız modele şifreli bir tünel hizmeti (ngrok) üzerinden iletilir ve Groq’a gönderilmez.</>,
+              <><strong className="text-fg">Qwen3.6:</strong> Açık kaynak bu model, ABD merkezli Groq, Inc. altyapısında çalıştırılır. Mesajınız, sohbet geçmişinin modele verilen bölümü, adınız ve kişiselleştirme talimatınız yanıt üretilmesi için Groq’a iletilir. Bu sohbetlerin başlıkları da Groq üzerinden üretilir.</>,
+              <><strong className="text-fg">Agent ve web araması:</strong> Model, isteğinize göre arama sorguları oluşturabilir ve internet sayfalarını okuyabilir. Sorgular kendi arama altyapımız üzerinden arama motorlarına, gerektiğinde Brave Search veya Tavily’ye iletilir; sayfalar sunucumuz tarafından getirilir. Bu işlemlerde hesap bilgileriniz ve IP adresiniz üçüncü taraflara iletilmez, ancak sorguların içeriği mesajınızdan türetilebilir.</>,
+            ]}
+          />
           <p>
-            Tüm iletişim HTTPS / TLS 1.3 üzerinden şifreli olarak gerçekleştirilir. Şifreleriniz
-            geri çevrilemez algoritmalarla saklanır, sunucu tarafında düz metin olarak tutulmaz.
-            Oturum açma jetonları (JWT) süresi sınırlı olacak şekilde imzalanır.
-          </p>
-        </Section>
-
-        <Section title="Çocukların gizliliği">
-          <p>
-            Marul AI, 13 yaşın altındaki kullanıcıları hedeflememektedir. 13 yaş altı kullanıcıların
-            hesap oluşturmaması rica olunur.
-          </p>
-        </Section>
-
-        <Section title="Kullanıcı hakları">
-          <p>KVKK kapsamında aşağıdaki haklara sahipsiniz:</p>
-          <ul className="list-disc pl-5 space-y-1.5">
-            <li>Verilerinize erişim talep etme</li>
-            <li>Verilerin düzeltilmesini isteme</li>
-            <li>Verilerin silinmesini talep etme</li>
-            <li>İşleme amaçları hakkında bilgi alma</li>
-          </ul>
-          <p>
-            Hesabınızı uygulama içinden tek tıkla kalıcı olarak silebilirsiniz: <strong>Sohbet sayfası → Abonelik → Hesabımı sil</strong>.
-            Alternatif olarak <a className="text-fg hover:underline" href={`mailto:${config.legalEmail}?subject=HESAP%20SILME%20TALEBI`}>{config.legalEmail}</a>{' '}
-            adresine talep gönderebilirsiniz.
+            Model sağlayıcılarına iletilen veriler, bu sağlayıcılar tarafından hizmetin sunulması amacıyla ve kendi
+            politikaları çerçevesinde işlenir. Mesajlarınıza başkalarına ait kişisel veri, şifre, banka bilgisi veya
+            gizli bilgi yazmamanızı öneririz.
           </p>
         </Section>
 
-        <Section title="Çerezler">
+        <Section id="android" number={6} title="Android uygulaması">
+          <List
+            items={[
+              'Sesli kullanım: Mikrofon izni verip sesli modu kullanırsanız konuşmanız, cihazınızda varsayılan olarak tanımlı konuşma tanıma servisi (çoğu cihazda Google) tarafından metne dönüştürülür. Ses kaydınız bize iletilmez; yalnızca metne dönüştürülmüş hali mesaj olarak gönderilir. Yanıtların sesli okunması cihazınızdaki metin okuma motoruyla yapılır.',
+              'Oturum anahtarınız ve tercihleriniz cihazınızda şifrelenmiş olarak saklanır ve cihaz yedeklerine dahil edilmez.',
+              'Plus satın alımları Google Play Faturalandırma sistemiyle yapılır; ödeme bilgileriniz Google tarafından işlenir ve bize iletilmez.',
+              'Uygulama reklam, analiz veya hata izleme yazılımı içermez.',
+            ]}
+          />
+        </Section>
+
+        <Section id="egitim" number={7} title="Model geliştirme">
           <p>
-            Web sürümünde yalnızca oturum yönetimi için zorunlu teknik çerezler kullanılır. Üçüncü
-            taraf izleme, reklam veya analiz çerezleri kullanılmaz.
+            Sohbetleriniz, yalnızca <a className="text-fg hover:underline" href="/acik-riza">Açık Rıza Metni</a> ile
+            ayrıca açık rıza vermeniz halinde ve bu metinde açıklanan şekilde, anonim hale getirildikten sonra
+            Yedikule ve sonraki Marul AI modellerinin geliştirilmesinde kullanılır. Rıza vermemeniz hizmetten
+            yararlanmanızı etkilemez ve rızanızı dilediğiniz zaman geri alabilirsiniz. Rıza vermemiş kullanıcıların
+            sohbetleri, geçmiş sohbetler dahil, bu amaçla kullanılmaz.
           </p>
         </Section>
 
-        <Section title="İletişim">
+        <Section id="aktarim" number={8} title="Kimlerle paylaşıyoruz">
           <p>
-            Gizlilikle ilgili sorularınızı{' '}
-            <a className="text-fg hover:underline" href={`mailto:${config.legalEmail}`}>
-              {config.legalEmail}
-            </a>{' '}
-            adresine iletebilirsiniz.
+            Kişisel verilerinizi yalnızca hizmeti sunabilmek için gereken altyapı sağlayıcılarına, aşağıda belirtilen
+            amaçlarla ve gerekli olduğu ölçüde aktarırız. Bu sağlayıcılar veri işleyen olarak bizim adımıza ve
+            talimatlarımız doğrultusunda çalışır.
+          </p>
+          <SubSection title="Yurt dışındaki hizmet sağlayıcılar">
+            <LegalTable
+              caption="Yurt dışındaki hizmet sağlayıcılar"
+              head={['Sağlayıcı', 'Konum', 'Amaç', 'Aktarılan veriler', 'Ne zaman']}
+              rows={RECIPIENTS_ABROAD.map((r) => [r.name, r.location, r.role, r.data, r.when])}
+            />
+            <p>
+              Bu aktarımlar hizmetin sunulması (KVKK md. 5/2-c) ve güvenliğinin sağlanması (KVKK md. 5/2-f)
+              amaçlarıyla yapılır. Kişisel Verileri Koruma Kurulu ABD için yeterlilik kararı vermemiştir; bu
+              sağlayıcılara yapılan aktarımlar için KVKK’nın 9. maddesinde öngörülen uygun güvence olan standart
+              sözleşme süreçleri yürütülür. Sağlayıcı bazında güncel durumu bize başvurarak öğrenebilirsiniz. Yurt
+              dışına aktarılan verilerinize ilişkin haklarınızı her durumda bize karşı kullanabilirsiniz.
+            </p>
+            <p>
+              Google ile giriş yaptığınızda ve Google Play üzerinden ödeme yaptığınızda bilgilerinizi doğrudan
+              Google’a iletirsiniz; bu işlemler Google’ın kendi gizlilik politikasına tabidir. Google ile girişte
+              Google, e-posta adresinizi, adınızı ve Google hesap kimliğinizi bize iletir.
+            </p>
+          </SubSection>
+          <SubSection title="Yurt içindeki alıcılar">
+            <List items={DOMESTIC_RECIPIENTS.map((r) => <><strong className="text-fg">{r.name}:</strong> {r.role}</>)} />
+          </SubSection>
+          <p>
+            Hizmetin tamamının veya bir bölümünün bir şirkete ya da başka bir kişiye devredilmesi halinde verileriniz,
+            bu politikadaki güvencelerle birlikte devralan tarafa aktarılabilir; bu durumda sizi önceden
+            bilgilendiririz.
+          </p>
+        </Section>
+
+        <Section id="gecmis" number={9} title="Geçmişte kullanılan hizmetler">
+          <p>
+            Şeffaflık amacıyla, artık kullanmadığımız ancak geçmişte verilerinizin aktarıldığı hizmetleri de
+            listeliyoruz:
+          </p>
+          <LegalTable
+            caption="Geçmişte kullanılan hizmetler"
+            head={['Sağlayıcı', 'Konum', 'Amaç', 'Aktarılan veriler', 'Durum']}
+            rows={PAST_RECIPIENTS.map((r) => [r.name, r.location, r.role, r.data, r.when])}
+          />
+        </Section>
+
+        <Section id="saklama" number={10} title="Ne kadar saklıyoruz">
+          <p>
+            Verilerinizi işleme amacının gerektirdiği süre boyunca ve mevzuatta öngörülen süreler kadar saklarız.
+            Süre dolduğunda veriler silinir, yok edilir veya anonim hale getirilir.
+          </p>
+          <LegalTable
+            caption="Saklama süreleri"
+            head={['Veri', 'Saklama süresi']}
+            rows={RETENTION.map((r) => [r.data, r.period])}
+          />
+        </Section>
+
+        <Section id="guvenlik" number={11} title="Güvenlik">
+          <List
+            items={[
+              'Site, uygulama ve sunucumuz arasındaki tüm iletişim HTTPS ile şifrelenir.',
+              'Şifreler geri döndürülemez özet (hash) olarak saklanır; düz metin şifre tutulmaz.',
+              'Oturum anahtarları imzalıdır ve süreyle sınırlıdır; çıkış yaptığınızda geçersiz kılınır.',
+              'Sunucumuza yalnızca şifreli ve kimlik doğrulamalı bağlantılarla, yetkili kişi tarafından erişilir.',
+              'Giriş ve kayıt formları otomatik saldırılara karşı bot koruması ve hız sınırlarıyla korunur.',
+              'Agent özelliğinin internetten sayfa getirmesi, iç ağa ve özel adreslere erişimi engelleyen kontrollerle sınırlandırılmıştır.',
+            ]}
+          />
+          <p>
+            Hiçbir sistem tamamen güvenli değildir. Şifrenizi başka hizmetlerde kullanmamanızı ve şüpheli bir durumda
+            derhal değiştirmenizi öneririz.
+          </p>
+        </Section>
+
+        <Section id="otomatik" number={12} title="Otomatik kararlar">
+          <p>
+            Mesaj ve görev sınırları, hız sınırları, spam önleme kontrolleri ve Cloudflare Turnstile bot doğrulaması
+            otomatik olarak uygulanır; sınır aşıldığında veya doğrulama başarısız olduğunda işleminiz geçici olarak
+            reddedilebilir. Sosyal bölümdeki erişim kısıtlamaları yönetici
+            kararıyla uygulanır. Bu işlemlerin aleyhinize bir sonuç doğurduğunu düşünüyorsanız KVKK’nın 11. maddesi
+            uyarınca itiraz edebilirsiniz.
+          </p>
+        </Section>
+
+        <Section id="cocuklar" number={13} title="Çocuklar">
+          <p>
+            Hizmet 13 yaşından küçükler için tasarlanmamıştır ve 13 yaşından küçüklerin hesap oluşturması yasaktır. 13
+            ile 18 yaş arasındaki kullanıcılar hizmeti yalnızca veli veya vasilerinin onayıyla kullanabilir. 13
+            yaşından küçük bir çocuğa ait veri işlediğimizi fark etmemiz veya bu yönde bildirim almamız halinde ilgili
+            hesabı ve verileri sileriz. Sosyal (forum) bölümü yalnızca 15 yaşını doldurmuş kullanıcılara açıktır.
+          </p>
+        </Section>
+
+        <Section id="haklar" number={14} title="Haklarınız ve hesap silme">
+          <p>
+            KVKK’nın 11. maddesi kapsamındaki haklarınızı (bilgi talep etme, düzeltme, silme, itiraz, zararın
+            giderilmesini talep etme ve diğerleri) ve başvuru usulünü{' '}
+            <a className="text-fg hover:underline" href="/kvkk">KVKK Aydınlatma Metni</a>’nde ayrıntılı olarak
+            bulabilirsiniz. Başvurularınızı en geç 30 gün içinde ücretsiz olarak sonuçlandırırız.
+          </p>
+          <SubSection title="Hesabınızı nasıl silersiniz">
+            <List
+              items={[
+                'Web: Sohbet ekranında sol menüdeki “Plan ve hesap” bölümünü açın ve “Hesabımı sil” seçeneğini kullanın.',
+                'Android: Profil ekranındaki “Hesabımı sil” seçeneğini kullanın.',
+                <>E-posta: Kayıtlı e-posta adresinizden <MailLink email={CONTROLLER.email} subject="Hesap silme talebi" /> adresine yazın; talebiniz en geç 30 gün içinde yerine getirilir.</>,
+              ]}
+            />
+            <p>
+              Hesabınızı sildiğinizde hesap bilgileriniz, sohbetleriniz, kişiselleştirme talimatınız, agent kayıtlarınız,
+              çalışma alanı dosyalarınız, Sosyal bölüm profiliniz, paylaşımlarınız ve Plus durumunuz derhal silinir.
+              Kanunen saklanması zorunlu olan satın alma işlem kayıtları ve trafik bilgileri, olası uyuşmazlıklarda
+              ispat için gereken onay, moderasyon ve silme kayıtları ise yukarıdaki tabloda belirtilen süreler boyunca
+              saklanır ve süre sonunda silinir. Silinen veriler sunucu kayıtlarından ve yedeklerden en geç 30 gün
+              içinde temizlenir.
+            </p>
+          </SubSection>
+          <p>
+            Haklarınızın ihlal edildiğini düşünüyorsanız Kişisel Verileri Koruma Kurulu’na şikâyette bulunabilirsiniz.
+          </p>
+        </Section>
+
+        <Section id="ihlal" number={15} title="Veri ihlali">
+          <p>
+            Kişisel verilerinizin kanuni olmayan yollarla başkaları tarafından elde edildiğini öğrenmemiz halinde,
+            durumu mevzuatta öngörülen sürede Kişisel Verileri Koruma Kurulu’na ve etkilenen kullanıcılara bildiririz.
+          </p>
+        </Section>
+
+        <Section id="degisiklik" number={16} title="Değişiklikler ve iletişim">
+          <p>
+            Bu politikayı veri işleme faaliyetlerimizdeki değişikliklere göre güncelleriz. Güncel sürüm her zaman bu
+            sayfada yayımlanır; önemli değişiklikleri ayrıca e-posta veya uygulama içi bildirimle duyururuz.
+            Sorularınız için <MailLink email={CONTROLLER.email} subject="Gizlilik" /> adresine yazabilirsiniz.
           </p>
         </Section>
       </LegalPage>

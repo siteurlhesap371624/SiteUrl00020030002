@@ -159,7 +159,6 @@ async function main() {
     changefreq: route.changefreq,
     priority: route.priority,
   }))
-  sitemapEntries.push({ loc: `${SITE_URL}/gizlilik.html`, changefreq: 'yearly', priority: '0.3' })
   await writeFile(resolve(distDir, 'sitemap.xml'), buildSitemap(sitemapEntries, SITE_URL, lastmod), 'utf8')
   await writeFile(resolve(distDir, 'llms.txt'), buildLlmsTxt(mod, lastmod), 'utf8')
 

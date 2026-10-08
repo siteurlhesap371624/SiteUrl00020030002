@@ -1,6 +1,7 @@
 import { Mail, MessageCircle, ShieldAlert } from 'lucide-react'
 import { SeoHead } from '@/components/ui/SeoHead'
 import { config } from '@/lib/config'
+import { IMPRINT_ROWS } from '@/content/legal/entity'
 
 const channels = [
   {
@@ -71,6 +72,22 @@ export default function Contact() {
             )
           })}
         </div>
+
+        <section id="kunye" className="mt-16 max-w-2xl scroll-mt-24">
+          <h2 className="text-[19px] font-semibold tracking-[-0.01em] text-fg">Künye ve tanıtıcı bilgiler</h2>
+          <p className="mt-2 text-[14.5px] leading-relaxed text-fg-muted">
+            5651 ve 6563 sayılı Kanunlar kapsamındaki tanıtıcı bilgilerimiz aşağıdadır. Yetkili makamların resmi
+            bildirimleri ve hukuka aykırı içerik bildirimleri bu e-posta adresine yapılabilir.
+          </p>
+          <dl className="mt-5 divide-y divide-[color:var(--color-border)] rounded-[var(--radius-lg)] border border-[color:var(--color-border-strong)]">
+            {IMPRINT_ROWS.map(([label, value]) => (
+              <div key={label} className="grid gap-1 px-4 py-3 sm:grid-cols-[220px_1fr] sm:gap-4">
+                <dt className="text-[13.5px] text-fg-dim">{label}</dt>
+                <dd className="text-[14.5px] text-fg [overflow-wrap:anywhere]">{value}</dd>
+              </div>
+            ))}
+          </dl>
+        </section>
       </div>
     </>
   )

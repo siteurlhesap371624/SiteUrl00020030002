@@ -25,6 +25,28 @@ function cleanupLegacyServiceWorkers() {
   })
 }
 
+const LEGACY_STORAGE_KEYS = ['bWFydWxfc190b2tlbg==', 'bWFydWxfc191c2Vy', 'guest_left', 'g_chats', 'marulApiUrl']
+const LEGACY_COOKIES = ['__mt', '__mu', '_ga', '_gid', '_ga_V0TG9J2D9C']
+
+function cleanupLegacySiteData() {
+  try {
+    for (const key of LEGACY_STORAGE_KEYS) {
+      localStorage.removeItem(key)
+      sessionStorage.removeItem(key)
+    }
+  } catch {
+    return
+  }
+  const host = window.location.hostname
+  const domains = ['', `; domain=${host}`, `; domain=.${host.replace(/^www\./, '')}`]
+  for (const name of LEGACY_COOKIES) {
+    if (!document.cookie.includes(`${name}=`)) continue
+    for (const domain of domains) {
+      document.cookie = `${name}=; Max-Age=0; path=/${domain}`
+    }
+  }
+}
+
 export default function App() {
   const hydrateAuth = useAuthStore((s) => s.hydrate)
   const hydrateChat = useChatStore((s) => s.hydrate)
@@ -33,6 +55,7 @@ export default function App() {
     hydrateAuth()
     hydrateChat()
     cleanupLegacyServiceWorkers()
+    cleanupLegacySiteData()
   }, [hydrateAuth, hydrateChat])
 
   return (

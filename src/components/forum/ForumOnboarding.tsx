@@ -10,9 +10,9 @@ import { useUIStore } from '@/lib/store/ui'
 const RULES = [
   'Saygılı olun. Hakaret, taciz, tehdit ve nefret söylemi içeren paylaşımlar yasaktır.',
   'Spam, reklam, yanıltıcı veya alakasız içerik paylaşmayın.',
-  'Yasa dışı içerik, başkalarına ait kişisel veri ve telif hakkı ihlali kesinlikle yasaktır.',
-  'Uygunsuz kullanıcı adı seçenler ve kuralları ihlal edenler uyarısız olarak engellenebilir.',
-  'Paylaşımlar Marul AI ekibi tarafından denetlenebilir; uygun olmayan içerikler kaldırılabilir.',
+  'Yasa dışı içerik, başkalarına ait kişisel veri, özel hayatı ifşa eden içerik ve telif hakkı ihlali kesinlikle yasaktır.',
+  'Paylaşımlarınız ve kullanıcı adınız herkese açık olarak görünür; paylaştığınız içerikten siz sorumlusunuz.',
+  'Bildirilen veya kurallara aykırı bulunan içerikler kaldırılabilir; ağır veya tekrarlanan ihlallerde hesabın Sosyal bölüme erişimi kısıtlanabilir.',
 ]
 
 function localUsernameError(value: string): string | null {
@@ -33,6 +33,7 @@ interface ForumOnboardingProps {
 export function ForumOnboarding({ onDone }: ForumOnboardingProps) {
   const [step, setStep] = useState<'rules' | 'username'>('rules')
   const [accepted, setAccepted] = useState(false)
+  const [ageOk, setAgeOk] = useState(false)
   const [username, setUsername] = useState('')
   const [submitting, setSubmitting] = useState(false)
   const toast = useUIStore((s) => s.toast)
@@ -97,15 +98,29 @@ export function ForumOnboarding({ onDone }: ForumOnboardingProps) {
                 className="mt-0.5 h-4 w-4 shrink-0 accent-[color:var(--color-brand)]"
               />
               <span className="text-[13.5px] text-fg">
-                Forum kurallarını okudum ve kabul ediyorum.
+                Sosyal bölüm kurallarını ve{' '}
+                <a href="/sartlar#sosyal" target="_blank" rel="noopener noreferrer" className="underline-offset-2 hover:underline">
+                  Kullanım Koşulları’nın ilgili maddesini
+                </a>{' '}
+                okudum, kabul ediyorum.
               </span>
+            </label>
+
+            <label className="mt-3 flex cursor-pointer items-start gap-2.5 rounded-[var(--radius-md)] border border-[color:var(--color-border)] bg-[color:var(--color-surface-2)] p-3.5">
+              <input
+                type="checkbox"
+                checked={ageOk}
+                onChange={(e) => setAgeOk(e.target.checked)}
+                className="mt-0.5 h-4 w-4 shrink-0 accent-[color:var(--color-brand)]"
+              />
+              <span className="text-[13.5px] text-fg">15 yaşını doldurduğumu beyan ederim.</span>
             </label>
 
             <Button
               className="mt-5"
               full
               size="lg"
-              disabled={!accepted}
+              disabled={!accepted || !ageOk}
               onClick={() => setStep('username')}
             >
               Kabul ediyorum, devam et

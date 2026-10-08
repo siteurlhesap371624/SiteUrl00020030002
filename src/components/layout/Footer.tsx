@@ -22,15 +22,19 @@ const linkGroups = [
       { to: '/sss', label: 'Sık sorulan sorular' },
       { to: '/turkiye-yapay-zeka-modelleri', label: "Türkiye'de yapay zeka modelleri" },
       { to: '/iletisim', label: 'İletişim' },
+      { to: '/iletisim#kunye', label: 'Künye' },
       { href: config.playStoreUrl, label: 'Mobil uygulama', external: true },
     ],
   },
   {
     title: 'Yasal',
     links: [
-      { to: '/gizlilik', label: 'Gizlilik' },
-      { to: '/kvkk', label: 'KVKK' },
-      { to: '/sartlar', label: 'Kullanım şartları' },
+      { to: '/sartlar', label: 'Kullanım koşulları' },
+      { to: '/gizlilik', label: 'Gizlilik politikası' },
+      { to: '/kvkk', label: 'KVKK aydınlatma metni' },
+      { to: '/acik-riza', label: 'Açık rıza metni' },
+      { to: '/cerez-politikasi', label: 'Çerez politikası' },
+      { to: '/plus-satis-sozlesmesi', label: 'Plus satış sözleşmesi' },
     ],
   },
 ]
@@ -45,7 +49,7 @@ export function Footer() {
             <Logo size={28} />
             <p className="mt-4 text-[13.5px] leading-relaxed text-fg-muted max-w-sm">
               Marul AI, Karakuş Tech tarafından Türkiye için geliştirilen yapay zeka asistanıdır.
-              Konuşmalarınız HTTPS ile şifreli iletilir, üçüncü taraflarla paylaşılmaz.
+              Konuşmalarınız HTTPS ile şifreli iletilir; satılmaz ve reklam amacıyla kullanılmaz.
             </p>
             <div className="mt-5 flex items-center gap-2">
               <a

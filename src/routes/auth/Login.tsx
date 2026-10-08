@@ -66,7 +66,7 @@ export default function Login() {
       <SeoHead title="Giriş yap" path="/giris" noindex />
       <AuthShell
         title="Hesabınıza giriş yapın"
-        subtitle="Sohbet geçmişiniz ve aboneliğiniz sizinle."
+        subtitle="Sohbet geçmişiniz ve Plus hakkınız sizinle."
         footer={
           <>
             Hesabınız yok mu?{' '}

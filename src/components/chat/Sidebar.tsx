@@ -144,7 +144,7 @@ export function Sidebar({ onOpenSettings, onOpenSubscription, onOpenModelInfo }:
       <div className="border-t border-[color:var(--color-border)] px-3 py-3 space-y-1">
         <SidebarButton icon={<Info className="h-4 w-4" />} onClick={onOpenModelInfo} label="Model bilgisi" />
         <SidebarButton icon={<Settings className="h-4 w-4" />} onClick={onOpenSettings} label="Kişiselleştirme" />
-        <SidebarButton icon={<CreditCard className="h-4 w-4" />} onClick={onOpenSubscription} label="Abonelik" />
+        <SidebarButton icon={<CreditCard className="h-4 w-4" />} onClick={onOpenSubscription} label="Plan ve hesap" />
       </div>
 
       <div className="border-t border-[color:var(--color-border)] p-3">

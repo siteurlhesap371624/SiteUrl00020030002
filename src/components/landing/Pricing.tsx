@@ -63,7 +63,7 @@ const plans: Plan[] = [
       'Tek seferlik ödeme, abonelik yok',
       'Birebir e-posta desteği',
     ],
-    footnote: 'Tek seferlik ödeme, yenileme yok. Şu an yalnızca Android uygulaması üzerinden.',
+    footnote: 'Tek seferlik ödeme, yenileme yok. Şu an yalnızca Android uygulaması üzerinden. Sınırsız haklara adil kullanım amaçlı hız sınırları uygulanır.',
   },
 ]
 

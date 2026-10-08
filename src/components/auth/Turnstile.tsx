@@ -155,8 +155,7 @@ export function Turnstile({ onToken, onExpire, onError, size = 'flexible' }: Tur
           Güvenlik doğrulayıcı yüklenemedi.
           {errorCode ? <span className="ml-1 font-mono text-[11px] opacity-80">({errorCode})</span> : null}
           {' '}
-          Sayfayı yenileyin; sorun devam ederse Cloudflare → Turnstile site key → Hostname
-          Management'a <code>marulai.com.tr</code> ekleyin.
+          Sayfayı yenileyin; sorun devam ederse reklam veya içerik engelleyicileri kapatıp tekrar deneyin.
         </div>
       ) : null}
     </div>

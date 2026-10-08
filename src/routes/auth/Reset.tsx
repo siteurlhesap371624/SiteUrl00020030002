@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link, useNavigate, useSearchParams } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -30,7 +30,12 @@ type FormValues = z.infer<typeof schema>
 export default function Reset() {
   const [params] = useSearchParams()
   const navigate = useNavigate()
-  const token = params.get('token') ?? ''
+  const [token] = useState(() => params.get('token') ?? '')
+  useEffect(() => {
+    if (window.location.search.includes('token=')) {
+      window.history.replaceState(null, '', window.location.pathname)
+    }
+  }, [])
   const [showPwd, setShowPwd] = useState(false)
   const [submitting, setSubmitting] = useState(false)
   const toast = useUIStore((s) => s.toast)

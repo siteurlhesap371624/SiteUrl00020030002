@@ -7,11 +7,11 @@ export default function PricingPage() {
     <>
       <SeoHead
         title="Fiyatlandırma"
-        description="Marul AI ücretsiz, ücretsiz hesap ve Plus aboneliği planlarının karşılaştırması."
+        description="Marul AI misafir, ücretsiz hesap ve tek seferlik Plus planlarının karşılaştırması."
         path="/fiyatlandirma"
       />
       <div className="pt-16">
-        <h1 className="sr-only">Marul AI fiyatlandırma · ücretsiz plan ve Plus aboneliği</h1>
+        <h1 className="sr-only">Marul AI fiyatlandırma · ücretsiz plan ve Plus</h1>
         <Pricing />
         <Faq />
       </div>
