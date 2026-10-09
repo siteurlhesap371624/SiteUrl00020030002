@@ -39,7 +39,7 @@ export const RECIPIENTS_ABROAD: Recipient[] = [
     name: 'Google LLC',
     location: 'ABD',
     role: 'Google Play satın alımlarının sunucumuz tarafından doğrulanması; Google ile girişte oturum kodunun doğrulanması',
-    data: 'Satın alma anahtarı, ürün kimliği ve uygulama paket adı; Google ile girişte tek kullanımlık yetkilendirme kodu',
+    data: 'Satın alma anahtarı, ürün kimliği ve uygulama paket adı; satın alma sırasında Android uygulamasının Google Play’e ilettiği, hesap numaranızdan türetilmiş takma hesap kimliği; Google ile girişte tek kullanımlık yetkilendirme kodu',
     when: 'Plus satın aldığınızda veya Google ile giriş yaptığınızda',
   },
   {

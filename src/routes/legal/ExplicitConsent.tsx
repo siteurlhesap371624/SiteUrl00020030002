@@ -97,9 +97,9 @@ export default function ExplicitConsent() {
             <Callout>
               <p>
                 “Açık Rıza Metni’nin 2. bölümünü okudum ve anladım. Sohbet içeriklerimin burada açıklanan kapsamda,
-                Marul AI dil modellerinin geliştirilmesi amacıyla anonim hale getirilerek işlenmesine özgür irademle
-                açık rıza veriyorum. Bu kapsamda, veri setinden çıkarılması amacıyla sohbetlerimdeki özel nitelikli
-                kişisel verilerin otomatik araçlarla tespit edilmesine de açık rıza veriyorum.”
+                Marul AI dil modellerinin geliştirilmesi amacıyla anonim hale getirilerek işlenmesine ve bu amaçla
+                sohbetlerimdeki özel nitelikli kişisel verilerin veri setinden çıkarılması için otomatik araçlarla tespit
+                edilmesine özgür irademle açık rıza veriyorum.”
               </p>
             </Callout>
           </SubSection>

@@ -58,8 +58,8 @@ export default function Terms() {
       >
         <Section id="taraflar" number={1} title="Taraflar ve tanımlar">
           <p>
-            Bu sözleşmenin bir tarafı, {CONTROLLER.tradeName} adıyla faaliyet gösteren ve {CONTROLLER.brand} hizmetinin
-            sahibi ve işleteni olan {CONTROLLER.person}’tur (bundan sonra “Marul AI”, “biz” veya “hizmet sağlayıcı”).
+            Bu sözleşmenin bir tarafı, {CONTROLLER.brand} hizmetini {CONTROLLER.tradeName} proje adıyla geliştiren ve
+            işleten gerçek kişi {CONTROLLER.person}’tur (bundan sonra “Marul AI”, “biz” veya “hizmet sağlayıcı”).
             İletişim adresimiz <MailLink email={CONTROLLER.email} />’dir. Diğer taraf, hizmete internet sitesi veya
             Android uygulaması üzerinden erişen gerçek kişidir (bundan sonra “kullanıcı” veya “siz”).
           </p>

@@ -166,7 +166,7 @@ export default function Privacy() {
           <p>
             Kişisel verilerinizi yalnızca hizmeti sunabilmek için gereken hizmet sağlayıcılarına, aşağıda belirtilen
             amaçlarla ve gerekli olduğu ölçüde aktarırız. Groq, Inc., Cloudflare, Inc., Resend ve ngrok, Inc. veri
-            işleyen olarak bizim adımıza ve yazılı talimatlarımız doğrultusunda çalışır. Google LLC, GitHub, Inc. ve
+            işleyen olarak bizim adımıza ve bu sağlayıcıların hizmet şartları çerçevesinde çalışır. Google LLC, GitHub, Inc. ve
             arama motorları ise kendilerine iletilen verileri kendi adlarına veri sorumlusu olarak işler.
           </p>
           <SubSection title="Yurt dışındaki hizmet sağlayıcılar">
@@ -177,14 +177,16 @@ export default function Privacy() {
             />
             <p>
               Bu aktarımlar hizmetin sunulması (KVKK md. 5/2-c) ve güvenliğinin sağlanması (KVKK md. 5/2-f)
-              amaçlarıyla yapılır. Kişisel Verileri Koruma Kurulu ABD için yeterlilik kararı vermemiştir. Veri
-              işleyen sağlayıcılarla KVKK’nın 9. maddesi uyarınca Kurulca ilan edilen standart sözleşmeler imzalanır
-              ve imza tarihinden itibaren beş iş günü içinde Kurula bildirilir. Google ile giriş, Google Play
-              ödemesi ve sitemizin barındırılması sırasında yapılan aktarımlar, sizinle kurduğumuz sözleşmenin ifası
-              için zorunlu olan ve sizin işleminizle başlayan aktarımlardır. Arama motorlarıyla standart sözleşme
-              imzalanması mümkün olmadığından arama sorgularına kimlik bilgileriniz eklenmez. Sağlayıcı bazında güncel
-              durumu bize başvurarak öğrenebilirsiniz. Yurt dışına aktarılan verilerinize ilişkin haklarınızı her
-              durumda bize karşı kullanabilirsiniz.
+              amaçlarıyla ve yalnızca tabloda belirtilen veriler ve durumlarla sınırlı olarak yapılır. Kişisel
+              Verileri Koruma Kurulu ABD için yeterlilik kararı vermemiştir. Bu nedenle yurt dışındaki sağlayıcılara
+              iletilen verileriniz, Türkiye’deki koruma düzeyini sağlamayabilecek bir hukuk düzeninde işlenebilir ve
+              o ülkenin yetkili makamlarının erişimine konu olabilir. Sağlayıcılar verilerinizi kendi hizmet şartları
+              ve güvenlik önlemleri çerçevesinde işler. Sunucumuz, girişinizi ve satın alımınızı doğrulamak için
+              Google’a yalnızca Google’ın kendi oluşturduğu tek kullanımlık yetkilendirme kodunu, erişim anahtarını
+              veya satın alma anahtarını, ürün kimliğini ve uygulama paket adını gönderir. Arama sorguları arama
+              motorlarına kendi sunucumuzun IP adresiyle ve kimlik bilgileriniz eklenmeden iletilir. Aktarımların
+              dayanağı ve sağlayıcı bazında güncel durum hakkında bize başvurarak bilgi alabilirsiniz. Yurt dışına
+              aktarılan verilerinize ilişkin haklarınızı her durumda bize karşı kullanabilirsiniz.
             </p>
             <p>
               Google ile giriş yaptığınızda ve Google Play üzerinden ödeme yaptığınızda bilgilerinizi doğrudan
@@ -275,7 +277,7 @@ export default function Privacy() {
             <List
               items={[
                 'Web: Sohbet ekranında sol menüdeki “Plan ve hesap” bölümünü açın ve “Hesabımı sil” seçeneğini kullanın.',
-                'Android: Profil ekranındaki “Hesabımı sil” seçeneğini kullanın.',
+                'Android: Menünün altındaki adınıza dokunun ve “Hesabımı kalıcı olarak sil” seçeneğini kullanın.',
                 <>E-posta: Kayıtlı e-posta adresinizden <MailLink email={CONTROLLER.email} subject="Hesap silme talebi" /> adresine yazın; talebiniz en geç 30 gün içinde yerine getirilir.</>,
               ]}
             />

@@ -9,11 +9,13 @@ const TOC = [
 
 export default function PlusSale() {
   const sellerRows = [
-    ['Satıcı ve hizmet sağlayıcı', `${CONTROLLER.person} (${CONTROLLER.tradeName}, ${CONTROLLER.brand})`],
-    ['Adres', CONTROLLER.postalAddress || CONTROLLER.city],
+    ['Sağlayıcı (satıcı)', `${CONTROLLER.person} (gerçek kişi; ${CONTROLLER.brand} hizmeti ${CONTROLLER.tradeName} proje adıyla sunulur)`],
+    ['MERSİS numarası', 'Bulunmamaktadır. Sağlayıcı gerçek kişidir ve ticaret siciline kayıtlı değildir.'],
+    ['Yerleşim yeri', CONTROLLER.postalAddress || CONTROLLER.city],
+    ...(CONTROLLER.postalAddress ? [] : [['Posta adresi', 'Posta yoluyla yapılacak bildirimler ve tebligat için posta adresi, e-posta ile talep edilmesi halinde bildirilir.']]),
     ['E-posta (iletişim, şikâyet ve iade talepleri)', CONTROLLER.email],
     ['İnternet sitesi', CONTROLLER.website],
-    ['Ödemeye aracılık eden', 'Google Play (Google LLC); ödeme Google Play hesabınız üzerinden tahsil edilir'],
+    ['Aracı hizmet sağlayıcı ve ödeme', 'Google Play (Google LLC). Ödeme, Google Play hesabınız üzerinden Google tarafından tahsil edilir. Google Play Hizmet Şartları uyarınca Google Commerce Limited bu satışta sağlayıcı adına aracı olarak hareket edebilir.'],
   ]
 
   return (
@@ -22,7 +24,7 @@ export default function PlusSale() {
       <LegalPage
         title="Plus ön bilgilendirme formu ve mesafeli satış sözleşmesi"
         lastUpdated={LEGAL_UPDATED}
-        version={LEGAL_VERSIONS.terms}
+        version={LEGAL_VERSIONS.plus}
         toc={TOC}
         intro={
           <p>
@@ -39,7 +41,8 @@ export default function PlusSale() {
             items={[
               <><strong className="text-fg">Hizmetin temel nitelikleri:</strong> {PLUS_OFFER.features.join('; ')}. Haklar, satın alındığı Marul AI hesabına tanımlanır ve hem web sitesinde hem Android uygulamasında geçerlidir. Sınırsız olarak belirtilen haklara, hizmetin güvenliği ve adil kullanım amacıyla teknik hız sınırları uygulanır.</>,
               <><strong className="text-fg">Toplam fiyat:</strong> Satın alma anında Google Play ödeme ekranında gösterilen, tüm vergiler dahil tutardır. Bu metnin yayım tarihinde fiyat {PLUS_OFFER.price} TL’dir. Tek seferlik ödemedir; tekrar eden bir ödeme, otomatik yenileme, kurulum veya teslimat ücreti yoktur.</>,
-              <><strong className="text-fg">Ödeme:</strong> Ödeme, Google Play hesabınızda tanımlı ödeme yöntemiyle Google tarafından tahsil edilir. Kart bilgileriniz Marul AI’a iletilmez.</>,
+              <><strong className="text-fg">Ödeme:</strong> Ödeme, Google Play hesabınızda tanımlı ödeme yöntemiyle Google tarafından tahsil edilir. Fiyata dahil KDV, Google tarafından hesaplanır ve ödenir; satın alma makbuzu Google Play tarafından Google hesabınızın e-posta adresine gönderilir. Kart bilgileriniz Marul AI’a iletilmez.</>,
+              <><strong className="text-fg">Sözleşmenin kurulması:</strong> Uygulamadaki satın alma öncesi bilgilendirme ekranında iki onay kutusunu işaretleyip “Ödemeye geç” düğmesine bastığınızda Google Play ödeme ekranı açılır. Sözleşme, bu ekranda ödemeyi onaylamanız ve Google Play’in ödemeyi kabul etmesiyle kurulur. Ödemeyi onaylamadan önce bilgilerinizi kontrol edebilir, ekranı kapatarak işlemden vazgeçebilirsiniz.</>,
               <><strong className="text-fg">İfa:</strong> Plus, ödemenin Google Play tarafından onaylanmasıyla birlikte hesabınızda hemen etkinleşir. Hesabınız açık kaldığı ve hizmet sunulduğu sürece geçerlidir.</>,
               <><strong className="text-fg">Cayma hakkı:</strong> Plus, cayma süresi dolmadan açık onayınızla ifasına başlanan ve elektronik ortamda anında ifa edilen bir hizmettir. Bu nedenle Mesafeli Sözleşmeler Yönetmeliği’nin 15. maddesinin birinci fıkrasının (h) ve (ğ) bentleri uyarınca cayma hakkınız bulunmamaktadır.</>,
               <><strong className="text-fg">Teknik gereksinimler:</strong> Plus’ı satın almak için Google Play hizmetlerine sahip bir Android cihaz ve Marul AI uygulaması gerekir. Haklar, güncel bir internet tarayıcısı veya Android uygulaması ile kullanılır ve internet bağlantısı gerektirir.</>,
@@ -53,7 +56,7 @@ export default function PlusSale() {
           <List
             ordered
             items={[
-              <><strong className="text-fg">Taraflar:</strong> Satıcı, yukarıda bilgileri yer alan Marul AI; alıcı, Plus’ı kendi Marul AI hesabı için satın alan kullanıcıdır.</>,
+              <><strong className="text-fg">Taraflar:</strong> Satıcı (sağlayıcı), yukarıda bilgileri yer alan {CONTROLLER.person}; alıcı, Plus’ı kendi Marul AI hesabı için satın alan kullanıcıdır.</>,
               <><strong className="text-fg">Konu:</strong> Alıcının Marul AI hesabına, ön bilgilendirme formunda nitelikleri belirtilen Plus haklarının tanımlanmasıdır.</>,
               <><strong className="text-fg">Bedel ve ödeme:</strong> Bedel, satın alma anında gösterilen vergiler dahil tutardır ve Google Play aracılığıyla tek seferde ödenir.</>,
               <><strong className="text-fg">İfa ve süre:</strong> Satıcı, ödemenin onaylanmasından sonra Plus haklarını alıcının hesabına derhal tanımlar. Haklar, hesap açık kaldığı ve hizmet sunulduğu sürece geçerlidir. Plus bedeli 24 aylık kullanım süresi esas alınarak belirlenmiştir; bu süre dolmadan hizmetin tamamen sona erdirilmesi, hesabın satıcı tarafından haklı bir sebep olmaksızın kapatılması veya alıcının aleyhine olan bir koşul değişikliğini onaylamaması halinde, talep üzerine bedelin kullanılmayan aylara isabet eden kısmı iade edilir. Hizmetin sona erdirilmesi en az 30 gün önceden duyurulur.</>,

@@ -2,6 +2,7 @@ export const LEGAL_VERSIONS = {
   terms: '2026-10',
   privacy: '2026-10',
   training: '2026-10',
+  plus: '2026-10',
 } as const
 
 export const LEGAL_UPDATED = '9 Ekim 2026'
@@ -22,10 +23,10 @@ export const CONTROLLER = {
 } as const
 
 export const IMPRINT_ROWS: [string, string][] = [
-  ['Hizmet sağlayıcı', `${CONTROLLER.person} (${CONTROLLER.tradeName})`],
-  ['Marka', CONTROLLER.brand],
+  ['Hizmet sağlayıcı', `${CONTROLLER.person} (gerçek kişi)`],
+  ['Hizmet ve proje adı', `${CONTROLLER.brand} (${CONTROLLER.tradeName} projesi)`],
   ...(CONTROLLER.taxId ? ([['Vergi kimlik numarası', CONTROLLER.taxId]] as [string, string][]) : []),
-  ['Adres', CONTROLLER.postalAddress || CONTROLLER.city],
+  ['Yerleşim yeri', CONTROLLER.postalAddress || CONTROLLER.city],
   ['E-posta', CONTROLLER.email],
   ...(CONTROLLER.phone ? ([['Telefon', CONTROLLER.phone]] as [string, string][]) : []),
   ...(CONTROLLER.kep ? ([['KEP adresi', CONTROLLER.kep]] as [string, string][]) : []),
@@ -33,7 +34,7 @@ export const IMPRINT_ROWS: [string, string][] = [
   ['İnternet sitesinin barındırıldığı yer', CONTROLLER.siteHosting],
 ]
 
-export const CONTROLLER_LINE = `${CONTROLLER.person} (${CONTROLLER.tradeName} adıyla faaliyet gösteren, ${CONTROLLER.brand} hizmetinin sahibi ve işleteni)`
+export const CONTROLLER_LINE = `${CONTROLLER.person} (${CONTROLLER.brand} hizmetini ${CONTROLLER.tradeName} proje adıyla geliştiren ve işleten gerçek kişi)`
 
 export const PLUS_OFFER = {
   price: '49,99',

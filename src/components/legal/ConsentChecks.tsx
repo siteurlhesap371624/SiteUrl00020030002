@@ -133,8 +133,10 @@ export function ConsentChecks({
             onChange={onTrainingChange}
             label={
               <>
-                Sohbet içeriklerimin <DocLink to="/acik-riza#egitim">Açık Rıza Metni</DocLink>’nde açıklanan şekilde,
-                anonim hale getirilerek Yedikule ve sonraki Marul AI dil modellerinin geliştirilmesinde kullanılması.
+                Sohbet içeriklerimin <DocLink to="/acik-riza#egitim">Açık Rıza Metni</DocLink>’nde açıklanan kapsamda,
+                Marul AI dil modellerinin geliştirilmesi amacıyla anonim hale getirilerek işlenmesi ve bu amaçla
+                sohbetlerimdeki özel nitelikli kişisel verilerin veri setinden çıkarılması için otomatik araçlarla tespit
+                edilmesi.
               </>
             }
           />

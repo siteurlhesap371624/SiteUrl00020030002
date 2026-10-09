@@ -76,8 +76,8 @@ export default function Contact() {
         <section id="kunye" className="mt-16 max-w-2xl scroll-mt-24">
           <h2 className="text-[19px] font-semibold tracking-[-0.01em] text-fg">Künye ve tanıtıcı bilgiler</h2>
           <p className="mt-2 text-[14.5px] leading-relaxed text-fg-muted">
-            5651 ve 6563 sayılı Kanunlar kapsamındaki tanıtıcı bilgilerimiz aşağıdadır. Yetkili makamların resmi
-            bildirimleri ve hukuka aykırı içerik bildirimleri bu e-posta adresine yapılabilir.
+            5651 ve 6563 sayılı Kanunlar kapsamındaki tanıtıcı bilgilerimiz aşağıdadır. Marul AI, aşağıda adı yazılı gerçek kişi tarafından işletilir; ticaret siciline kayıtlı bir şirket veya işletme bulunmamaktadır. Yetkili makamların resmi
+            bildirimleri ve hukuka aykırı içerik bildirimleri aşağıdaki e-posta adresine yapılabilir. Posta yoluyla yapılacak bildirimler ve tebligat için posta adresimiz, e-posta ile talep edilmesi halinde bildirilir.
           </p>
           <dl className="mt-5 divide-y divide-[color:var(--color-border)] rounded-[var(--radius-lg)] border border-[color:var(--color-border-strong)]">
             {IMPRINT_ROWS.map(([label, value]) => (
