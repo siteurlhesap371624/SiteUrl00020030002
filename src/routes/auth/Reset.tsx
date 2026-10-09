@@ -33,7 +33,7 @@ export default function Reset() {
   const [token] = useState(() => params.get('token') ?? '')
   useEffect(() => {
     if (window.location.search.includes('token=')) {
-      window.history.replaceState(null, '', window.location.pathname)
+      window.history.replaceState(window.history.state, '', window.location.pathname)
     }
   }, [])
   const [showPwd, setShowPwd] = useState(false)

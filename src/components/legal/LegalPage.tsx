@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react'
+import { useEffect, type ReactNode } from 'react'
 import { NavLink } from 'react-router-dom'
 import { Printer } from 'lucide-react'
 import { LEGAL_DOCUMENTS } from '@/content/legal/entity'
@@ -19,6 +19,19 @@ interface LegalPageProps {
 }
 
 export function LegalPage({ title, lastUpdated, version, intro, toc, children }: LegalPageProps) {
+  useEffect(() => {
+    const hash = window.location.hash.slice(1)
+    if (!hash) return
+    let id = hash
+    try {
+      id = decodeURIComponent(hash)
+    } catch {
+      return
+    }
+    const frame = requestAnimationFrame(() => document.getElementById(id)?.scrollIntoView())
+    return () => cancelAnimationFrame(frame)
+  }, [])
+
   return (
     <div className="container-content py-20 md:py-28">
       <div className="max-w-3xl">

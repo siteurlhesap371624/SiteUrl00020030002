@@ -66,7 +66,7 @@ export default function GoogleCallback() {
     sessionStorage.removeItem('marul.oauth.state')
     const redirect = safeRedirectPath(sessionStorage.getItem('marul.oauth.redirect'))
     sessionStorage.removeItem('marul.oauth.redirect')
-    window.history.replaceState(null, '', window.location.pathname)
+    window.history.replaceState(window.history.state, '', window.location.pathname)
 
     if (!expectedState || expectedState !== state) {
       setError('Giriş isteği bu tarayıcıda başlatılmadığı için güvenlik nedeniyle durduruldu. Lütfen tekrar deneyin.')

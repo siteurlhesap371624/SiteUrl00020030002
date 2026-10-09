@@ -57,10 +57,11 @@ export const useAuthStore = create<AuthState>((set, get) => ({
   },
 
   refresh: async () => {
-    if (get().isLoading) return
+    const requestToken = get().token
     set({ isLoading: true })
     try {
       const res = await authApi.verifySession()
+      if (get().token !== requestToken) return
       if (!res.valid) {
         persist(null, null)
         set({ token: null, user: null, isPremium: false })
