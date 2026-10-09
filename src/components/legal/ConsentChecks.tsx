@@ -134,9 +134,9 @@ export function ConsentChecks({
             label={
               <>
                 Sohbet içeriklerimin <DocLink to="/acik-riza#egitim">Açık Rıza Metni</DocLink>’nde açıklanan kapsamda,
-                Marul AI dil modellerinin geliştirilmesi amacıyla anonim hale getirilerek işlenmesi ve bu amaçla
+                Marul AI dil modellerinin geliştirilmesi amacıyla anonim hale getirilerek işlenmesine ve bu amaçla
                 sohbetlerimdeki özel nitelikli kişisel verilerin veri setinden çıkarılması için otomatik araçlarla tespit
-                edilmesi.
+                edilmesine:
               </>
             }
           />
@@ -148,7 +148,7 @@ export function ConsentChecks({
               <>
                 Sohbetlerde kendi isteğimle paylaşabileceğim özel nitelikli kişisel verilerimin (sağlık, inanç ve
                 benzeri) <DocLink to="/acik-riza#ozel-nitelikli">Açık Rıza Metni</DocLink>’nde açıklanan şekilde yalnızca
-                bana yanıt üretilmesi ve sohbet geçmişimin saklanması amacıyla işlenmesi.
+                bana yanıt üretilmesi ve sohbet geçmişimin saklanması amacıyla işlenmesine:
               </>
             }
           />

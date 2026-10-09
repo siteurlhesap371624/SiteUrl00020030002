@@ -283,7 +283,7 @@ export default function Privacy() {
             />
             <p>
               Hesabınızı sildiğinizde hesap bilgileriniz, sohbetleriniz, kişiselleştirme talimatınız, agent kayıtlarınız,
-              çalışma alanı dosyalarınız, Sosyal bölüm profiliniz, paylaşımlarınız ve Plus durumunuz derhal silinir.
+              çalışma alanı dosyalarınız, Sosyal bölüm profiliniz ve paylaşımlarınız derhal silinir; Plus hakkınız bu hesaptan kaldırılır.
               Kanunen saklanması zorunlu olan satın alma işlem kayıtları ve trafik bilgileri, olası uyuşmazlıklarda
               ispat için gereken onay, moderasyon ve silme kayıtları ise yukarıdaki tabloda belirtilen süreler boyunca
               saklanır ve süre sonunda silinir. Silinen veriler sunucu kayıtlarından ve yedeklerden en geç 30 gün

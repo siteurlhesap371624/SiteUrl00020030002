@@ -96,10 +96,9 @@ export default function ExplicitConsent() {
           <SubSection title="Rıza beyanı">
             <Callout>
               <p>
-                “Açık Rıza Metni’nin 2. bölümünü okudum ve anladım. Sohbet içeriklerimin burada açıklanan kapsamda,
-                Marul AI dil modellerinin geliştirilmesi amacıyla anonim hale getirilerek işlenmesine ve bu amaçla
-                sohbetlerimdeki özel nitelikli kişisel verilerin veri setinden çıkarılması için otomatik araçlarla tespit
-                edilmesine özgür irademle açık rıza veriyorum.”
+                “Sohbet içeriklerimin Açık Rıza Metni’nde açıklanan kapsamda, Marul AI dil modellerinin geliştirilmesi
+                amacıyla anonim hale getirilerek işlenmesine ve bu amaçla sohbetlerimdeki özel nitelikli kişisel
+                verilerin veri setinden çıkarılması için otomatik araçlarla tespit edilmesine açık rıza veriyorum.”
               </p>
             </Callout>
           </SubSection>
@@ -140,9 +139,9 @@ export default function ExplicitConsent() {
           <SubSection title="Rıza beyanı">
             <Callout>
               <p>
-                “Açık Rıza Metni’nin 3. bölümünü okudum ve anladım. Sohbetlerde kendi isteğimle paylaşabileceğim özel
-                nitelikli kişisel verilerimin yalnızca bana yanıt üretilmesi ve sohbet geçmişimin saklanması amacıyla,
-                burada açıklanan şekilde işlenmesine özgür irademle açık rıza veriyorum.”
+                “Sohbetlerde kendi isteğimle paylaşabileceğim özel nitelikli kişisel verilerimin (sağlık, inanç ve
+                benzeri) Açık Rıza Metni’nde açıklanan şekilde yalnızca bana yanıt üretilmesi ve sohbet geçmişimin
+                saklanması amacıyla işlenmesine açık rıza veriyorum.”
               </p>
             </Callout>
           </SubSection>

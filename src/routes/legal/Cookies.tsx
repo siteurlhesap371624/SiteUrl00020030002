@@ -111,7 +111,7 @@ export default function Cookies() {
           <p>
             Android uygulaması kendi çerezini kullanmaz. Oturum anahtarınız, adınız, e-posta adresiniz ve model
             tercihleriniz cihazınızın uygulamaya ayrılmış alanında, cihaz anahtarıyla şifrelenmiş olarak tutulur ve
-            uygulamayı kaldırdığınızda silinir. Giriş ve kayıt ekranlarındaki Cloudflare Turnstile doğrulaması
+            uygulamayı kaldırdığınızda silinir. Giriş, kayıt ve şifre sıfırlama ekranlarındaki Cloudflare Turnstile doğrulaması
             uygulama içindeki bir web görünümünde çalışır ve Cloudflare’in kendi kayıtlarını kullanabilir.
           </p>
         </Section>

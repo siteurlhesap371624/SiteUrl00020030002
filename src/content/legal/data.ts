@@ -134,7 +134,7 @@ export const RETENTION: RetentionRow[] = [
   { data: 'Sosyal bölüm bildirimleri (raporlar) ve moderasyon kayıtları', period: 'Kayıt tarihinden itibaren 2 yıl; hesabınızı silerseniz sizin yaptığınız bildirimler derhal silinir' },
   { data: 'Sosyal bölümdeki paylaşım işlemlerine ait trafik bilgileri (IP adresi, bağlantı noktası, zaman, işlem türü)', period: '5651 sayılı Kanun’un 5. maddesi uyarınca 1 yıl; süre sonunda silinir' },
   { data: 'Satın alma anahtarı ve Plus durumu', period: 'Hesabınız açık olduğu sürece' },
-  { data: 'Satın alma işlem kayıtları (sipariş numarası, ürün, tarih ve e-posta adresinizin geri döndürülemez özeti)', period: '6563 sayılı Kanun’un 11. maddesinin üçüncü fıkrası uyarınca işlem tarihinden itibaren 10 yıl; hesabınızı silseniz de bu süre boyunca saklanır' },
+  { data: 'Satın alma işlem kayıtları (sipariş numarası, ürün, tarih, satın alma anahtarının ve e-posta adresinizin geri döndürülemez özetleri)', period: '6563 sayılı Kanun’un 11. maddesinin üçüncü fıkrası uyarınca işlem tarihinden itibaren 10 yıl; hesabınızı silseniz de bu süre boyunca saklanır ve satın alımın başka bir hesapta kullanılmasını önlemek ile aynı e-posta adresiyle açtığınız yeni hesaba geri yüklenebilmesi için kullanılır' },
   { data: 'E-posta doğrulama kodları', period: '10 dakika' },
   { data: 'Şifre sıfırlama bağlantıları', period: '1 saat' },
   { data: 'Oturum anahtarları', period: 'En fazla 180 gün; çıkış yaptığınızda geçersiz kılınır' },

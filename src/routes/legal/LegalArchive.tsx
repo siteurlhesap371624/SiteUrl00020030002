@@ -21,8 +21,8 @@ export default function LegalArchive() {
             </p>
             <Callout>
               <p>
-                8 Ekim 2026’dan önce hesap oluşturmuş ve güncel Kullanım Koşulları’nı henüz onaylamamış kullanıcılar
-                için, onaylayana veya hesaplarını silene kadar aşağıdaki önceki Kullanım Şartları geçerliliğini korur.
+                Güncel Kullanım Koşulları yayımlanmadan önce hesap oluşturmuş ve bu koşulları henüz onaylamamış
+                kullanıcılar için, onaylayana veya hesaplarını silene kadar aşağıdaki önceki Kullanım Şartları geçerliliğini korur.
                 Kişisel verilerin işlenmesine ilişkin güncel bilgilendirme ise herkes için güncel Gizlilik Politikası ve
                 KVKK Aydınlatma Metni’dir.
               </p>
