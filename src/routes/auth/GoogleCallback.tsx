@@ -76,7 +76,7 @@ export default function GoogleCallback() {
     authApi
       .googleCallback({ code, state })
       .then((res) => {
-        setSession(res.token, res.user)
+        setSession(res.token, res.user, false, res.legal ?? null)
         toast(`Hoş geldiniz, ${res.user.name || res.user.email}`, { variant: 'success' })
         navigate(redirect, { replace: true })
       })

@@ -5,9 +5,20 @@ export interface AuthUser {
   avatarUrl?: string | null
 }
 
+export interface LegalState {
+  termsVersion: string | null
+  termsAcceptedAt: string | null
+  termsUpToDate: boolean
+  trainingConsent: boolean
+  specialConsent: boolean
+  current: { terms: string; privacy: string; consent: string }
+}
+
 export interface AuthResponse {
   token: string
   user: AuthUser
+  isPremium?: boolean
+  legal?: LegalState
 }
 
 export interface SessionResponse {
@@ -17,6 +28,7 @@ export interface SessionResponse {
   isPremium?: boolean
   subscriptionEndDate?: string | null
   token?: string
+  legal?: LegalState
 }
 
 export interface ChatSummary {

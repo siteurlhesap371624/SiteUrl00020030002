@@ -10,8 +10,8 @@ import { Button } from '@/components/ui/Button'
 import { Turnstile } from '@/components/auth/Turnstile'
 import { GoogleButton } from '@/components/auth/GoogleButton'
 import { SeoHead } from '@/components/ui/SeoHead'
-import { ConsentChecks } from '@/components/legal/ConsentChecks'
-import { ApiError, authApi } from '@/lib/api'
+import { ConsentChecks, type ConsentChoice } from '@/components/legal/ConsentChecks'
+import { ApiError, authApi, buildConsent } from '@/lib/api'
 import { useUIStore } from '@/lib/store/ui'
 
 const schema = z
@@ -36,6 +36,8 @@ export default function Register() {
   const [showPwd, setShowPwd] = useState(false)
   const [tsToken, setTsToken] = useState<string | null>(null)
   const [submitting, setSubmitting] = useState(false)
+  const [training, setTraining] = useState<ConsentChoice>(null)
+  const [special, setSpecial] = useState<ConsentChoice>(null)
   const navigate = useNavigate()
   const toast = useUIStore((s) => s.toast)
 
@@ -65,6 +67,12 @@ export default function Register() {
         email: data.email.trim().toLowerCase(),
         password: data.password,
         turnstileToken: tsToken,
+        consent: buildConsent({
+          acceptTerms: true,
+          training: training === 'grant',
+          special: special === 'grant',
+          channel: 'web-register',
+        }),
       })
       toast('E-postanıza doğrulama kodu gönderildi.', { variant: 'success' })
       navigate(`/e-posta-dogrula?email=${encodeURIComponent(data.email.trim().toLowerCase())}`)
@@ -148,6 +156,11 @@ export default function Register() {
             }
             termsError={errors.accept?.message}
             noticeError={errors.notice?.message}
+            showOptional
+            training={training}
+            onTrainingChange={setTraining}
+            special={special}
+            onSpecialChange={setSpecial}
           />
 
           <Turnstile onToken={setTsToken} onExpire={() => setTsToken(null)} />

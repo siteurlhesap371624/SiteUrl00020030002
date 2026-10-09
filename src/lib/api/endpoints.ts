@@ -1,5 +1,6 @@
 import { api } from './client'
 import { downloadProtectedFile } from './download'
+import type { ConsentPayload } from './legal'
 import type {
   AuthResponse,
   SkillInfo,
@@ -33,7 +34,13 @@ export const authApi = {
   verifyGate: (turnstileToken: string) =>
     api.post<VerifyGateResponse>('/verify-gate', { token: turnstileToken }, { auth: false }),
 
-  registerStart: (data: { name: string; email: string; password: string; turnstileToken: string }) =>
+  registerStart: (data: {
+    name: string
+    email: string
+    password: string
+    turnstileToken: string
+    consent?: ConsentPayload
+  }) =>
     api.post<EmailCodeResponse>('/auth/register/start', data, { auth: false }),
 
   registerVerify: (data: { email: string; code: string }) =>

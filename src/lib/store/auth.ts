@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 import { STORAGE_KEYS } from '@/lib/config'
-import { authApi, type AuthUser } from '@/lib/api'
+import { authApi, type AuthUser, type LegalState } from '@/lib/api'
 import { safeJsonParse } from '@/lib/utils'
 import { useForumStore } from '@/lib/store/forum'
 
@@ -10,9 +10,11 @@ interface AuthState {
   isPremium: boolean
   isHydrated: boolean
   isLoading: boolean
+  legal: LegalState | null
 
   hydrate: () => void
-  setSession: (token: string, user: AuthUser, isPremium?: boolean) => void
+  setSession: (token: string, user: AuthUser, isPremium?: boolean, legal?: LegalState | null) => void
+  setLegal: (legal: LegalState | null) => void
   refresh: () => Promise<void>
   logout: () => Promise<void>
 }
@@ -35,6 +37,7 @@ export const useAuthStore = create<AuthState>((set, get) => ({
   isPremium: false,
   isHydrated: false,
   isLoading: false,
+  legal: null,
 
   hydrate: () => {
     if (get().isHydrated) return
@@ -51,10 +54,13 @@ export const useAuthStore = create<AuthState>((set, get) => ({
     }
   },
 
-  setSession: (token, user, isPremium = false) => {
+  setSession: (token, user, isPremium = false, legal = null) => {
     persist(token, user)
-    set({ token, user, isPremium })
+    set({ token, user, isPremium, legal })
+    void get().refresh()
   },
+
+  setLegal: (legal) => set({ legal }),
 
   refresh: async () => {
     const requestToken = get().token
@@ -64,13 +70,13 @@ export const useAuthStore = create<AuthState>((set, get) => ({
       if (get().token !== requestToken) return
       if (!res.valid) {
         persist(null, null)
-        set({ token: null, user: null, isPremium: false })
+        set({ token: null, user: null, isPremium: false, legal: null })
         useForumStore.getState().reset()
       } else if (res.user) {
         const merged = { ...(get().user ?? {}), ...res.user } as AuthUser
         const token = res.token ?? get().token
         persist(token, merged)
-        set({ token, user: merged, isPremium: !!res.isPremium })
+        set({ token, user: merged, isPremium: !!res.isPremium, legal: res.legal ?? get().legal })
       }
     } catch {
       return
@@ -82,7 +88,7 @@ export const useAuthStore = create<AuthState>((set, get) => ({
   logout: async () => {
     await authApi.logout()
     persist(null, null)
-    set({ token: null, user: null, isPremium: false })
+    set({ token: null, user: null, isPremium: false, legal: null })
     useForumStore.getState().reset()
     const { useChatStore } = await import('@/lib/store/chat')
     useChatStore.getState().resetSession()

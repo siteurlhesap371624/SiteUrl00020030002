@@ -1,6 +1,7 @@
 import { Outlet, ScrollRestoration } from 'react-router-dom'
 import { Header } from './Header'
 import { Footer } from './Footer'
+import { ConsentGate } from '@/components/legal/ConsentGate'
 
 export function MainLayout() {
   return (
@@ -10,6 +11,7 @@ export function MainLayout() {
         <Outlet />
       </main>
       <Footer />
+      <ConsentGate />
       <ScrollRestoration />
     </div>
   )

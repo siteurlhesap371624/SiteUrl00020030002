@@ -4,6 +4,7 @@ import { Dialog } from '@/components/ui/Dialog'
 import { Button } from '@/components/ui/Button'
 import { Badge } from '@/components/ui/Badge'
 import { Input } from '@/components/ui/Input'
+import { PrivacyPreferences } from '@/components/legal/PrivacyPreferences'
 import { useAuthStore } from '@/lib/store/auth'
 import { useUIStore } from '@/lib/store/ui'
 import { authApi, subscriptionApi, ApiError, type SubscriptionResponse } from '@/lib/api'
@@ -109,12 +110,15 @@ export function SubscriptionDialog({ open, onClose }: SubscriptionDialogProps) {
           <p className="text-[12px] text-fg-dim">Durum yükleniyor...</p>
         ) : null}
 
+        {user ? <PrivacyPreferences /> : null}
+
         {user ? (
         <div className="rounded-[var(--radius-lg)] border border-[color:var(--color-danger)]/30 p-5">
           <h3 className="text-[14.5px] font-semibold text-[color:var(--color-danger)]">Tehlikeli alan</h3>
           <p className="mt-1 text-[13px] text-fg-muted">
             Hesabınızı silerseniz tüm konuşma geçmişiniz, kişiselleştirme ayarlarınız, Sosyal bölüm paylaşımlarınız ve
-            Plus hakkınız kalıcı olarak silinir. Bu işlem geri alınamaz.
+            Plus hakkınız kalıcı olarak silinir. Kanunen saklamakla yükümlü olduğumuz kayıtlar, Gizlilik Politikası’nda
+            belirtilen süreler boyunca erişimi kısıtlanarak saklanır. Bu işlem geri alınamaz.
           </p>
           {!deleteOpen ? (
             <Button

@@ -70,15 +70,15 @@ export function GoogleButton({ full = true, label = 'Google ile devam et' }: Goo
         {label}
       </Button>
       <p className="mt-2 text-center text-[11.5px] leading-snug text-fg-dim">
-        Google ile devam ederek{' '}
+        Google ile ilk girişinizde{' '}
         <a href="/sartlar" target="_blank" rel="noopener noreferrer" className="text-fg-muted hover:underline">
           Kullanım Koşulları
         </a>
-        ’nı kabul etmiş olursunuz. Verilerinizin işlenmesi{' '}
+        ’nı onaylamanız ve{' '}
         <a href="/kvkk" target="_blank" rel="noopener noreferrer" className="text-fg-muted hover:underline">
           Aydınlatma Metni
         </a>
-        ’nde açıklanmıştır.
+        ’ni okuduğunuzu belirtmeniz istenir.
       </p>
     </>
   )

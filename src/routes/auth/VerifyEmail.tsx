@@ -69,7 +69,7 @@ export default function VerifyEmail() {
     setSubmitting(true)
     try {
       const res = await authApi.registerVerify({ email, code })
-      setSession(res.token, res.user)
+      setSession(res.token, res.user, false, res.legal ?? null)
       toast('Hesabınız oluşturuldu', { variant: 'success' })
       navigate('/sohbet')
     } catch (err) {

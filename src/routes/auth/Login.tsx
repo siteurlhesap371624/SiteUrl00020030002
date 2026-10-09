@@ -49,7 +49,7 @@ export default function Login() {
         password: data.password,
         turnstileToken: tsToken,
       })
-      setSession(res.token, res.user)
+      setSession(res.token, res.user, false, res.legal ?? null)
       toast(`Hoş geldiniz, ${res.user.name || res.user.email}`, { variant: 'success' })
       const redirect = safeRedirectPath(new URLSearchParams(location.search).get('redirect'))
       navigate(redirect)

@@ -13,6 +13,7 @@ interface DialogProps {
   footer?: ReactNode
   size?: 'sm' | 'md' | 'lg' | 'xl'
   closeOnBackdrop?: boolean
+  dismissible?: boolean
 }
 
 const sizeClasses = {
@@ -60,6 +61,7 @@ export function Dialog({
   footer,
   size = 'md',
   closeOnBackdrop = true,
+  dismissible = true,
 }: DialogProps) {
   const panelRef = useRef<HTMLDivElement | null>(null)
 
@@ -77,7 +79,7 @@ export function Dialog({
     })
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
-        onClose()
+        if (dismissible) onClose()
         return
       }
       if (e.key !== 'Tab') return
@@ -112,7 +114,7 @@ export function Dialog({
       unlockBodyScroll()
       if (previouslyFocused && typeof previouslyFocused.focus === 'function') previouslyFocused.focus()
     }
-  }, [open, onClose])
+  }, [open, onClose, dismissible])
 
   if (typeof document === 'undefined') return null
 
@@ -126,7 +128,7 @@ export function Dialog({
             exit={{ opacity: 0 }}
             transition={{ duration: 0.18 }}
             className="absolute inset-0 bg-black/60 backdrop-blur-md"
-            onClick={closeOnBackdrop ? onClose : undefined}
+            onClick={closeOnBackdrop && dismissible ? onClose : undefined}
           />
           <m.div
             ref={panelRef}
@@ -154,14 +156,16 @@ export function Dialog({
                   <p className="mt-1 text-[13px] text-fg-muted">{description}</p>
                 ) : null}
               </div>
-              <button
-                type="button"
-                onClick={onClose}
-                aria-label="Kapat"
-                className="-mt-1 -mr-2 inline-flex h-9 w-9 items-center justify-center rounded-full text-fg-muted hover:text-fg hover:bg-white/[0.06] transition-colors"
-              >
-                <X className="h-4 w-4" />
-              </button>
+              {dismissible ? (
+                <button
+                  type="button"
+                  onClick={onClose}
+                  aria-label="Kapat"
+                  className="-mt-1 -mr-2 inline-flex h-9 w-9 items-center justify-center rounded-full text-fg-muted hover:text-fg hover:bg-white/[0.06] transition-colors"
+                >
+                  <X className="h-4 w-4" />
+                </button>
+              ) : null}
             </div>
             <div className="flex-1 min-h-0 overflow-y-auto overscroll-contain px-6 py-5">
               {children}
