@@ -81,8 +81,8 @@ export const chatApi = {
 
   send: (payload: SendChatPayload) => api.post<SendChatResponse>('/chat', payload),
 
-  guest: (payload: GuestChatPayload) =>
-    api.post<GuestChatResponse>('/guest-chat', payload, { auth: false }),
+  guest: (payload: GuestChatPayload, gateToken: string) =>
+    api.post<GuestChatResponse>('/guest-chat', payload, { auth: false, headers: { 'X-Gate-Token': gateToken } }),
 }
 
 export const personalizationApi = {

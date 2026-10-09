@@ -1,5 +1,6 @@
 import { create } from 'zustand'
 import {
+  ApiError,
   chatApi,
   streamRequest,
   workspaceApi,
@@ -13,6 +14,7 @@ import {
 } from '@/lib/api'
 import { LIMITS, MODELS, STORAGE_KEYS, type ChatMode, type ModelId } from '@/lib/config'
 import { safeJsonParse } from '@/lib/utils'
+import { clearGateToken, readGateToken } from '@/lib/guestGate'
 import { useAuthStore } from './auth'
 
 interface GuestChat {
@@ -38,8 +40,10 @@ interface ChatState {
   guestChats: GuestChat[]
   guestActiveId: string | null
   guestQuestionsLeft: number
+  guestGateReady: boolean
 
   hydrate: () => void
+  setGuestGateReady: (ready: boolean) => void
   setModel: (model: ModelId) => void
   setMode: (mode: ChatMode) => void
   setAgentMode: (on: boolean) => void
@@ -250,6 +254,7 @@ export const useChatStore = create<ChatState>((set, get) => ({
   guestChats: [],
   guestActiveId: null,
   guestQuestionsLeft: LIMITS.guestQuestionsPerSession,
+  guestGateReady: false,
 
   hydrate: () => {
     try {
@@ -264,11 +269,14 @@ export const useChatStore = create<ChatState>((set, get) => ({
         mode: storedMode,
         guestChats,
         guestQuestionsLeft: left,
+        guestGateReady: readGateToken() !== null,
       })
     } catch {
       return
     }
   },
+
+  setGuestGateReady: (ready) => set({ guestGateReady: ready }),
 
   setModel: (model) => {
     persistModelPrefs(model, get().mode)
@@ -358,6 +366,11 @@ export const useChatStore = create<ChatState>((set, get) => ({
       if (left <= 0) {
         return { ok: false, error: 'Misafir hakkınız doldu. Hesap oluşturun.' }
       }
+      const gateToken = readGateToken()
+      if (!gateToken) {
+        set({ guestGateReady: false })
+        return { ok: false, error: 'Devam etmek için güvenlik doğrulamasını tamamlayın.' }
+      }
       let activeId = get().guestActiveId
       const guestChats = [...get().guestChats]
       if (!activeId) {
@@ -378,7 +391,7 @@ export const useChatStore = create<ChatState>((set, get) => ({
       set({ guestChats, messages: [...chat.messages], isSending: true })
 
       try {
-        const res = await chatApi.guest({ message: trimmed, model, mode, history })
+        const res = await chatApi.guest({ message: trimmed, model, mode, history }, gateToken)
         chat.messages.push({
           role: 'assistant',
           content: res.response,
@@ -391,6 +404,12 @@ export const useChatStore = create<ChatState>((set, get) => ({
         set({ guestChats: [...guestChats], messages: [...chat.messages], guestQuestionsLeft: newLeft })
         return { ok: true }
       } catch (err) {
+        if (err instanceof ApiError && err.status === 401) {
+          clearGateToken()
+          chat.messages.pop()
+          set({ guestChats: [...guestChats], messages: [...chat.messages], guestGateReady: false })
+          return { ok: false, error: 'Devam etmek için güvenlik doğrulamasını yeniden tamamlayın.' }
+        }
         const errorMsg = err instanceof Error ? err.message : 'Yanıt alınamadı'
         chat.messages.push({
           role: 'assistant',

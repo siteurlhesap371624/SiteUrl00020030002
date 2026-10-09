@@ -52,7 +52,9 @@ export default function Cookies() {
               ['marul.chat.model, marul.chat.mode', 'Yerel depolama, Marul AI', 'Seçtiğiniz modelin ve yanıt modunun hatırlanması', 'Siz silene kadar'],
               ['marul.ui.sidebarCollapsed', 'Yerel depolama, Marul AI', 'Kenar çubuğu görünüm tercihinin hatırlanması', 'Siz silene kadar'],
               ['marul.oauth.state, marul.oauth.redirect', 'Oturum depolama, Marul AI', 'Google ile girişte sahte istekleri engelleyen güvenlik değeri ve dönüş adresi', 'Sekme kapatılana kadar'],
-              ['Cloudflare Turnstile', 'Üçüncü taraf, Cloudflare, Inc.', 'Giriş, kayıt ve şifre sıfırlama formlarında otomatik (bot) istekleri ayırt etmek', 'Cloudflare’in kendi politikalarına göre'],
+              ['marul.gate.token', 'Yerel depolama, Marul AI', 'Misafir sohbetinde güvenlik doğrulamasını tamamladığınızı gösteren imzalı anahtar', '24 saat'],
+              ['marul.registration', 'Oturum depolama, Marul AI', 'E-posta doğrulamasının kaydı başlattığınız tarayıcıda tamamlandığını gösteren güvenlik değeri', 'Doğrulama tamamlanana veya sekme kapatılana kadar'],
+              ['Cloudflare Turnstile', 'Üçüncü taraf, Cloudflare, Inc.', 'Giriş, kayıt ve şifre sıfırlama formlarında ve misafir sohbetinde otomatik (bot) istekleri ayırt etmek', 'Cloudflare’in kendi politikalarına göre'],
               ['Cloudflare güvenlik çerezleri (ör. __cf_bm)', 'Üçüncü taraf, Cloudflare, Inc.', 'Sitemize ve sunucumuza gelen kötü amaçlı trafiği ayırt etmek; Cloudflare gerekli gördüğünde ayarlar', 'Genellikle 30 dakika'],
             ]}
           />

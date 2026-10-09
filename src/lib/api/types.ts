@@ -11,7 +11,7 @@ export interface LegalState {
   termsUpToDate: boolean
   trainingConsent: boolean
   specialConsent: boolean
-  current: { terms: string; privacy: string; consent: string }
+  current: { terms: string; privacy: string; consent: string; plus?: string }
 }
 
 export interface AuthResponse {

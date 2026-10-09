@@ -5,6 +5,7 @@ import { useAuthStore } from '@/lib/store/auth'
 import { useUIStore } from '@/lib/store/ui'
 import { LIMITS, MODELS, type ModelId } from '@/lib/config'
 import { cn } from '@/lib/utils'
+import { GuestGate } from './GuestGate'
 
 interface ComposerProps {
   disabled?: boolean
@@ -19,6 +20,7 @@ export function Composer({ disabled, onSent }: ComposerProps) {
   const model = useChatStore((s) => s.model)
   const setModel = useChatStore((s) => s.setModel)
   const guestLeft = useChatStore((s) => s.guestQuestionsLeft)
+  const guestGateReady = useChatStore((s) => s.guestGateReady)
   const messagesLen = useChatStore((s) => s.messages.length)
   const messageCount = useChatStore((s) => s.messages.filter((m) => m.role === 'user').length)
   const token = useAuthStore((s) => s.token)
@@ -60,6 +62,7 @@ export function Composer({ disabled, onSent }: ComposerProps) {
   return (
     <div className="border-t border-[color:var(--color-border)] bg-[color:var(--color-bg)]/95 backdrop-blur-xl">
       <div className="mx-auto w-full max-w-3xl px-3 py-3 md:px-6 md:py-4">
+        {!token && !guestGateReady ? <GuestGate /> : null}
         <div
           className={cn(
             'group relative rounded-[var(--radius-xl)] border bg-[color:var(--color-surface)] transition-colors',
