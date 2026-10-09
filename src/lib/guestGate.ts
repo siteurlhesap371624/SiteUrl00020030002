@@ -7,7 +7,10 @@ export function readGateToken(): string | null {
     const raw = localStorage.getItem(STORAGE_KEYS.gateToken)
     if (!raw) return null
     const parsed = JSON.parse(raw) as { token?: string; exp?: number }
-    if (typeof parsed.token !== 'string' || typeof parsed.exp !== 'number' || parsed.exp < Date.now()) return null
+    if (typeof parsed.token !== 'string' || typeof parsed.exp !== 'number' || parsed.exp < Date.now()) {
+      localStorage.removeItem(STORAGE_KEYS.gateToken)
+      return null
+    }
     return parsed.token
   } catch {
     return null

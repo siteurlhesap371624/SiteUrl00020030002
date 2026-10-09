@@ -10,6 +10,7 @@ import { useUIStore } from '@/lib/store/ui'
 import { authApi, subscriptionApi, ApiError, type SubscriptionResponse } from '@/lib/api'
 import { config } from '@/lib/config'
 import { DELETE_CONFIRM_PHRASE, isDeleteConfirmation } from '@/lib/utils'
+import { CONTROLLER } from '@/content/legal/entity'
 
 interface SubscriptionDialogProps {
   open: boolean
@@ -97,8 +98,8 @@ export function SubscriptionDialog({ open, onClose }: SubscriptionDialogProps) {
         ) : (
           <div className="rounded-[var(--radius-lg)] border border-[color:var(--color-border)] p-5">
             <p className="text-[13px] text-fg-muted">
-              Plus tek seferlik bir satın almadır; otomatik olarak yenilenmez. İade talepleriniz Google Play’in iade
-              süreci üzerinden değerlendirilir.
+              Plus tek seferlik bir satın almadır; otomatik olarak yenilenmez. İade ve şikâyet taleplerinizi Google
+              Play’in iade süreci üzerinden veya {CONTROLLER.email} adresine e-posta ile iletebilirsiniz.
             </p>
           </div>
         )}
@@ -117,9 +118,10 @@ export function SubscriptionDialog({ open, onClose }: SubscriptionDialogProps) {
         <div className="rounded-[var(--radius-lg)] border border-[color:var(--color-danger)]/30 p-5">
           <h3 className="text-[14.5px] font-semibold text-[color:var(--color-danger)]">Tehlikeli alan</h3>
           <p className="mt-1 text-[13px] text-fg-muted">
-            Hesabınızı silerseniz tüm konuşma geçmişiniz, kişiselleştirme ayarlarınız, Sosyal bölüm paylaşımlarınız ve
-            Plus hakkınız kalıcı olarak silinir. Kanunen saklamakla yükümlü olduğumuz kayıtlar, Gizlilik Politikası’nda
-            belirtilen süreler boyunca erişimi kısıtlanarak saklanır. Bu işlem geri alınamaz.
+            Hesabınızı silerseniz tüm konuşma geçmişiniz, kişiselleştirme ayarlarınız ve Sosyal bölüm paylaşımlarınız
+            kalıcı olarak silinir; Plus hakkınız bu hesaptan kaldırılır. Kanunen saklamakla yükümlü olduğumuz kayıtlar ile olası uyuşmazlıklarda
+            ispat için gereken onay, moderasyon ve silme kayıtları, Gizlilik Politikası’nda belirtilen süreler boyunca
+            erişimi kısıtlanarak saklanır. Bu işlem geri alınamaz.
           </p>
           {!deleteOpen ? (
             <Button

@@ -201,10 +201,10 @@ function ConsentGateDialog() {
       ) : (
         <div className="space-y-3">
           <p className="text-[13.5px] leading-relaxed text-fg-muted">
-            Hesabınız, sohbet geçmişiniz, kişiselleştirme ayarlarınız, Sosyal bölüm paylaşımlarınız ve Plus hakkınız
-            kalıcı olarak silinir. Kanunen
-            saklamakla yükümlü olduğumuz kayıtlar, Gizlilik Politikası’nda belirtilen süreler boyunca erişimi
-            kısıtlanarak saklanır. Bu işlem geri alınamaz.
+            Hesabınız, sohbet geçmişiniz, kişiselleştirme ayarlarınız ve Sosyal bölüm paylaşımlarınız kalıcı olarak
+            silinir; Plus hakkınız bu hesaptan kaldırılır. Kanunen saklamakla yükümlü olduğumuz kayıtlar ile olası uyuşmazlıklarda
+            ispat için gereken onay, moderasyon ve silme kayıtları, Gizlilik Politikası’nda belirtilen süreler boyunca
+            erişimi kısıtlanarak saklanır. Bu işlem geri alınamaz.
           </p>
           <Input
             label='Onaylamak için "HESABIMI SIL" yazın'

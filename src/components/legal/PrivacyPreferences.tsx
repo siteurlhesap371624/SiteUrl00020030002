@@ -104,7 +104,9 @@ export function PrivacyPreferences() {
             />
           }
         >
-          Sohbet içeriklerinizin anonim hale getirilerek Marul AI dil modellerinin geliştirilmesinde kullanılması.
+          Sohbet içeriklerinizin anonim hale getirilerek Marul AI dil modellerinin geliştirilmesinde kullanılması ve
+          bu amaçla sohbetlerinizdeki özel nitelikli kişisel verilerin veri setinden çıkarılması için otomatik
+          araçlarla tespit edilmesi.
           Ayrıntılar{' '}
           <a href="/acik-riza#egitim" target="_blank" rel="noopener noreferrer" className="text-fg hover:underline">
             Açık Rıza Metni
@@ -135,8 +137,8 @@ export function PrivacyPreferences() {
           ’nde.
         </Row>
         <p className="text-[12px] leading-relaxed text-fg-dim">
-          Rızanızı geri almanız, geri alma tarihinden önceki işlemleri etkilemez. Bu tercihler hizmetin temel
-          özelliklerinden yararlanmanızı etkilemez.
+          Rızanızı geri almanız, geri alma tarihinden önceki işlemleri etkilemez. Bu tercihler hizmetin hiçbir
+          özelliğinden yararlanmanızı etkilemez.
         </p>
         <div className="flex flex-wrap items-center gap-3 border-t border-[color:var(--color-border)] pt-4">
           <Button
