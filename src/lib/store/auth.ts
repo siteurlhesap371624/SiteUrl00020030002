@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 import { STORAGE_KEYS } from '@/lib/config'
-import { authApi, type AuthUser, type LegalState } from '@/lib/api'
+import { authApi, onTermsRequired, type AuthUser, type LegalState } from '@/lib/api'
 import { safeJsonParse } from '@/lib/utils'
 import { useForumStore } from '@/lib/store/forum'
 
@@ -94,3 +94,7 @@ export const useAuthStore = create<AuthState>((set, get) => ({
     useChatStore.getState().resetSession()
   },
 }))
+
+onTermsRequired(() => {
+  void useAuthStore.getState().refresh()
+})

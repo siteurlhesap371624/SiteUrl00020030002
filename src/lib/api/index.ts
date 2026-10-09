@@ -1,4 +1,4 @@
-export { api, ApiError, request } from './client'
+export { api, ApiError, request, onTermsRequired } from './client'
 export * from './endpoints'
 export * from './types'
 export * from './stream'

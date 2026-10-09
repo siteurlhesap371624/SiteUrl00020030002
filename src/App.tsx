@@ -58,6 +58,16 @@ export default function App() {
     cleanupLegacySiteData()
   }, [hydrateAuth, hydrateChat])
 
+  useEffect(() => {
+    const onVisible = () => {
+      if (document.visibilityState !== 'visible') return
+      const state = useAuthStore.getState()
+      if (state.token && !state.legal && !state.isLoading) void state.refresh()
+    }
+    document.addEventListener('visibilitychange', onVisible)
+    return () => document.removeEventListener('visibilitychange', onVisible)
+  }, [])
+
   return (
     <LazyMotion features={domAnimation} strict>
       <RouterProvider router={router} />

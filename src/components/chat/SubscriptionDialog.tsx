@@ -9,6 +9,7 @@ import { useAuthStore } from '@/lib/store/auth'
 import { useUIStore } from '@/lib/store/ui'
 import { authApi, subscriptionApi, ApiError, type SubscriptionResponse } from '@/lib/api'
 import { config } from '@/lib/config'
+import { DELETE_CONFIRM_PHRASE, isDeleteConfirmation } from '@/lib/utils'
 
 interface SubscriptionDialogProps {
   open: boolean
@@ -143,11 +144,11 @@ export function SubscriptionDialog({ open, onClose }: SubscriptionDialogProps) {
                   size="sm"
                   variant="danger"
                   loading={deleting}
-                  disabled={confirmText !== 'HESABIMI SIL'}
+                  disabled={!isDeleteConfirmation(confirmText)}
                   onClick={async () => {
                     setDeleting(true)
                     try {
-                      await authApi.deleteAccount(confirmText)
+                      await authApi.deleteAccount(DELETE_CONFIRM_PHRASE)
                       toast('Hesabınız silindi.', { variant: 'success' })
                       await logout()
                       window.location.assign('/')

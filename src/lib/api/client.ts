@@ -44,6 +44,17 @@ function clearAuthLocal() {
   }
 }
 
+let termsRequiredHandler: (() => void) | null = null
+
+export function onTermsRequired(handler: () => void) {
+  termsRequiredHandler = handler
+}
+
+export function notifyTermsRequired(status: number, payload: unknown) {
+  if (status !== 403 || !payload || typeof payload !== 'object') return
+  if ((payload as { code?: unknown }).code === 'TERMS_REQUIRED') termsRequiredHandler?.()
+}
+
 export async function request<T = unknown>(
   path: string,
   init: RequestInitJson = {},
@@ -90,6 +101,7 @@ export async function request<T = unknown>(
     if (res.status === 401 && auth) {
       clearAuthLocal()
     }
+    notifyTermsRequired(res.status, payload)
     const message =
       (payload && typeof payload === 'object' && 'error' in payload && typeof (payload as { error: unknown }).error === 'string'
         ? (payload as { error: string }).error

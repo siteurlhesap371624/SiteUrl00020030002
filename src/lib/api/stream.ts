@@ -1,5 +1,5 @@
 import { config, STORAGE_KEYS } from '@/lib/config'
-import { ApiError } from './client'
+import { ApiError, notifyTermsRequired } from './client'
 
 export interface StreamEvent {
   event: string
@@ -83,6 +83,7 @@ export async function streamRequest(
         : response.status === 429
           ? 'Çok fazla istek gönderdiniz. Lütfen biraz bekleyin.'
           : 'Sunucu şu anda yanıt vermiyor.'
+    notifyTermsRequired(response.status, payload)
     throw new ApiError(message, response.status, payload)
   }
 

@@ -7,20 +7,16 @@ import { ConsentChecks, type ConsentChoice } from '@/components/legal/ConsentChe
 import { LEGAL_PATHS } from '@/content/legal/entity'
 import { ApiError, authApi, buildConsent, legalApi } from '@/lib/api'
 import { useAuthStore } from '@/lib/store/auth'
-import type { LegalState } from '@/lib/api'
+import { DELETE_CONFIRM_PHRASE, isDeleteConfirmation } from '@/lib/utils'
 import { useUIStore } from '@/lib/store/ui'
 
 const EXEMPT_PATHS = new Set<string>([...LEGAL_PATHS, '/yasal-arsiv', '/iletisim', '/oauth/google', '/e-posta-dogrula', '/sifre-yenile'])
 
-const CHANGES = [
-  'Kullanım Koşulları; yapay zeka çıktıları, Sosyal bölümü, Plus ve sorumluluk hükümleriyle yeniden düzenlendi.',
-  'KVKK Aydınlatma Metni ve Gizlilik Politikası, verilerin aktarıldığı tüm hizmet sağlayıcıları ve saklama süreleriyle güncellendi.',
-  'Sohbetlerin model geliştirmede kullanılması ve özel nitelikli verilerin işlenmesi artık yalnızca ayrı açık rızanızla mümkün.',
+const HIGHLIGHTS = [
+  'Kullanım Koşulları; yapay zeka çıktıları, Sosyal bölümü, Plus ve sorumluluk hükümlerini düzenler.',
+  'KVKK Aydınlatma Metni ve Gizlilik Politikası, verilerin aktarıldığı tüm hizmet sağlayıcıları ve saklama sürelerini açıklar.',
+  'Sohbetlerin model geliştirmede kullanılması ve özel nitelikli verilerin işlenmesi yalnızca ayrı açık rızanızla mümkündür.',
 ]
-
-function toChoice(value: boolean | undefined): ConsentChoice {
-  return value ? 'grant' : null
-}
 
 function toBoolean(choice: ConsentChoice): boolean | null {
   if (choice === 'grant') return true
@@ -33,18 +29,18 @@ export function ConsentGate() {
   const legal = useAuthStore((s) => s.legal)
   const location = useLocation()
   const open = !!user && !!legal && !legal.termsUpToDate && !EXEMPT_PATHS.has(location.pathname)
-  return open && legal ? <ConsentGateDialog legal={legal} /> : null
+  return open ? <ConsentGateDialog /> : null
 }
 
-function ConsentGateDialog({ legal }: { legal: LegalState }) {
+function ConsentGateDialog() {
   const setLegal = useAuthStore((s) => s.setLegal)
   const logout = useAuthStore((s) => s.logout)
   const toast = useUIStore((s) => s.toast)
 
   const [terms, setTerms] = useState(false)
   const [notice, setNotice] = useState(false)
-  const [training, setTraining] = useState<ConsentChoice>(() => toChoice(legal.trainingConsent))
-  const [special, setSpecial] = useState<ConsentChoice>(() => toChoice(legal.specialConsent))
+  const [training, setTraining] = useState<ConsentChoice>(null)
+  const [special, setSpecial] = useState<ConsentChoice>(null)
   const [termsError, setTermsError] = useState<string | undefined>()
   const [noticeError, setNoticeError] = useState<string | undefined>()
   const [saving, setSaving] = useState(false)
@@ -90,7 +86,7 @@ function ConsentGateDialog({ legal }: { legal: LegalState }) {
   const removeAccount = async () => {
     setDeleting(true)
     try {
-      await authApi.deleteAccount(confirmText)
+      await authApi.deleteAccount(DELETE_CONFIRM_PHRASE)
       toast('Hesabınız ve verileriniz silindi.', { variant: 'success' })
       await logout()
       window.location.assign('/')
@@ -135,7 +131,7 @@ function ConsentGateDialog({ legal }: { legal: LegalState }) {
           variant="danger"
           size="md"
           loading={deleting}
-          disabled={confirmText !== 'HESABIMI SIL'}
+          disabled={!isDeleteConfirmation(confirmText)}
           onClick={removeAccount}
         >
           Kalıcı olarak sil
@@ -149,7 +145,7 @@ function ConsentGateDialog({ legal }: { legal: LegalState }) {
       onClose={() => undefined}
       dismissible={false}
       size="lg"
-      title={view === 'ask' ? 'Sözleşme metinlerimiz güncellendi' : view === 'decline' ? 'Onay vermezseniz' : 'Hesabı sil'}
+      title={view === 'ask' ? 'Kullanım Koşulları’nı onaylayın' : view === 'decline' ? 'Onay vermezseniz' : 'Hesabı sil'}
       description={
         view === 'ask'
           ? 'Hesabınızla devam etmek için güncel Kullanım Koşulları’nı onaylamanız ve Aydınlatma Metni’ni okuduğunuzu belirtmeniz gerekiyor.'
@@ -160,9 +156,9 @@ function ConsentGateDialog({ legal }: { legal: LegalState }) {
       {view === 'ask' ? (
         <div className="space-y-5">
           <div>
-            <p className="text-[12px] font-semibold uppercase tracking-[0.06em] text-fg-dim">Neler değişti?</p>
+            <p className="text-[12px] font-semibold uppercase tracking-[0.06em] text-fg-dim">Güncel metinlerde öne çıkanlar</p>
             <ul className="mt-2 list-disc space-y-1.5 pl-5 text-[13px] leading-relaxed text-fg-muted">
-              {CHANGES.map((item) => (
+              {HIGHLIGHTS.map((item) => (
                 <li key={item}>{item}</li>
               ))}
             </ul>
@@ -190,8 +186,8 @@ function ConsentGateDialog({ legal }: { legal: LegalState }) {
       ) : view === 'decline' ? (
         <div className="space-y-3 text-[13.5px] leading-relaxed text-fg-muted">
           <p>
-            Güncel koşulları onaylamadan hesabınızla hizmeti kullanmaya devam edemezsiniz. Onaylayıncaya veya hesabınızı
-            silinceye kadar önceki sürüm sizin için geçerliliğini korur.
+            Güncel koşulları onaylamadan hesabınızla hizmeti kullanmaya devam edemezsiniz. Daha önce onayladığınız bir
+            sürüm varsa, onaylayıncaya veya hesabınızı silinceye kadar o sürüm sizin için geçerliliğini korur.
           </p>
           <p>
             Dilerseniz çıkış yapıp daha sonra karar verebilir, verilerinizin bir kopyasını indirebilir ya da hesabınızı
@@ -205,7 +201,8 @@ function ConsentGateDialog({ legal }: { legal: LegalState }) {
       ) : (
         <div className="space-y-3">
           <p className="text-[13.5px] leading-relaxed text-fg-muted">
-            Hesabınız, sohbet geçmişiniz, kişiselleştirme ayarlarınız ve Plus hakkınız kalıcı olarak silinir. Kanunen
+            Hesabınız, sohbet geçmişiniz, kişiselleştirme ayarlarınız, Sosyal bölüm paylaşımlarınız ve Plus hakkınız
+            kalıcı olarak silinir. Kanunen
             saklamakla yükümlü olduğumuz kayıtlar, Gizlilik Politikası’nda belirtilen süreler boyunca erişimi
             kısıtlanarak saklanır. Bu işlem geri alınamaz.
           </p>
