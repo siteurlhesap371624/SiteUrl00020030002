@@ -45,6 +45,11 @@ export default function ExplicitConsent() {
             her biri için ayrı ve önceden işaretlenmemiş seçimle verilir. Rızanın tarihi, metin sürümü ve verildiği
             kanal ispat amacıyla kayıt altına alınır.
           </p>
+          <p>
+            Bu metindeki açık rızalar yalnızca 18 yaşını doldurmuş kullanıcılar tarafından verilebilir. 18 yaşından
+            küçükseniz bu rızaları vermeyiniz; 18 yaşından küçük olduğunuzu öğrenmemiz halinde verdiğiniz rızalar
+            geçersiz sayılır ve sohbetleriniz model geliştirmede kullanılmaz.
+          </p>
         </Section>
 
         <Section id="egitim" number={2} title="Model geliştirme için açık rıza">
@@ -93,7 +98,8 @@ export default function ExplicitConsent() {
               <p>
                 “Açık Rıza Metni’nin 2. bölümünü okudum ve anladım. Sohbet içeriklerimin burada açıklanan kapsamda,
                 Marul AI dil modellerinin geliştirilmesi amacıyla anonim hale getirilerek işlenmesine özgür irademle
-                açık rıza veriyorum.”
+                açık rıza veriyorum. Bu kapsamda, veri setinden çıkarılması amacıyla sohbetlerimdeki özel nitelikli
+                kişisel verilerin otomatik araçlarla tespit edilmesine de açık rıza veriyorum.”
               </p>
             </Callout>
           </SubSection>
@@ -147,6 +153,7 @@ export default function ExplicitConsent() {
           <List
             items={[
               <>Web: Sohbet ekranı, sol menüdeki “Plan ve hesap” bölümü, “Gizlilik tercihleri”</>,
+              <>Android uygulaması: Menüdeki “Ayarlar” bölümü, “Gizlilik”</>,
               <>
                 E-posta: Kayıtlı e-posta adresinizden <MailLink email={CONTROLLER.email} subject="Açık rıza geri alma" />{' '}
                 adresine yazarak

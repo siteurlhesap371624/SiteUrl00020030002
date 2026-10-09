@@ -91,14 +91,19 @@ export default function Privacy() {
           <SubSection title="Özel nitelikli kişisel veriler">
             <p>
               Sağlık, din, etnik köken, siyasi düşünce, cinsel hayat veya biyometrik veri gibi özel nitelikli
-              kişisel verileri sizden talep etmiyoruz ve sohbetlerde paylaşmamanızı öneriyoruz. Bu tür verilerin
-              sohbetlerde işlenmesi yalnızca{' '}
-              <a className="text-fg hover:underline" href="/acik-riza#ozel-nitelikli">isteğe bağlı açık rızanıza</a>{' '}
-              dayanır. Rıza vermeniz halinde bu veriler yalnızca size yanıt üretilmesi ve sohbet geçmişinizin
-              saklanması amacıyla işlenir; başka bir amaçla kullanılmaz, sınıflandırılmaz, profil çıkarmak için
-              değerlendirilmez ve model geliştirmede kullanılmaz. Rıza vermediyseniz bu tür verileri mesajlarınıza
-              yazmamalısınız; yazdığınızı fark ederseniz ilgili sohbeti silebilir veya silinmesini bizden talep
-              edebilirsiniz.
+              kişisel verileri sizden talep etmiyoruz ve sohbetlerde paylaşmamanızı öneriyoruz. Bu tür verileri
+              kendi isteğinizle paylaşmak isterseniz{' '}
+              <a className="text-fg hover:underline" href="/acik-riza#ozel-nitelikli">isteğe bağlı açık rızanızı</a>{' '}
+              verebilirsiniz; bu durumda veriler yalnızca size yanıt üretilmesi ve sohbet geçmişinizin saklanması
+              amacıyla işlenir, başka bir amaçla kullanılmaz, sınıflandırılmaz, profil çıkarmak için
+              değerlendirilmez ve model geliştirmede kullanılmaz.
+            </p>
+            <p>
+              Sistemimiz özel nitelikli kişisel verileri otomatik olarak tespit etmez ve ayırmaz; yazdığınız her
+              mesaj, rıza verip vermemenizden bağımsız olarak aynı şekilde saklanır ve seçtiğiniz modele iletilir.
+              Açık rıza vermediyseniz bu tür verileri yazmamanızı rica ederiz. Yazdığınızı fark ederseniz ilgili
+              sohbeti dilediğiniz an silebilir veya silinmesini bizden talep edebilirsiniz; talebiniz üzerine sohbet
+              derhal silinir.
             </p>
           </SubSection>
         </Section>
@@ -124,15 +129,15 @@ export default function Privacy() {
         <Section id="yapay-zeka" number={5} title="Yapay zeka modelleri ve mesajlarınız">
           <List
             items={[
-              <><strong className="text-fg">Yedikule:</strong> Kendi geliştirdiğimiz bu model, kontrolümüzdeki bir bilgisayarda çalışır. Mesajlarınız modele şifreli bir tünel hizmeti (ngrok) üzerinden iletilir ve Groq’a gönderilmez.</>,
-              <><strong className="text-fg">Qwen3.6:</strong> Açık kaynak bu model, ABD merkezli Groq, Inc. altyapısında çalıştırılır. Mesajınız, sohbet geçmişinin modele verilen bölümü, adınız ve kişiselleştirme talimatınız yanıt üretilmesi için Groq’a iletilir. Bu sohbetlerin başlıkları da Groq üzerinden üretilir.</>,
-              <><strong className="text-fg">Agent ve web araması:</strong> Model, isteğinize göre arama sorguları oluşturabilir ve internet sayfalarını okuyabilir. Sorgular kendi arama altyapımız üzerinden arama motorlarına, gerektiğinde Brave Search veya Tavily’ye iletilir; sayfalar sunucumuz tarafından getirilir. Bu işlemlerde hesap bilgileriniz ve IP adresiniz üçüncü taraflara iletilmez, ancak sorguların içeriği mesajınızdan türetilebilir.</>,
+              <><strong className="text-fg">Yedikule:</strong> Kendi geliştirdiğimiz bu model, kontrolümüzdeki bir bilgisayarda çalışır. Mesajlarınız modele şifreli bir tünel hizmeti (ngrok) üzerinden iletilir ve Groq’a gönderilmez. İçerik iletim sırasında ngrok sunucularında çözülerek iletilir ve orada saklanmaz.</>,
+              <><strong className="text-fg">Qwen3.6:</strong> Açık kaynak bu model, ABD merkezli Groq, Inc. altyapısında çalıştırılır. Mesajınız, sohbet geçmişinin modele verilen bölümü, adınız ve kişiselleştirme talimatınız yanıt üretilmesi için Groq’a iletilir. Bu sohbetlerin başlıkları da Groq üzerinden üretilir. Qwen3.6 yanıt veremediğinde yanıt, aynı Groq altyapısında çalışan yedek açık kaynak modellerle üretilebilir.</>,
+              <><strong className="text-fg">Agent ve web araması:</strong> Model, isteğinize göre arama sorguları oluşturabilir ve internet sayfalarını okuyabilir. Sorgular kendi arama altyapımız üzerinden arama motorlarına, gerektiğinde Brave Search veya Tavily’ye iletilir; sayfalar sunucumuz tarafından getirilir. Sorgulara adınız, e-posta adresiniz, hesap bilgileriniz ve IP adresiniz eklenmez, ancak sorguların içeriği mesajınızdan türetilebilir. Arama motorları sorguları kendi adlarına veri sorumlusu olarak işler; bu nedenle mesajlarınıza ve görevlerinize kişisel veri yazmamanızı rica ederiz.</>,
             ]}
           />
           <p>
-            Model sağlayıcılarına iletilen veriler, bu sağlayıcılar tarafından hizmetin sunulması amacıyla ve kendi
-            politikaları çerçevesinde işlenir. Mesajlarınıza başkalarına ait kişisel veri, şifre, banka bilgisi veya
-            gizli bilgi yazmamanızı öneririz.
+            Groq ve ngrok, kendilerine iletilen verileri yalnızca hizmetin sunulması amacıyla, veri işleyen olarak
+            bizim adımıza işler. Mesajlarınıza başkalarına ait kişisel veri, şifre, banka bilgisi veya gizli bilgi
+            yazmamanızı öneririz.
           </p>
         </Section>
 
@@ -159,9 +164,10 @@ export default function Privacy() {
 
         <Section id="aktarim" number={8} title="Kimlerle paylaşıyoruz">
           <p>
-            Kişisel verilerinizi yalnızca hizmeti sunabilmek için gereken altyapı sağlayıcılarına, aşağıda belirtilen
-            amaçlarla ve gerekli olduğu ölçüde aktarırız. Bu sağlayıcılar veri işleyen olarak bizim adımıza ve
-            talimatlarımız doğrultusunda çalışır.
+            Kişisel verilerinizi yalnızca hizmeti sunabilmek için gereken hizmet sağlayıcılarına, aşağıda belirtilen
+            amaçlarla ve gerekli olduğu ölçüde aktarırız. Groq, Inc., Cloudflare, Inc., Resend ve ngrok, Inc. veri
+            işleyen olarak bizim adımıza ve yazılı talimatlarımız doğrultusunda çalışır. Google LLC, GitHub, Inc. ve
+            arama motorları ise kendilerine iletilen verileri kendi adlarına veri sorumlusu olarak işler.
           </p>
           <SubSection title="Yurt dışındaki hizmet sağlayıcılar">
             <LegalTable
@@ -171,10 +177,14 @@ export default function Privacy() {
             />
             <p>
               Bu aktarımlar hizmetin sunulması (KVKK md. 5/2-c) ve güvenliğinin sağlanması (KVKK md. 5/2-f)
-              amaçlarıyla yapılır. Kişisel Verileri Koruma Kurulu ABD için yeterlilik kararı vermemiştir; bu
-              sağlayıcılara yapılan aktarımlar için KVKK’nın 9. maddesinde öngörülen uygun güvence olan standart
-              sözleşme süreçleri yürütülür. Sağlayıcı bazında güncel durumu bize başvurarak öğrenebilirsiniz. Yurt
-              dışına aktarılan verilerinize ilişkin haklarınızı her durumda bize karşı kullanabilirsiniz.
+              amaçlarıyla yapılır. Kişisel Verileri Koruma Kurulu ABD için yeterlilik kararı vermemiştir. Veri
+              işleyen sağlayıcılarla KVKK’nın 9. maddesi uyarınca Kurulca ilan edilen standart sözleşmeler imzalanır
+              ve imza tarihinden itibaren beş iş günü içinde Kurula bildirilir. Google ile giriş, Google Play
+              ödemesi ve sitemizin barındırılması sırasında yapılan aktarımlar, sizinle kurduğumuz sözleşmenin ifası
+              için zorunlu olan ve sizin işleminizle başlayan aktarımlardır. Arama motorlarıyla standart sözleşme
+              imzalanması mümkün olmadığından arama sorgularına kimlik bilgileriniz eklenmez. Sağlayıcı bazında güncel
+              durumu bize başvurarak öğrenebilirsiniz. Yurt dışına aktarılan verilerinize ilişkin haklarınızı her
+              durumda bize karşı kullanabilirsiniz.
             </p>
             <p>
               Google ile giriş yaptığınızda ve Google Play üzerinden ödeme yaptığınızda bilgilerinizi doğrudan
@@ -257,7 +267,9 @@ export default function Privacy() {
             KVKK’nın 11. maddesi kapsamındaki haklarınızı (bilgi talep etme, düzeltme, silme, itiraz, zararın
             giderilmesini talep etme ve diğerleri) ve başvuru usulünü{' '}
             <a className="text-fg hover:underline" href="/kvkk">KVKK Aydınlatma Metni</a>’nde ayrıntılı olarak
-            bulabilirsiniz. Başvurularınızı en geç 30 gün içinde ücretsiz olarak sonuçlandırırız.
+            bulabilirsiniz. Başvurularınızı en geç 30 gün içinde sonuçlandırırız. Başvurular kural olarak
+            ücretsizdir; işlemin ayrıca bir maliyet gerektirmesi halinde Kurulca belirlenen tarifedeki ücret
+            alınabilir.
           </p>
           <SubSection title="Hesabınızı nasıl silersiniz">
             <List

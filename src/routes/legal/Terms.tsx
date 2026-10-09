@@ -115,7 +115,7 @@ export default function Terms() {
               'Kayıt sırasında doğru, güncel ve size ait bilgiler vermeniz gerekir. Başkası adına veya başkasına ait e-posta adresiyle hesap açamazsınız.',
               'Hesabınız kişiseldir; başkasına devredilemez, satılamaz, kiralanamaz veya ortak kullanıma açılamaz.',
               'Şifrenizin ve oturum açtığınız cihazların güvenliğinden siz sorumlusunuz. Hesabınızda yetkisiz bir işlem fark ederseniz derhal şifrenizi değiştirmeli ve bize bildirmelisiniz.',
-              'Bizim kusurumuzdan kaynaklanmadıkça, hesabınız üzerinden yapılan işlemler sizin tarafınızdan yapılmış sayılır.',
+              'Hesabınızın yetkisiz kişilerce kullanılmasından doğan zararlardan kendi kusurunuz oranında sorumlusunuz.',
               'Kullanım sınırlarını aşmak amacıyla birden fazla hesap açmak yasaktır.',
             ]}
           />
@@ -216,7 +216,7 @@ export default function Terms() {
               'Paylaşımlarınızın içerik sağlayıcısı sizsiniz ve 5651 sayılı Kanun uyarınca paylaştığınız içerikten bizzat sorumlusunuz. Biz, kullanıcı paylaşımları bakımından yer sağlayıcı, kendi sayfalarımız ve duyurularımız bakımından içerik sağlayıcıyız.',
               'Paylaşımları önceden kontrol etme veya hukuka aykırı bir faaliyetin olup olmadığını araştırma yükümlülüğümüz yoktur. Bize bildirilen içeriği inceler, mevzuata veya topluluk kurallarına aykırı bulduğumuz içeriği yayından kaldırırız.',
               'Topluluk kuralları gereğince hakaret, taciz, tehdit, nefret söylemi, başkalarının özel hayatını ifşa eden veya izinsiz çekilmiş görüntüleri içeren paylaşımlar, spam, reklam, yanıltıcı içerik, başkalarına ait kişisel veriler ve telif hakkı ihlali yasaktır. Kullanıcı adınız başkasını taklit edemez, yanıltıcı veya uygunsuz olamaz.',
-              'Paylaşımlarınızın yayımlanabilmesi için her içeriği yüklediğiniz anda, o içerik bakımından bize; içeriğin sunucularımızda saklanması, yedeklenmesi, önbelleğe alınması ve küçük görsellerinin oluşturulması amacıyla çoğaltma (FSEK md. 22), Sosyal bölümde ve paylaşım bağlantılarında gösterilmesi amacıyla umuma iletim (FSEK md. 25) ve yalnızca teknik gereklilikler ölçüsünde biçim ve boyut değişikliği yapma (FSEK md. 21) haklarını, münhasır olmayan ve bedelsiz olarak tanırsınız. Bu izin, içeriği veya hesabınızı sildiğinizde sona erer; yedeklerdeki kopyalar makul sürede silinir. İçerikleriniz pazarlamada veya model eğitiminde kullanılmaz.',
+              'Paylaşımlarınızın yayımlanabilmesi için her içeriği yüklediğiniz anda, o içerik bakımından bize; içeriğin sunucularımızda saklanması, yedeklenmesi, önbelleğe alınması ve küçük görsellerinin oluşturulması amacıyla çoğaltma (FSEK md. 22), Sosyal bölümde ve paylaşım bağlantılarında gösterilmesi amacıyla umuma iletim (FSEK md. 25) ve yalnızca teknik gereklilikler ölçüsünde biçim ve boyut değişikliği yapma (FSEK md. 21) haklarını, münhasır olmayan ve bedelsiz olarak tanırsınız. Bu izin, içeriği veya hesabınızı sildiğinizde sona erer. Sildiğiniz içerik yayından hemen kaldırılır, hukuki taleplere yanıt verebilmek amacıyla kaldırma tarihinden itibaren 1 yıl saklanır ve süre sonunda silinir; hesabınızı sildiğinizde ise derhal silinir. Yedeklerdeki kopyalar en geç 30 gün içinde silinir. İçerikleriniz pazarlamada veya model eğitiminde kullanılmaz.',
               'Bir paylaşımın hukuka aykırı olduğunu veya haklarınızı ihlal ettiğini düşünüyorsanız paylaşımdaki “Bildir” seçeneğini kullanabilir ya da içeriğin adresini, gerekçenizi ve iletişim bilgilerinizi e-posta ile bize iletebilirsiniz. Bildirimleri en geç 48 saat içinde incelemeyi hedefleriz. Gerekçeli telif hakkı bildirimlerinde ilgili içerik en geç 3 gün içinde yayından kaldırılır.',
               'Mahkeme ve yetkili idari makam kararları, mevzuatta öngörülen süreler içinde uygulanır. Resmi bildirimler İletişim sayfasındaki e-posta adresine yapılabilir.',
               'Kurallara aykırı içerikleri kaldırabilir, ilgili hesabın Sosyal bölüme veya hizmetin tamamına erişimini 12. maddede sayılan haklı sebeplerle geçici ya da kalıcı olarak kısıtlayabiliriz. İçeriği kaldırılan kullanıcıya, mümkün olan hallerde gerekçe bildirilir ve e-posta ile itiraz imkânı tanınır.',
@@ -228,7 +228,8 @@ export default function Terms() {
           <SubSection title="Ücretsiz ve misafir kullanım">
             <p>
               Ücretsiz ve misafir kullanımın sınırları (mesaj sayısı, agent görevi sayısı ve benzerleri) fiyatlandırma
-              sayfasında ve uygulamada ilan edilir. Ücretsiz hizmetin kapsamını ve sınırlarını değiştirebiliriz.
+              sayfasında ve uygulamada ilan edilir. Ücretsiz hizmetin kapsamını ve sınırlarını yalnızca 11. maddede
+              sayılan sebeplerle değiştirebiliriz; değişiklikler fiyatlandırma sayfasında ilan edilir.
             </p>
           </SubSection>
           <SubSection title="Plus">
@@ -238,11 +239,12 @@ export default function Terms() {
                 'Plus’ın satıcısı ve hizmet sağlayıcısı Marul AI’dır. Ödeme, Google Play aracılığıyla Google tarafından tahsil edilir; kart veya ödeme bilgileriniz bize iletilmez. Satın alma işlemi ayrıca Google Play Hizmet Şartları’na tabidir.',
                 'Plus’ın sağladığı haklar satın alma anında ilan edilen haklardır. “Sınırsız” olarak ifade edilen haklar; hizmetin güvenliği ve diğer kullanıcıların adil kullanımı için uygulanan teknik hız sınırları ve kötüye kullanım önlemleri saklı kalmak kaydıyla sunulur.',
                 'Plus, satın alındığı hesaba tanımlanır, başka bir hesaba devredilemez ve hesabınız açık kaldığı ve hizmet sunulduğu sürece geçerlidir. Hesabınızı silmeniz halinde Plus hakkınız sona erer; silmeden önce bir iade talebiniz varsa bize yazabilirsiniz.',
-                'Plus, satın alma onayınızla birlikte hesabınızda hemen etkinleşen ve elektronik ortamda anında ifa edilen bir hizmettir. Bu nedenle Mesafeli Sözleşmeler Yönetmeliği’nin 15. maddesinin birinci fıkrasının (ğ) ve (h) bentleri uyarınca cayma hakkı bulunmamaktadır. Bu bilgi satın alma öncesinde ayrıca gösterilir.',
-                'Plus haklarını, aşağıdaki 11. maddede sayılan haklı sebepler olmadıkça aleyhinize daraltmayız. Haklı bir sebeple esaslı bir daraltma gerekirse bunu en az 30 gün önceden bildiririz; bu durumda kanundan doğan haklarınız saklıdır ve talebiniz halinde bedel iadesi dahil hakkaniyete uygun bir çözüm sunarız.',
+                'Plus, cayma süresi dolmadan açık onayınızla ifasına başlanan ve elektronik ortamda anında ifa edilen bir hizmettir. Bu nedenle Mesafeli Sözleşmeler Yönetmeliği’nin 15. maddesinin birinci fıkrasının (h) ve (ğ) bentleri uyarınca cayma hakkı bulunmamaktadır. Satın alma öncesinde bu konudaki açık onayınız ayrıca alınır.',
+                'Plus haklarını, aşağıdaki 11. maddede sayılan haklı sebepler olmadıkça aleyhinize daraltmayız. Haklı bir sebeple esaslı bir daraltma gerekirse bunu en az 30 gün önceden bildiririz; bu durumda kanundan doğan haklarınız saklıdır ve talebiniz üzerine kullanılmayan süreye isabet eden bedel aşağıdaki esasla iade edilir.',
+                'Plus bedeli 24 aylık kullanım süresi esas alınarak belirlenmiştir. Bu süre dolmadan hizmeti tamamen sona erdirmemiz, hesabınızı haklı bir sebep olmaksızın kapatmamız veya aleyhinize olan bir koşul değişikliğini onaylamamanız halinde, talebiniz üzerine bedelin kullanılmayan aylara isabet eden kısmı size iade edilir.',
                 'Plus ile ilgili iade ve şikâyet taleplerinizi Google Play’in iade süreci üzerinden veya doğrudan bize e-posta ile iletebilirsiniz. Tüketici olarak kanundan doğan haklarınız saklıdır.',
                 <>Plus’a ilişkin ön bilgilendirme formu ve mesafeli satış sözleşmesi{' '}<a className="text-fg hover:underline" href="/plus-satis-sozlesmesi">ayrı bir sayfada</a> yayımlanır ve bu koşulların ayrılmaz parçasıdır.</>,
-                'Hizmeti tamamen sona erdirmeye karar vermemiz halinde bunu en az 30 gün önceden duyururuz.',
+                'Hizmeti tamamen sona erdirmeye karar vermemiz halinde bunu en az 30 gün önceden duyururuz ve yukarıdaki esasla iade yaparız.',
               ]}
             />
           </SubSection>
@@ -272,7 +274,7 @@ export default function Terms() {
               'Hesabınızı dilediğiniz zaman, uygulama veya web üzerinden kalıcı olarak silerek bu sözleşmeyi sona erdirebilirsiniz.',
               'Şu haklı sebeplerden birinin varlığı halinde hesabınızı veya bir özelliğe erişiminizi geçici olarak askıya alabilir ya da kalıcı olarak kapatabiliriz: mevzuata aykırı kullanım; 6. maddedeki yasakların veya topluluk kurallarının ihlali; hizmetin veya diğer kullanıcıların güvenliğini tehlikeye atan davranış; spam, otomatik erişim veya kullanım sınırlarını aşmaya yönelik kötüye kullanım; ödeme veya iade süreçlerinin kötüye kullanılması; yetkili makamların talebi.',
               'Ağır olmayan ihlallerde önce uyarıda bulunuruz. Acil müdahale gerektiren haller dışında kararın gerekçesini size bildirir, e-posta ile yapacağınız itirazı değerlendiririz.',
-              'Hesabınızın kapatılması halinde kanundan doğan iade haklarınız saklıdır. Hesabınızı haklı bir sebep olmaksızın kapatmamız gerekirse bunu en az 30 gün önceden bildiririz.',
+              'Hesabınızın kapatılması halinde kanundan doğan iade haklarınız saklıdır. Hesabınızı haklı bir sebep olmaksızın kapatmamız gerekirse bunu en az 30 gün önceden bildiririz; Plus satın aldıysanız kullanılmayan süreye isabet eden bedel 10. maddedeki esasla iade edilir.',
               '24 ay boyunca hiç giriş yapılmayan ücretsiz hesapları, kayıtlı e-posta adresine bildirim gönderip en az 30 gün süre verdikten sonra kapatabiliriz.',
               'Sözleşmenin sona ermesi halinde verileriniz Gizlilik Politikası’nda belirtilen sürelerde silinir. Niteliği gereği sona ermeden sonra da uygulanması gereken hükümler (özellikle 7, 13, 14, 15, 19 ve 21. maddeler) geçerliliğini korur.',
             ]}
@@ -284,7 +286,7 @@ export default function Terms() {
             items={[
               'Sorumluluğumuz kanuna göre belirlenir ve kusurumuza dayanır. Hizmetin ve çıktıların niteliği 5. maddede tanımlanmıştır; çıktıların bu maddede açıklanan nitelikleri taşıması, hizmetin sözleşmeye aykırı olduğu anlamına gelmez.',
               'Çıktıları doğrulamadan kullanmanız veya çıktılara dayanarak karar vermeniz sonucunda doğan zararlar, 5. madde uyarınca sizin sorumluluğunuzdadır; bu zararların doğmasında kusurumuz bulunması hali saklıdır.',
-              'Kusurumuz bulunmayan hallerde; özellikle sizin veya üçüncü kişilerin kusurundan, cihazınızdaki veya internet bağlantınızdaki sorunlardan, şifrenizin sizin kusurunuzla başkalarınca ele geçirilmesinden ve kusurumuz olmaksızın üçüncü taraf altyapı hizmetlerinde (ör. Google, Groq, Cloudflare) yaşanan kesinti ve hatalardan doğan zararlardan sorumlu değiliz.',
+              'Kusurumuz bulunmayan hallerde; özellikle sizin veya üçüncü kişilerin kusurundan, cihazınızdaki veya internet bağlantınızdaki sorunlardan, şifrenizin sizin kusurunuzla başkalarınca ele geçirilmesinden ve kusurumuz olmaksızın üçüncü taraf altyapı hizmetlerinde (ör. Google, Groq, Cloudflare) yaşanan kesinti ve hatalardan doğan zararlardan sorumlu değiliz. Yardımcı kişilerimizin ve altyapı sağlayıcılarımızın fiillerinden 6098 sayılı Türk Borçlar Kanunu’nun 116. maddesi uyarınca sorumluluğumuz saklıdır.',
               'Bu madde; kastımız veya ağır kusurumuz, kişilerin hayatına, vücut bütünlüğüne veya sağlığına verilen zararlar, kişisel verilerin korunmasına ilişkin kanuni yükümlülüklerimiz ve tüketici olarak 6502 sayılı Kanun’dan doğan haklarınız bakımından sorumluluğumuzu sınırlamaz.',
               'Tüketici sıfatı taşımayan kullanıcılar bakımından ayrıca 15. madde uygulanır.',
             ]}
@@ -380,8 +382,9 @@ export default function Terms() {
             saklıdır.
           </p>
           <p>
-            Tacir veya kamu tüzel kişisi olan kullanıcılarla doğacak uyuşmazlıklarda İstanbul (Çağlayan) Mahkemeleri
-            ve İcra Daireleri yetkilidir.
+            Hizmet sağlayıcının da tacir sıfatını taşıdığı hallerde, tacir veya kamu tüzel kişisi olan kullanıcılarla
+            doğacak uyuşmazlıklarda 6100 sayılı Hukuk Muhakemeleri Kanunu’nun 17. maddesi uyarınca İstanbul Merkez
+            (Çağlayan) Mahkemeleri ve İcra Daireleri yetkilidir.
           </p>
         </Section>
 

@@ -4,7 +4,7 @@ export const LEGAL_VERSIONS = {
   training: '2026-10',
 } as const
 
-export const LEGAL_UPDATED = '8 Ekim 2026'
+export const LEGAL_UPDATED = '9 Ekim 2026'
 
 export const CONTROLLER = {
   person: 'Ahmet Karakuş',

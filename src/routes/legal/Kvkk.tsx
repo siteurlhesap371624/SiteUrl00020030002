@@ -56,7 +56,7 @@ export default function Kvkk() {
               ['İşlem güvenliği', 'IP adresi, tarayıcı ve cihaz bilgisi, oturum anahtarı kimliği, şifre özeti, bot koruma doğrulama sonucu, hız sınırı sayaçları, hata kayıtları', 'Bilgi güvenliğinin sağlanması, kötüye kullanımın, spam’in ve yetkisiz erişimin önlenmesi, hataların tespiti', '(f) Meşru menfaat; (ç) hukuki yükümlülük'],
               ['Hukuki işlem', 'Onay kayıtları, moderasyon kayıtları, KVKK başvuruları ve yazışmalar', 'Sözleşmenin ve onayların ispatı, hukuki uyuşmazlıkların yönetimi, yetkili makam taleplerinin karşılanması, başvuruların yanıtlanması', '(e) Bir hakkın tesisi, kullanılması veya korunması; (ç) hukuki yükümlülük'],
               ['Trafik bilgisi', 'Sosyal bölümdeki paylaşım işlemlerine ait IP adresi, bağlantı noktası, zaman ve işlem türü', '5651 sayılı Kanun’un 5. maddesindeki yer sağlayıcı yükümlülüğünün yerine getirilmesi', '(a) Kanunlarda açıkça öngörülmesi; (ç) hukuki yükümlülük'],
-              ['Satın alma işlem kayıtları', 'Sipariş numarası, ürün, tarih, e-posta adresinin geri döndürülemez özeti', '6563 sayılı Kanun’un 11. maddesindeki kayıt saklama yükümlülüğü, vergi mevzuatı', '(a) Kanunlarda açıkça öngörülmesi; (ç) hukuki yükümlülük'],
+              ['Satın alma işlem kayıtları', 'Sipariş numarası, ürün, tarih, e-posta adresinin geri döndürülemez özeti', '6563 sayılı Kanun’un 11. maddesinin üçüncü fıkrasındaki kayıt saklama yükümlülüğü, vergi mevzuatı', '(a) Kanunlarda açıkça öngörülmesi; (ç) hukuki yükümlülük'],
               ['Model geliştirme', 'Açık rıza vermeniz halinde sohbet içerikleri', 'Yedikule ve sonraki Marul AI dil modellerinin anonim hale getirilmiş veriyle eğitimi ve değerlendirilmesi', 'KVKK md. 5/1 uyarınca açık rıza'],
               ['Özel nitelikli veriler', 'Sohbetlere kendi isteğinizle yazdığınız sağlık, inanç ve benzeri veriler', 'Yalnızca size yanıt üretilmesi ve sohbet geçmişinizin saklanması', 'KVKK md. 6/3-a uyarınca açık rıza'],
             ]}
@@ -93,8 +93,10 @@ export default function Kvkk() {
           <p>
             Yurt dışındaki sağlayıcılara aktarım hizmetin sunulması (KVKK md. 5/2-c) ve güvenliğinin sağlanması
             (KVKK md. 5/2-f) amaçlarıyla yapılır. Kişisel Verileri Koruma Kurulu ABD için yeterlilik kararı
-            vermemiştir; bu aktarımlar için KVKK’nın 9. maddesinde öngörülen standart sözleşme süreçleri yürütülür.
-            Hangi verinin hangi sağlayıcıya, hangi durumda aktarıldığı ile geçmişte kullanılan hizmetler Gizlilik
+            vermemiştir. Veri işleyen sıfatıyla çalışan sağlayıcılarla (Groq, Cloudflare, Resend, ngrok) KVKK’nın 9.
+            maddesi uyarınca Kurulca ilan edilen standart sözleşmeler imzalanır ve imza tarihinden itibaren beş iş
+            günü içinde Kurula bildirilir. Google, GitHub ve arama motorları kendilerine iletilen verileri kendi
+            adlarına veri sorumlusu olarak işler; arama sorgularına kimlik bilgileriniz eklenmez. Hangi verinin hangi sağlayıcıya, hangi durumda aktarıldığı ile geçmişte kullanılan hizmetler Gizlilik
             Politikası’nda ayrıntılı olarak açıklanmıştır.
           </p>
         </Section>
@@ -127,16 +129,16 @@ export default function Kvkk() {
 
         <Section id="basvuru" number={7} title="Başvuru yöntemi">
           <p>
-            Veri Sorumlusuna Başvuru Usul ve Esasları Hakkında Tebliğ uyarınca başvurunuzu Türkçe ve yazılı olarak ya
-            da aşağıdaki yöntemlerle iletebilirsiniz:
+            Veri Sorumlusuna Başvuru Usul ve Esasları Hakkında Tebliğ uyarınca başvurunuzu Türkçe olarak aşağıdaki
+            yöntemlerden biriyle iletebilirsiniz:
           </p>
           <List
             items={[
               <>Hesabınızda kayıtlı e-posta adresinizden <MailLink email={CONTROLLER.email} subject="KVKK başvurusu" /> adresine e-posta göndererek,</>,
-              'Güvenli elektronik imza, mobil imza veya kayıtlı elektronik posta (KEP) ile imzalanmış başvuruyu aynı e-posta adresine ileterek,',
+              'Hesabınız yoksa veya kayıtlı e-posta adresinize erişemiyorsanız, güvenli elektronik imza ya da mobil imza ile imzaladığınız başvuruyu aynı e-posta adresine ileterek,',
               CONTROLLER.postalAddress
-                ? `Islak imzalı başvurunuzu ${CONTROLLER.postalAddress} adresine posta yoluyla göndererek.`
-                : 'Islak imzalı yazılı başvuru göndermek istemeniz halinde, posta adresimizi yukarıdaki e-posta adresinden talep ederek.',
+                ? `Islak imzalı yazılı başvurunuzu ${CONTROLLER.postalAddress} adresine posta yoluyla göndererek veya elden teslim ederek.`
+                : 'Islak imzalı yazılı başvurunuzu posta yoluyla göndererek; posta adresimizi yukarıdaki e-posta adresinden öğrenebilirsiniz.',
             ]}
           />
           <p>
@@ -146,8 +148,8 @@ export default function Kvkk() {
             bilgi isteyebiliriz.
           </p>
           <p>
-            Başvurunuz, talebin niteliğine göre en kısa sürede ve en geç 30 gün içinde ücretsiz olarak sonuçlandırılır.
-            İşlemin ayrıca bir maliyet gerektirmesi hâlinde Kişisel Verileri Koruma Kurulu tarafından belirlenen
+            Başvurunuz, talebin niteliğine göre en kısa sürede ve en geç 30 gün içinde sonuçlandırılır. Başvurular
+            kural olarak ücretsizdir; işlemin ayrıca bir maliyet gerektirmesi hâlinde Kişisel Verileri Koruma Kurulu tarafından belirlenen
             tarifedeki ücret alınabilir. Başvurunuzun reddedilmesi, verilen cevabı yetersiz bulmanız veya süresinde
             cevap verilmemesi hâlinde; cevabı öğrendiğiniz tarihten itibaren 30 gün ve her hâlde başvuru tarihinden
             itibaren 60 gün içinde Kişisel Verileri Koruma Kurulu’na şikâyette bulunabilirsiniz.

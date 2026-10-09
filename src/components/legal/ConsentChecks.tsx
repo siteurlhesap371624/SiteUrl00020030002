@@ -125,7 +125,7 @@ export function ConsentChecks({
       {showOptional && onTrainingChange && onSpecialChange ? (
         <div className="space-y-2.5">
           <p className="text-[11.5px] font-semibold uppercase tracking-[0.06em] text-fg-dim">
-            İsteğe bağlı açık rızalar
+            İsteğe bağlı açık rızalar (yalnızca 18 yaşını doldurmuş kullanıcılar)
           </p>
           <ChoiceRow
             name="consent-training"
