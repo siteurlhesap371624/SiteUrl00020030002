@@ -185,6 +185,7 @@ export interface VerifyGateResponse {
 export interface EmailCodeResponse {
   success: boolean
   expiresInSeconds: number
+  registrationId?: string
 }
 
 export interface GoogleAuthUrlResponse {

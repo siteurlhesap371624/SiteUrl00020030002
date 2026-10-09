@@ -10,7 +10,7 @@ import { useAuthStore } from '@/lib/store/auth'
 import type { LegalState } from '@/lib/api'
 import { useUIStore } from '@/lib/store/ui'
 
-const EXEMPT_PATHS = new Set<string>([...LEGAL_PATHS, '/oauth/google', '/e-posta-dogrula', '/sifre-yenile'])
+const EXEMPT_PATHS = new Set<string>([...LEGAL_PATHS, '/yasal-arsiv', '/iletisim', '/oauth/google', '/e-posta-dogrula', '/sifre-yenile'])
 
 const CHANGES = [
   'Kullanım Koşulları; yapay zeka çıktıları, Sosyal bölümü, Plus ve sorumluluk hükümleriyle yeniden düzenlendi.',

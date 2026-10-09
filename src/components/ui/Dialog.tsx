@@ -64,6 +64,11 @@ export function Dialog({
   dismissible = true,
 }: DialogProps) {
   const panelRef = useRef<HTMLDivElement | null>(null)
+  const onCloseRef = useRef(onClose)
+
+  useEffect(() => {
+    onCloseRef.current = onClose
+  }, [onClose])
 
   useEffect(() => {
     if (!open) return
@@ -79,7 +84,7 @@ export function Dialog({
     })
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
-        if (dismissible) onClose()
+        if (dismissible) onCloseRef.current()
         return
       }
       if (e.key !== 'Tab') return
@@ -114,7 +119,7 @@ export function Dialog({
       unlockBodyScroll()
       if (previouslyFocused && typeof previouslyFocused.focus === 'function') previouslyFocused.focus()
     }
-  }, [open, onClose, dismissible])
+  }, [open, dismissible])
 
   if (typeof document === 'undefined') return null
 

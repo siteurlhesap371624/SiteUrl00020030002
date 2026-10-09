@@ -11,7 +11,7 @@ import { Turnstile } from '@/components/auth/Turnstile'
 import { GoogleButton } from '@/components/auth/GoogleButton'
 import { SeoHead } from '@/components/ui/SeoHead'
 import { ConsentChecks, type ConsentChoice } from '@/components/legal/ConsentChecks'
-import { ApiError, authApi, buildConsent } from '@/lib/api'
+import { ApiError, authApi, buildConsent, rememberRegistration } from '@/lib/api'
 import { useUIStore } from '@/lib/store/ui'
 
 const schema = z
@@ -62,9 +62,10 @@ export default function Register() {
     }
     setSubmitting(true)
     try {
-      await authApi.registerStart({
+      const normalizedEmail = data.email.trim().toLowerCase()
+      const started = await authApi.registerStart({
         name: data.name.trim(),
-        email: data.email.trim().toLowerCase(),
+        email: normalizedEmail,
         password: data.password,
         turnstileToken: tsToken,
         consent: buildConsent({
@@ -74,8 +75,9 @@ export default function Register() {
           channel: 'web-register',
         }),
       })
+      rememberRegistration(normalizedEmail, started.registrationId)
       toast('E-postanıza doğrulama kodu gönderildi.', { variant: 'success' })
-      navigate(`/e-posta-dogrula?email=${encodeURIComponent(data.email.trim().toLowerCase())}`)
+      navigate(`/e-posta-dogrula?email=${encodeURIComponent(normalizedEmail)}`)
     } catch (err) {
       const msg = err instanceof ApiError ? err.message : 'Kayıt başarısız'
       toast(msg, { variant: 'error' })

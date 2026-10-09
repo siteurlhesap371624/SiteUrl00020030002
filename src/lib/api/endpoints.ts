@@ -43,7 +43,7 @@ export const authApi = {
   }) =>
     api.post<EmailCodeResponse>('/auth/register/start', data, { auth: false }),
 
-  registerVerify: (data: { email: string; code: string }) =>
+  registerVerify: (data: { email: string; code: string; registrationId?: string }) =>
     api.post<AuthResponse>('/auth/register/verify', data, { auth: false }),
 
   login: (data: { email: string; password: string; turnstileToken: string }) =>

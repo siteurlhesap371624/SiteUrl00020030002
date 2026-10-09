@@ -3,7 +3,7 @@ import { Link, useNavigate, useSearchParams } from 'react-router-dom'
 import { AuthShell } from '@/components/auth/AuthShell'
 import { Button } from '@/components/ui/Button'
 import { SeoHead } from '@/components/ui/SeoHead'
-import { ApiError, authApi } from '@/lib/api'
+import { ApiError, authApi, forgetRegistration, registrationIdFor } from '@/lib/api'
 import { useAuthStore } from '@/lib/store/auth'
 import { useUIStore } from '@/lib/store/ui'
 import { cn } from '@/lib/utils'
@@ -68,7 +68,8 @@ export default function VerifyEmail() {
     if (!canSubmit) return
     setSubmitting(true)
     try {
-      const res = await authApi.registerVerify({ email, code })
+      const res = await authApi.registerVerify({ email, code, registrationId: registrationIdFor(email) })
+      forgetRegistration()
       setSession(res.token, res.user, false, res.legal ?? null)
       toast('Hesabınız oluşturuldu', { variant: 'success' })
       navigate('/sohbet')
