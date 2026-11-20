@@ -7,7 +7,7 @@ const sections = [
   },
   {
     title: 'Yaklaşımımız',
-    body: 'Marul AI, açık kaynak modelleri kendi geliştirdiğimiz Yedikule modeliyle birleştirir. Yedikule ağırlıkları Hugging Face üzerinde herkese açıktır; sade arayüz, sürdürülebilir altyapı ve şeffaf gizlilik anlayışı önceliğimizdir.',
+    body: 'Marul AI, açık kaynak modelleri kendi geliştirdiğimiz Yedikule 1.4 modeliyle birleştirir. Yedikule 1.4 ağırlıkları Hugging Face üzerinde herkese açıktır; sade arayüz, sürdürülebilir altyapı ve şeffaf gizlilik anlayışı önceliğimizdir.',
   },
   {
     title: 'Karakuş Tech',
@@ -16,7 +16,7 @@ const sections = [
 ]
 
 const stats = [
-  { label: 'Yedikule parametre', value: '202M' },
+  { label: 'Yedikule 1.4 parametre', value: '202M' },
   { label: 'Eğitim verisi', value: '24,33B token' },
   { label: 'Açık ağırlık', value: 'Hugging Face' },
   { label: 'Platform', value: 'Web · Android' },

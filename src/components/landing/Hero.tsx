@@ -28,7 +28,7 @@ export function Hero() {
             <div className="max-w-sm">
               <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-fg-dim">Önizleme</p>
               <p className="mt-2 text-[14px] leading-relaxed text-fg-muted">
-                Yukarıdaki arayüzün tamamı hazır. Yedikule ile Türkçe sohbeti şimdi deneyin.
+                Yukarıdaki arayüzün tamamı hazır. Yedikule 1.4 ile Türkçe sohbeti şimdi deneyin.
               </p>
             </div>
 
@@ -74,7 +74,7 @@ function HeroPreview() {
           <div className="text-[11px] text-fg-dim font-mono">marulai.com.tr/sohbet</div>
           <div className="inline-flex items-center gap-1.5 rounded-full border border-[color:var(--color-border)] px-2 py-0.5 text-[10px] text-fg-muted">
             <span className="h-1.5 w-1.5 rounded-full bg-[color:var(--color-brand)] animate-pulse" />
-            <span className="font-mono">yedikule</span>
+            <span className="font-mono">Yedikule 1.4</span>
           </div>
         </div>
 

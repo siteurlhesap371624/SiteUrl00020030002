@@ -50,13 +50,6 @@ export const RECIPIENTS_ABROAD: Recipient[] = [
     when: 'Bize e-posta gönderdiğinizde',
   },
   {
-    name: 'ngrok, Inc.',
-    location: 'ABD',
-    role: 'Yedikule modelinin çalıştığı bilgisayara şifreli tünel bağlantısı',
-    data: 'Yedikule ile gönderdiğiniz mesajlar ve sohbet geçmişinin modele verilen bölümü (yalnızca iletim sırasında; içerik ngrok sunucularında çözülerek iletilir ve saklanmaz)',
-    when: 'Yedikule modelini kullandığınızda',
-  },
-  {
     name: 'Arama motorları (ör. Google, Bing, DuckDuckGo)',
     location: 'ABD ve diğer ülkeler',
     role: 'Kendi sunucumuzda çalışan arama altyapısının (SearXNG) arama sonuçlarını alması',
@@ -73,6 +66,13 @@ export const RECIPIENTS_ABROAD: Recipient[] = [
 ]
 
 export const PAST_RECIPIENTS: Recipient[] = [
+  {
+    name: 'ngrok, Inc.',
+    location: 'ABD',
+    role: 'Yedikule modelinin çalıştığı bilgisayara şifreli tünel bağlantısı',
+    data: 'Yedikule ile gönderilen mesajlar ve sohbet geçmişinin modele verilen bölümü (yalnızca iletim sırasında; içerik ngrok sunucularında çözülerek iletilirdi ve saklanmazdı)',
+    when: 'Kasım 2026’da kaldırıldı; Yedikule 1.4 artık Türkiye’deki kendi sunucumuzda çalışır, mesajlar üçüncü taraf bir tünel hizmetinden geçmez',
+  },
   {
     name: 'Cloudflare, Inc. (Workers, D1, KV)',
     location: 'ABD ve küresel sunucu ağı',

@@ -316,7 +316,8 @@ export const useChatStore = create<ChatState>((set, get) => ({
 
   selectChat: async (id) => {
     if (id === 'new') {
-      set({ activeChatId: 'new', messages: [], workspace: null })
+      persistModelPrefs(DEFAULT_MODEL, get().mode)
+      set({ activeChatId: 'new', messages: [], workspace: null, model: DEFAULT_MODEL, agentMode: false })
       return
     }
     set({ activeChatId: id, isLoadingMessages: true, messages: [], workspace: null })
@@ -332,7 +333,8 @@ export const useChatStore = create<ChatState>((set, get) => ({
   },
 
   createNew: () => {
-    set({ activeChatId: 'new', messages: [], workspace: null })
+    persistModelPrefs(DEFAULT_MODEL, get().mode)
+    set({ activeChatId: 'new', messages: [], workspace: null, model: DEFAULT_MODEL, agentMode: false })
   },
 
   removeChat: async (id) => {
@@ -397,6 +399,7 @@ export const useChatStore = create<ChatState>((set, get) => ({
           content: res.response,
           created_at: new Date().toISOString(),
           usage: res.usage ?? null,
+          reasoning: res.reasoning ?? '',
           model,
         })
         const newLeft = Math.max(0, left - 1)

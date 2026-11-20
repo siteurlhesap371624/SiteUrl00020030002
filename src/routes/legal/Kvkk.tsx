@@ -57,7 +57,7 @@ export default function Kvkk() {
               ['Hukuki işlem', 'Onay kayıtları, moderasyon kayıtları, KVKK başvuruları ve yazışmalar', 'Sözleşmenin ve onayların ispatı, hukuki uyuşmazlıkların yönetimi, yetkili makam taleplerinin karşılanması, başvuruların yanıtlanması', '(e) Bir hakkın tesisi, kullanılması veya korunması; (ç) hukuki yükümlülük'],
               ['Trafik bilgisi', 'Sosyal bölümdeki paylaşım işlemlerine ait IP adresi, bağlantı noktası, zaman ve işlem türü', '5651 sayılı Kanun’un 5. maddesindeki yer sağlayıcı yükümlülüğünün yerine getirilmesi', '(a) Kanunlarda açıkça öngörülmesi; (ç) hukuki yükümlülük'],
               ['Satın alma işlem kayıtları', 'Sipariş numarası, ürün, tarih, satın alma anahtarının ve e-posta adresinin geri döndürülemez özetleri', '6563 sayılı Kanun’un 11. maddesinin üçüncü fıkrasındaki kayıt saklama yükümlülüğü; satın alımın başka bir hesapta kullanılmasının önlenmesi ve aynı e-posta adresiyle açılan yeni hesaba geri yüklenmesi', '(a) Kanunlarda açıkça öngörülmesi; (c) sözleşmenin ifası; (ç) hukuki yükümlülük; (f) meşru menfaat'],
-              ['Model geliştirme', 'Açık rıza vermeniz halinde sohbet içerikleri', 'Yedikule ve sonraki Marul AI dil modellerinin anonim hale getirilmiş veriyle eğitimi ve değerlendirilmesi', 'KVKK md. 5/1 uyarınca açık rıza'],
+              ['Model geliştirme', 'Açık rıza vermeniz halinde sohbet içerikleri', 'Yedikule 1.4 ve sonraki Marul AI dil modellerinin anonim hale getirilmiş veriyle eğitimi ve değerlendirilmesi', 'KVKK md. 5/1 uyarınca açık rıza'],
               ['Özel nitelikli veriler', 'Sohbetlere kendi isteğinizle yazdığınız sağlık, inanç ve benzeri veriler', 'Yalnızca size yanıt üretilmesi ve sohbet geçmişinizin saklanması', 'KVKK md. 6/3-a uyarınca açık rıza'],
             ]}
           />
@@ -94,7 +94,7 @@ export default function Kvkk() {
             Yurt dışındaki sağlayıcılara aktarım hizmetin sunulması (KVKK md. 5/2-c) ve güvenliğinin sağlanması
             (KVKK md. 5/2-f) amaçlarıyla yapılır. Kişisel Verileri Koruma Kurulu ABD için yeterlilik kararı
             vermemiştir; bu nedenle yurt dışına iletilen verileriniz Türkiye’deki koruma düzeyini sağlamayabilecek bir
-            hukuk düzeninde işlenebilir. Veri işleyen sıfatıyla çalışan sağlayıcılar (Groq, Cloudflare, Resend, ngrok)
+            hukuk düzeninde işlenebilir. Veri işleyen sıfatıyla çalışan sağlayıcılar (Groq, Cloudflare, Resend)
             verileri bizim adımıza, kendi hizmet şartları çerçevesinde ve yalnızca hizmetin sunulması amacıyla
             işler. Google, GitHub ve arama motorları kendilerine iletilen verileri kendi
             adlarına veri sorumlusu olarak işler; arama sorgularına kimlik bilgileriniz eklenmez. Hangi verinin hangi sağlayıcıya, hangi durumda aktarıldığı ile geçmişte kullanılan hizmetler Gizlilik

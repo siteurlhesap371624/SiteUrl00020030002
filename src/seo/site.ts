@@ -1,13 +1,13 @@
 export const SITE_URL = 'https://marulai.com.tr'
 export const SITE_NAME = 'Marul AI'
 export const PUBLISHER = 'Karakuş Tech'
-export const CONTACT_EMAIL = 'marulai.resmi@gmail.com'
+export const CONTACT_EMAIL = 'info@marulai.com.tr'
 export const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=ai.marul.com'
 export const HUGGINGFACE_URL = 'https://huggingface.co/MarulAI'
 
 export const BASE_TITLE = "Marul AI · Türkçe yapay zeka asistanı"
 export const BASE_DESCRIPTION =
-  'Marul AI, Türkçe için geliştirilen yapay zeka asistanıdır. Kendi yerli modelimiz Yedikule ile sohbet edin, agent modunda web araştırması yaptırın, dosya üretin. Web ve Android üzerinde ücretsiz kullanılır.'
+  'Marul AI, Türkçe için geliştirilen yapay zeka asistanıdır. Kendi yerli modelimiz Yedikule 1.4 ile sohbet edin, agent modunda web araştırması yaptırın, dosya üretin. Web ve Android üzerinde ücretsiz kullanılır.'
 
 export const SOCIAL_PROFILES = [
   'https://www.youtube.com/@MarulAI_Resmi',
@@ -39,9 +39,9 @@ export const SEO_ROUTES: SeoRoute[] = [
   {
     path: '/modeller',
     file: 'modeller.html',
-    title: 'Modeller · Yedikule ve Qwen3.6 · Marul AI',
+    title: 'Modeller · Yedikule 1.4 · Marul AI',
     description:
-      'Marul AI üzerinde kullanabileceğiniz yapay zeka modelleri: Türkçe için sıfırdan eğitilen yerli model Yedikule ve 27 milyar parametreli açık kaynak Qwen3.6. Teknik özellikler ve karşılaştırma.',
+      'Marul AI’ın yerli modeli Yedikule 1.4: Türkçe için sıfırdan eğitilmiş 202 milyon parametreli dil modeli. Teknik özellikler, düşünme ve araç kullanımı yetenekleri.',
     priority: '0.9',
     changefreq: 'monthly',
     breadcrumb: 'Modeller',
@@ -49,19 +49,19 @@ export const SEO_ROUTES: SeoRoute[] = [
   {
     path: '/modeller/yedikule',
     file: 'modeller/yedikule.html',
-    title: 'Yedikule modeli · Türkçe için sıfırdan eğitilen yerli dil modeli',
+    title: 'Yedikule 1.4 · Türkçe için sıfırdan eğitilen yerli dil modeli',
     description:
-      'Yedikule, Marul AI tarafından Türkçe için sıfırdan eğitilen 202 milyon parametreli yerli dil modelidir. Ağırlıkları Hugging Face üzerinde açıktır; 24,33 milyar Türkçe token ile eğitildi, kurum içinde veri dışarı çıkmadan yerel olarak çalıştırılabilir.',
+      'Yedikule 1.4, Marul AI tarafından Türkçe için sıfırdan eğitilen 202 milyon parametreli yerli dil modelidir. Düşünme ve araç çağırma destekli; ağırlıkları Hugging Face üzerinde açıktır, kurum içinde veri dışarı çıkmadan yerel olarak çalıştırılabilir.',
     priority: '0.9',
     changefreq: 'monthly',
-    breadcrumb: 'Yedikule',
+    breadcrumb: 'Yedikule 1.4',
   },
   {
     path: '/turkiye-yapay-zeka-modelleri',
     file: 'turkiye-yapay-zeka-modelleri.html',
     title: "Türkiye'de geliştirilen yapay zeka modelleri (2026 listesi)",
     description:
-      "Türkiye'de geliştirilen yerli yapay zeka modelleri ve asistanları: Yedikule, Kumru, Cosmos, TURNA, Trendyol LLM ve diğerleri. Her modelin geliştiricisi, boyutu, lisansı ve kullanım alanı ile güncel liste.",
+      "Türkiye'de geliştirilen yerli yapay zeka modelleri ve asistanları: Yedikule 1.4, Kumru, Cosmos, TURNA, Trendyol LLM ve diğerleri. Her modelin geliştiricisi, boyutu, lisansı ve kullanım alanı ile güncel liste.",
     priority: '0.9',
     changefreq: 'monthly',
     breadcrumb: "Türkiye'de yapay zeka modelleri",

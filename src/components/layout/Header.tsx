@@ -74,7 +74,7 @@ export function Header() {
             href={config.huggingFaceUrl}
             target="_blank"
             rel="noreferrer"
-            title="Yedikule model ağırlıkları · Hugging Face"
+            title="Yedikule 1.4 model ağırlıkları · Hugging Face"
             aria-label="Hugging Face"
             className="hidden lg:inline-flex items-center gap-1.5 whitespace-nowrap rounded-md px-3 py-1.5 text-[13px] text-fg-muted hover:text-fg hover:bg-white/[0.04] transition-colors"
           >

@@ -3,7 +3,7 @@ import { ArrowUpRight } from 'lucide-react'
 import { SeoHead } from '@/components/ui/SeoHead'
 import { TURKISH_MODELS, TURKISH_MODEL_SOURCES } from '@/content/turkishModels'
 
-const UPDATED = '17 Eylül 2026'
+const UPDATED = '20 Kasım 2026'
 
 export default function TurkishModels() {
   return (
@@ -25,10 +25,10 @@ export default function TurkishModels() {
           </h1>
           <p className="mt-6 text-[16px] leading-relaxed text-fg-muted">
             Türkiye'de geliştirilen başlıca yapay zeka modelleri arasında VNGRS'in Kumru modeli, TÜBİTAK
-            BİLGEM'in BİLGE modeli, T3 Vakfı ve Baykar'ın T3 AI modeli, Marul AI'nin Yedikule modeli, Yıldız
+            BİLGEM'in BİLGE modeli, T3 Vakfı ve Baykar'ın T3 AI modeli, Marul AI'nin Yedikule 1.4 modeli, Yıldız
             Teknik Üniversitesi'nin Cosmos serisi, Boğaziçi Üniversitesi'nin TURNA modeli ile Trendyol ve
             Turkcell'in kurumsal modelleri bulunur. Aşağıdaki liste her modelin geliştiricisini, boyutunu ve
-            erişim durumunu özetler. Liste, Yedikule modelini geliştiren Marul AI tarafından hazırlanmıştır;
+            erişim durumunu özetler. Liste, Yedikule 1.4 modelini geliştiren Marul AI tarafından hazırlanmıştır;
             kendi modelimiz listede açıkça işaretlenir ve ölçeği diğerleriyle karşılaştırmalı olarak verilir.
           </p>
           <p className="mt-4 text-[13.5px] text-fg-dim">Son güncelleme: {UPDATED}</p>
@@ -117,7 +117,7 @@ export default function TurkishModels() {
           </h2>
           <p className="mt-4 text-[15px] leading-relaxed text-fg-muted">
             Sıfırdan eğitilen bir model, mimarisi ve ağırlıklarıyla baştan kurulur; tokenizer'ı da hedef dil
-            için eğitilir. Kumru, BİLGE, TURNA, Kanarya ve Yedikule bu gruptadır. Uyarlanan modellerde ise
+            için eğitilir. Kumru, BİLGE, TURNA, Kanarya ve Yedikule 1.4 bu gruptadır. Uyarlanan modellerde ise
             Llama, Gemma veya Mistral gibi hazır bir modelin ağırlıkları Türkçe veriyle yeniden eğitilir;
             Cosmos serisi, Trendyol ve Turkcell modelleri bu yaklaşımı kullanır. İki yöntem de geçerlidir:
             uyarlama daha az kaynakla daha güçlü sonuç verirken, sıfırdan eğitim dilin kendi yapısına uygun
@@ -139,15 +139,15 @@ export default function TurkishModels() {
         </section>
 
         <section className="mt-14 max-w-3xl">
-          <h2 className="text-[22px] font-semibold tracking-[-0.02em]">Yedikule bu listede nerede duruyor?</h2>
+          <h2 className="text-[22px] font-semibold tracking-[-0.02em]">Yedikule 1.4 bu listede nerede duruyor?</h2>
           <p className="mt-4 text-[15px] leading-relaxed text-fg-muted">
-            Yedikule, listedeki en küçük ölçekli modellerden biridir: 202 milyon parametre, Kumru'nun yaklaşık
+            Yedikule 1.4, listedeki en küçük ölçekli modellerden biridir: 202 milyon parametre, Kumru'nun yaklaşık
             otuz yedide biri, BİLGE'nin yaklaşık yüz seksende biri kadardır. Buna karşılık Türkçe için
             sıfırdan eğitilmiş, ağırlıkları herkese açık ve tek bir bilgisayarda çalışabilen bir modeldir.
-            Günlük sohbet, kısa özetleme ve Türkçe dil görevleri için tasarlandı; akıl yürütme ve matematik
-            gerektiren işler için uygun değildir. Ayrıntılar için{' '}
+            Günlük sohbet, kısa özetleme ve Türkçe dil görevleri için tasarlandı; her yanıtta kısa bir iç plan
+            yapar, ancak geniş dünya bilgisi ve çok adımlı aritmetik gerektiren işlerde sınırlıdır. Ayrıntılar için{' '}
             <Link to="/modeller/yedikule" className="text-fg underline underline-offset-4">
-              Yedikule model sayfasına
+              Yedikule 1.4 model sayfasına
             </Link>{' '}
             bakabilir, modeli{' '}
             <Link to="/sohbet?model=yedikule" className="text-fg underline underline-offset-4">

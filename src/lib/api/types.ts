@@ -144,14 +144,17 @@ export interface SendChatPayload {
 
 export interface SendChatResponse {
   response: string
+  reasoning?: string
   chatId: number
   isNewChat: boolean
   newTitle: string | null
   usage?: TokenUsage | null
+  model?: string
 }
 
 export interface GuestChatResponse {
   response: string
+  reasoning?: string
   usage?: TokenUsage | null
 }
 

@@ -123,7 +123,7 @@ export default function Terms() {
 
         <Section id="yapay-zeka" number={5} title="Hizmetin kapsamı ve yapay zeka çıktılarının niteliği">
           <p>
-            Marul AI bir yapay zeka hizmetidir. Yanıtlar, kendi geliştirdiğimiz Yedikule modeli ve açık kaynak Qwen3.6
+            Marul AI bir yapay zeka hizmetidir. Yanıtlar, kendi geliştirdiğimiz Yedikule 1.4 modeli ve açık kaynak Qwen3.6
             modeli gibi dil modelleri tarafından otomatik olarak üretilir; bir insan tarafından yazılmaz veya
             gönderilmeden önce kontrol edilmez.
           </p>
@@ -135,7 +135,7 @@ export default function Terms() {
               'Çıktıları kullanmadan, yayımlamadan, başkalarıyla paylaşmadan veya bunlara dayanarak karar vermeden önce doğruluğunu ve uygunluğunu kendiniz kontrol etmekle yükümlüsünüz. Çıktıların kullanımı ve bu kullanımın sonuçları sizin sorumluluğunuzdadır.',
               'Üretilen kodları, betikleri, formülleri ve dosyaları gerçek sistemlerde kullanmadan önce güvenli bir ortamda incelemeli ve test etmelisiniz.',
               'Güvenlik filtreleri bazı istekleri reddedebilir veya yanıtları sınırlayabilir. Filtreler kusursuz değildir; uygunsuz bir çıktıyla karşılaşırsanız bize bildirmenizi rica ederiz.',
-              'Yedikule deneysel bir modeldir ve zaman zaman kullanılamayabilir. Hizmette sunulan modelleri, sürümlerini ve sağlayıcılarını değiştirebiliriz.',
+              'Yedikule 1.4 deneysel bir modeldir ve zaman zaman kullanılamayabilir. Hizmette sunulan modelleri, sürümlerini ve sağlayıcılarını değiştirebiliriz.',
               'Ücretsiz ve misafir kullanım, mevcut kapasite ölçüsünde ve en iyi çaba esasıyla sunulur; belirli bir erişilebilirlik süresi veya yanıt hızı taahhüdü içermez.',
               'Sohbet geçmişi ve agent tarafından üretilen dosyalar, Gizlilik Politikası’nda belirtilen süreler boyunca saklanır. Önemli içeriklerin bir kopyasını kendiniz saklamanızı öneririz.',
               'Mevzuatın gerektirmesi halinde yapay zeka ile üretilen içeriklere bunu belirten etiket veya işaret ekleyebiliriz.',
@@ -204,7 +204,7 @@ export default function Terms() {
           <p>
             Marul AI adı ve logosu, internet sitesi ve uygulamanın tasarımı, yazılımı, sistem talimatları ve
             hizmetin diğer tüm unsurları üzerindeki haklar bize veya lisans verenlerimize aittir. Bu sözleşme size
-            hizmeti kişisel olarak kullanma hakkı dışında bir hak vermez. Yedikule model ağırlıkları Hugging Face
+            hizmeti kişisel olarak kullanma hakkı dışında bir hak vermez. Yedikule 1.4 model ağırlıkları Hugging Face
             üzerinde ayrı bir açık lisansla yayımlanır; bu ağırlıkların kullanımı o lisansa tabidir.
           </p>
         </Section>

@@ -46,7 +46,7 @@ export default function Privacy() {
               items={[
                 'Verilerinizi satmıyoruz, reklam amacıyla kullanmıyor ve reklam ağlarıyla paylaşmıyoruz.',
                 'Sitede analiz, reklam veya izleme çerezi bulunmuyor.',
-                'Mesajlarınız, yanıt üretilebilmesi için seçtiğiniz modele iletilir. Qwen3.6 ABD’deki Groq altyapısında, Yedikule ise kontrolümüzdeki bir bilgisayarda çalışır.',
+                'Mesajlarınız, yanıt üretilebilmesi için seçtiğiniz modele iletilir. Qwen3.6 ABD’deki Groq altyapısında, Yedikule 1.4 ise Türkiye’deki kendi sunucularımızda çalışır.',
                 'Sohbetleriniz yalnızca ayrıca açık rıza verirseniz model geliştirmede kullanılır; bu seçenek varsayılan olarak kapalıdır.',
                 'Hesabınızı uygulama veya web üzerinden dilediğiniz zaman kalıcı olarak silebilirsiniz.',
               ]}
@@ -129,13 +129,13 @@ export default function Privacy() {
         <Section id="yapay-zeka" number={5} title="Yapay zeka modelleri ve mesajlarınız">
           <List
             items={[
-              <><strong className="text-fg">Yedikule:</strong> Kendi geliştirdiğimiz bu model, kontrolümüzdeki bir bilgisayarda çalışır. Mesajlarınız modele şifreli bir tünel hizmeti (ngrok) üzerinden iletilir ve Groq’a gönderilmez. İçerik iletim sırasında ngrok sunucularında çözülerek iletilir ve orada saklanmaz.</>,
+              <><strong className="text-fg">Yedikule 1.4:</strong> Kendi geliştirdiğimiz bu model, Türkiye’deki kendi sunucularımızda çalışır. Mesajlarınız modele kendi altyapımız içinde iletilir; üçüncü taraf bir tünel hizmetinden geçmez ve Groq’a gönderilmez.</>,
               <><strong className="text-fg">Qwen3.6:</strong> Açık kaynak bu model, ABD merkezli Groq, Inc. altyapısında çalıştırılır. Mesajınız, sohbet geçmişinin modele verilen bölümü, adınız ve kişiselleştirme talimatınız yanıt üretilmesi için Groq’a iletilir. Bu sohbetlerin başlıkları da Groq üzerinden üretilir. Qwen3.6 yanıt veremediğinde yanıt, aynı Groq altyapısında çalışan yedek açık kaynak modellerle üretilebilir.</>,
               <><strong className="text-fg">Agent ve web araması:</strong> Model, isteğinize göre arama sorguları oluşturabilir ve internet sayfalarını okuyabilir. Sorgular kendi arama altyapımız üzerinden arama motorlarına, gerektiğinde Brave Search veya Tavily’ye iletilir; sayfalar sunucumuz tarafından getirilir. Sorgulara adınız, e-posta adresiniz, hesap bilgileriniz ve IP adresiniz eklenmez, ancak sorguların içeriği mesajınızdan türetilebilir. Arama motorları sorguları kendi adlarına veri sorumlusu olarak işler; bu nedenle mesajlarınıza ve görevlerinize kişisel veri yazmamanızı rica ederiz.</>,
             ]}
           />
           <p>
-            Groq ve ngrok, kendilerine iletilen verileri yalnızca hizmetin sunulması amacıyla, veri işleyen olarak
+            Groq, kendisine iletilen verileri yalnızca hizmetin sunulması amacıyla, veri işleyen olarak
             bizim adımıza işler. Mesajlarınıza başkalarına ait kişisel veri, şifre, banka bilgisi veya gizli bilgi
             yazmamanızı öneririz.
           </p>
@@ -156,7 +156,7 @@ export default function Privacy() {
           <p>
             Sohbetleriniz, yalnızca <a className="text-fg hover:underline" href="/acik-riza">Açık Rıza Metni</a> ile
             ayrıca açık rıza vermeniz halinde ve bu metinde açıklanan şekilde, anonim hale getirildikten sonra
-            Yedikule ve sonraki Marul AI modellerinin geliştirilmesinde kullanılır. Rıza vermemeniz hizmetten
+            Yedikule 1.4 ve sonraki Marul AI modellerinin geliştirilmesinde kullanılır. Rıza vermemeniz hizmetten
             yararlanmanızı etkilemez ve rızanızı dilediğiniz zaman geri alabilirsiniz. Rıza vermemiş kullanıcıların
             sohbetleri, geçmiş sohbetler dahil, bu amaçla kullanılmaz.
           </p>
@@ -165,7 +165,7 @@ export default function Privacy() {
         <Section id="aktarim" number={8} title="Kimlerle paylaşıyoruz">
           <p>
             Kişisel verilerinizi yalnızca hizmeti sunabilmek için gereken hizmet sağlayıcılarına, aşağıda belirtilen
-            amaçlarla ve gerekli olduğu ölçüde aktarırız. Groq, Inc., Cloudflare, Inc., Resend ve ngrok, Inc. veri
+            amaçlarla ve gerekli olduğu ölçüde aktarırız. Groq, Inc., Cloudflare, Inc. ve Resend veri
             işleyen olarak bizim adımıza ve bu sağlayıcıların hizmet şartları çerçevesinde çalışır. Google LLC, GitHub, Inc. ve
             arama motorları ise kendilerine iletilen verileri kendi adlarına veri sorumlusu olarak işler.
           </p>

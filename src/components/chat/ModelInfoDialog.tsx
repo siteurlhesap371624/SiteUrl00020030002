@@ -12,23 +12,26 @@ export function ModelInfoDialog({ open, onClose }: ModelInfoDialogProps) {
       <div className="space-y-6">
         <section>
           <div className="flex items-center gap-2">
-            <h3 className="text-[15px] font-semibold">Yedikule</h3>
+            <h3 className="text-[15px] font-semibold">Yedikule 1.4</h3>
             <Badge variant="brand">Yerli</Badge>
+            <Badge variant="outline">Düşünme</Badge>
           </div>
           <p className="mt-2 text-[13.5px] leading-relaxed text-fg-muted">
-            Yedikule, Türkçe için sıfırdan eğitilmiş yeni nesil yerli modelimizdir. Çok turlu
-            sohbeti ve bağlam hafızasını destekler; gündelik diyalog, kısa özetleme ve Türkiye
-            odaklı genel kültür sorularında doğal ve akıcı yanıtlar üretir. ChatGPT veya Gemini gibi
-            büyük ticari modellerin doğrudan alternatifi değildir.
+            Yedikule 1.4, Türkçe için sıfırdan eğitilmiş yerli modelimizdir. Her yanıtta kısa bir iç
+            plan yapar; bu planı düşünme panelinde izleyebilirsiniz. Çok turlu sohbeti ve bağlam
+            hafızasını destekler; gündelik diyalog, özetleme ve metin düzeltmede doğal Türkçe üretir.
+            Araç çağırma yeteneği vardır; sitede araçlar kapalıdır. ChatGPT veya Gemini gibi büyük
+            ticari modellerin doğrudan alternatifi değildir.
           </p>
           <ul className="mt-3 space-y-1.5 text-[13.5px] text-fg-muted">
+            <li>· Yanıt öncesi görünür düşünme adımları</li>
             <li>· Doğal, çok turlu Türkçe sohbet</li>
             <li>· Kısa metin özetleme ve yeniden yazma</li>
-            <li>· Türkiye odaklı genel kültür soruları</li>
             <li>· Araştırma, dosya üretimi ve çok adımlı görevler için Qwen3.6 önerilir</li>
           </ul>
           <p className="mt-3 text-[12.5px] text-fg-dim">
-            Yedikule deneysel bir modeldir ve sınırlı kaynaklarla çalışır; 7/24 erişilebilirlik garanti edilmez.
+            Yedikule 1.4 kendi sunucularımızda çalışır; 202 milyon parametre küçük bir ölçektir, geniş
+            dünya bilgisi ve çok adımlı aritmetikte sınırlıdır.
           </p>
         </section>
 

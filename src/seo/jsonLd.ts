@@ -31,7 +31,7 @@ export function personLd(): Json {
     url: `${SITE_URL}/hakkimizda`,
     jobTitle: 'Yapay zeka geliştiricisi',
     description:
-      'Marul AI yapay zeka asistanını ve Yedikule Türkçe dil modelini geliştiren bağımsız yazılım geliştiricisi.',
+      'Marul AI yapay zeka asistanını ve Yedikule 1.4 Türkçe dil modelini geliştiren bağımsız yazılım geliştiricisi.',
     nationality: { '@type': 'Country', name: 'Türkiye' },
     knowsAbout: [
       'Yapay zeka',
@@ -52,7 +52,7 @@ export function organizationLd(): Json {
     name: PUBLISHER,
     url: `${SITE_URL}/hakkimizda`,
     description:
-      'Karakuş Tech, Ahmet Karakuş tarafından yürütülen bağımsız bir yapay zeka geliştirme çalışmasıdır. Marul AI asistanını ve Yedikule Türkçe dil modelini geliştirir.',
+      'Karakuş Tech, Ahmet Karakuş tarafından yürütülen bağımsız bir yapay zeka geliştirme çalışmasıdır. Marul AI asistanını ve Yedikule 1.4 Türkçe dil modelini geliştirir.',
     email: CONTACT_EMAIL,
     foundingDate: '2026',
     founder: { '@id': PERSON_ID },
@@ -113,7 +113,7 @@ export function applicationLd(): Json {
     installUrl: PLAY_STORE_URL,
     featureList: [
       'Türkçe yapay zeka sohbeti',
-      'Yerli dil modeli Yedikule',
+      'Yerli dil modeli Yedikule 1.4',
       'Açık kaynak Qwen3.6 modeli',
       'Agent modu ile çok adımlı görevler',
       'Web araştırması ve kaynak gösterimi',
@@ -135,7 +135,7 @@ export function yedikuleModelLd(): Json {
     '@type': 'CreativeWork',
     '@id': MODEL_ID,
     name: YEDIKULE.fullName,
-    alternateName: 'Yedikule 202M Instruct',
+    alternateName: 'Yedikule',
     url: `${SITE_URL}/modeller/yedikule`,
     description: YEDIKULE.summary,
     inLanguage: 'tr-TR',
@@ -149,6 +149,7 @@ export function yedikuleModelLd(): Json {
       'açık ağırlıklı model',
       'küçük dil modeli',
       'Yedikule',
+      'Yedikule 1.4',
     ],
     sameAs: YEDIKULE_REPOS.map((repo) => repo.url),
     about: { '@id': BRAND_ID },
@@ -254,7 +255,7 @@ export function jsonLdFor(path: string, lastUpdated = '2026-09-17'): Json[] {
     if (path === '/modeller/yedikule') {
       graph.push(
         yedikuleModelLd(),
-        techArticleLd(path, 'Yedikule: Türkçe için sıfırdan eğitilmiş 202 milyon parametreli dil modeli', lastUpdated),
+        techArticleLd(path, 'Yedikule 1.4: Türkçe için sıfırdan eğitilmiş 202 milyon parametreli dil modeli', lastUpdated),
       )
     }
     if (path === '/turkiye-yapay-zeka-modelleri') {

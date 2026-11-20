@@ -10,7 +10,7 @@ const linkGroups = [
       { to: '/sohbet', label: 'Sohbet' },
       { to: '/forum', label: 'Sosyal' },
       { to: '/modeller', label: 'Modeller' },
-      { to: '/modeller/yedikule', label: 'Yedikule modeli' },
+      { to: '/modeller/yedikule', label: 'Yedikule 1.4' },
       { to: '/fiyatlandirma', label: 'Fiyatlandırma' },
       { to: '/baglantilar', label: 'Bağlantılar' },
     ],
@@ -141,7 +141,7 @@ export function Footer() {
             © {year} Karakuş Tech · Marul AI. Tüm hakları saklıdır.
           </p>
           <p className="text-[12.5px] text-fg-dim">
-            Yedikule yerli ve milli LLM mimarisi — TR
+            Yedikule 1.4 yerli ve milli LLM mimarisi — TR
           </p>
         </div>
       </div>

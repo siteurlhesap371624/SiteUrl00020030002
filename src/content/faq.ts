@@ -6,11 +6,11 @@ export interface FaqItem {
 export const FAQ_ITEMS: FaqItem[] = [
   {
     q: 'Marul AI verilerimi nasıl koruyor?',
-    a: 'Tüm istekler HTTPS üzerinden şifreli iletilir. Verileriniz satılmaz ve reklam amacıyla kullanılmaz; sitede analiz veya izleme çerezi yoktur. Mesajlarınız yalnızca yanıt üretilmesi için seçtiğiniz modele iletilir: Yedikule kendi bilgisayarımızda, Qwen3.6 ise Groq altyapısında çalışır. Sohbetleriniz yalnızca ayrıca açık rıza verirseniz model geliştirmede kullanılır. Hesabınızı web’de “Plan ve hesap” bölümünden, Android uygulamasında menünün altındaki adınıza dokunarak kalıcı olarak silebilir veya marulai.resmi@gmail.com adresine talep iletebilirsiniz. Ayrıntılar gizlilik politikası ve KVKK aydınlatma metninde yer alır.',
+    a: 'Tüm istekler HTTPS üzerinden şifreli iletilir. Verileriniz satılmaz ve reklam amacıyla kullanılmaz; sitede analiz veya izleme çerezi yoktur. Mesajlarınız yalnızca yanıt üretilmesi için seçtiğiniz modele iletilir: Yedikule 1.4 kendi sunucularımızda, Qwen3.6 ise Groq altyapısında çalışır. Sohbetleriniz yalnızca ayrıca açık rıza verirseniz model geliştirmede kullanılır. Hesabınızı web’de “Plan ve hesap” bölümünden, Android uygulamasında menünün altındaki adınıza dokunarak kalıcı olarak silebilir veya info@marulai.com.tr adresine talep iletebilirsiniz. Ayrıntılar gizlilik politikası ve KVKK aydınlatma metninde yer alır.',
   },
   {
-    q: 'Yedikule ile Qwen3.6 arasındaki fark nedir?',
-    a: 'Yedikule, Türkçe için sıfırdan eğitilmiş yaklaşık 202 milyon parametreli kendi modelimizdir; ağırlıkları Hugging Face üzerinde herkese açıktır. Günlük sohbette hafiftir ve çok turlu konuşmayı destekler, ancak akıl yürütme ile matematikte güçlü değildir ve araç kullanamaz. Qwen3.6 ise 27 milyar parametreli açık kaynak modeldir; web araması yapar, çok adımlı görevleri yürütür, kod ve tablo dosyaları üretir. Agent modu yalnızca Qwen3.6 ile çalışır.',
+    q: 'Yedikule 1.4 ile Qwen3.6 arasındaki fark nedir?',
+    a: 'Yedikule 1.4, Türkçe için sıfırdan eğitilmiş yaklaşık 202 milyon parametreli kendi modelimizdir; ağırlıkları Hugging Face üzerinde herkese açıktır. Her yanıtta kısa bir iç plan yapar, çok turlu konuşmayı destekler ve araç çağırabilir; sitede araç kullanımı kapalıdır. Geniş dünya bilgisi ve çok adımlı aritmetikte sınırlıdır. Qwen3.6 ise 27 milyar parametreli açık kaynak modeldir; web araması yapar, çok adımlı görevleri yürütür, kod ve tablo dosyaları üretir. Agent modu yalnızca Qwen3.6 ile çalışır.',
   },
   {
     q: 'Ücretsiz planda hangi sınırlar var?',

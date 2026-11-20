@@ -29,7 +29,6 @@ export default function Chat() {
   const chats = useChatStore((s) => s.chats)
   const setModel = useChatStore((s) => s.setModel)
   const loadChats = useChatStore((s) => s.loadChats)
-  const sendMessage = useChatStore((s) => s.sendMessage)
   const workspace = useChatStore((s) => s.workspace)
   const loadWorkspace = useChatStore((s) => s.loadWorkspace)
 
@@ -161,7 +160,7 @@ export default function Chat() {
 
         <div ref={scrollRef} className="flex-1 min-h-0 overflow-y-auto">
           {!hasMessages ? (
-            <WelcomeView userName={user?.name} onPrompt={(t) => void sendMessage(t)} />
+            <WelcomeView />
           ) : (
             <div className="mx-auto w-full max-w-3xl px-4 py-6 md:py-8">
               <div className="flex flex-col gap-7">

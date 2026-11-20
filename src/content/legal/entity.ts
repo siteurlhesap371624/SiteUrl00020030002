@@ -1,18 +1,18 @@
 export const LEGAL_VERSIONS = {
-  terms: '2026-10',
-  privacy: '2026-10',
-  training: '2026-10',
-  plus: '2026-10',
+  terms: '2026-11',
+  privacy: '2026-11',
+  training: '2026-11',
+  plus: '2026-11',
 } as const
 
-export const LEGAL_UPDATED = '9 Ekim 2026'
+export const LEGAL_UPDATED = '20 Kasım 2026'
 
 export const CONTROLLER = {
   person: 'Ahmet Karakuş',
   tradeName: 'Karakuş Tech',
   brand: 'Marul AI',
   website: 'https://marulai.com.tr',
-  email: 'marulai.resmi@gmail.com',
+  email: 'info@marulai.com.tr',
   city: 'İstanbul, Türkiye',
   postalAddress: '',
   taxId: '',

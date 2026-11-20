@@ -11,14 +11,14 @@ export interface TurkishModel {
 
 export const TURKISH_MODELS: TurkishModel[] = [
   {
-    name: 'Yedikule',
+    name: 'Yedikule 1.4',
     developer: 'Marul AI',
     size: '202 milyon',
     kind: 'Sıfırdan eğitilmiş',
     access: 'Açık ağırlıklı (Yedikule Model Lisansı 2.0)',
-    url: 'https://huggingface.co/MarulAI/Yedikule-202M-Instruct',
+    url: 'https://huggingface.co/MarulAI/Yedikule-1.4',
     own: true,
-    note: 'Bu sitenin modeli. Bağımsız bir geliştirici tarafından Türkçe için sıfırdan eğitildi: 24,33 milyar Türkçe token ile ön eğitim, 159.734 örnekle talimat ayarı. Listedeki en küçük ölçekli modellerden biridir; internete çıkmadan kendi bilgisayarınızda veya kurum içi sunucunuzda çalışacak kadar hafif olması hedeflendi.',
+    note: 'Bu sitenin modeli. Bağımsız bir geliştirici tarafından Türkçe için sıfırdan eğitildi: 24,33 milyar Türkçe token ile ön eğitim, Marul-SFT-TR veri kümesindeki 99.847 sohbetle talimat ayarı. Her yanıtta kısa bir iç plan üretir ve araç çağırabilir. Listedeki en küçük ölçekli modellerden biridir; internete çıkmadan kendi bilgisayarınızda veya kurum içi sunucunuzda çalışacak kadar hafif olması hedeflendi.',
   },
   {
     name: 'Kumru',
@@ -111,5 +111,5 @@ export const TURKISH_MODEL_SOURCES: ModelSource[] = [
   { label: 'TURNA model kartı · Boğaziçi TABILAB', url: 'https://huggingface.co/boun-tabi-LMG/TURNA' },
   { label: 'Trendyol model koleksiyonu', url: 'https://huggingface.co/Trendyol' },
   { label: 'Turkcell-LLM-7b-v1 model kartı', url: 'https://huggingface.co/TURKCELL/Turkcell-LLM-7b-v1' },
-  { label: 'Yedikule model kartı · Marul AI', url: 'https://huggingface.co/MarulAI/Yedikule-202M-Instruct' },
+  { label: 'Yedikule 1.4 model kartı · Marul AI', url: 'https://huggingface.co/MarulAI/Yedikule-1.4' },
 ]

@@ -9,7 +9,7 @@ const points: Point[] = [
   {
     num: '01',
     lead: 'İki model, bir arayüz.',
-    body: 'Günlük sohbet için kendi modelim Yedikule; araştırma, kod ve belge üretimi için agent yetenekli Qwen3.6. Konuşmanın ortasında bile geçiş yapabilirsin.',
+    body: 'Günlük sohbet için kendi modelim Yedikule 1.4; araştırma, kod ve belge üretimi için agent yetenekli Qwen3.6. Konuşmanın ortasında bile geçiş yapabilirsin.',
   },
   {
     num: '02',
@@ -19,7 +19,7 @@ const points: Point[] = [
   {
     num: '03',
     lead: 'Türkçe için sıfırdan eğitildi.',
-    body: 'Yedikule bir çeviri katmanı değil; kendi tokenizer’ı ve kendi eğitim verisiyle Türkçe için sıfırdan yazıldı. Türkçe ekleri, deyimleri ve günlük dili daha doğru yakalar.',
+    body: 'Yedikule 1.4 bir çeviri katmanı değil; kendi tokenizer’ı ve kendi eğitim verisiyle Türkçe için sıfırdan yazıldı. Türkçe ekleri, deyimleri ve günlük dili daha doğru yakalar.',
   },
   {
     num: '04',

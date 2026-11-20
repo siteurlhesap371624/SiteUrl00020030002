@@ -23,7 +23,7 @@ const items: LinkItem[] = [
     label: 'Hugging Face',
     href: config.huggingFaceUrl,
     icon: <Boxes className="h-5 w-5" />,
-    description: 'Yedikule model ağırlıkları',
+    description: 'Yedikule 1.4 model ağırlıkları',
   },
   {
     label: 'Android uygulaması',

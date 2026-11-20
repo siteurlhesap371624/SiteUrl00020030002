@@ -27,8 +27,8 @@ export const config: AppConfig = {
   appPackage: 'ai.marul.com',
   siteUrl: 'https://marulai.com.tr',
   huggingFaceUrl: 'https://huggingface.co/MarulAI',
-  supportEmail: 'marulai.resmi@gmail.com',
-  legalEmail: 'marulai.resmi@gmail.com',
+  supportEmail: 'info@marulai.com.tr',
+  legalEmail: 'info@marulai.com.tr',
   googleClientId:
     (env.VITE_GOOGLE_CLIENT_ID as string | undefined) ||
     '129240134676-qbsjbonjd70mpenmoqd441hipsqps82c.apps.googleusercontent.com',
@@ -73,9 +73,10 @@ export const LIMITS = {
 export const MODELS = [
   {
     id: 'yedikule',
-    name: 'Yedikule',
-    tagline: 'Yerli model',
-    description: 'Yedikule, Türkçe için sıfırdan eğitilmiş yeni nesil kendi modelimiz. Çok turlu sohbet ve bağlam hafızasını destekler.',
+    name: 'Yedikule 1.4',
+    tagline: 'Yerli model · düşünme',
+    description:
+      'Türkçe için sıfırdan eğitilmiş yerli modelimiz. Her yanıtta kısa bir iç plan yapar; çok turlu sohbeti ve bağlam hafızasını destekler. Araç kullanımı sitede kapalıdır.',
     badge: 'Yerli',
   },
   {

@@ -70,7 +70,7 @@ export const ARCHIVED_DOCUMENTS: ArchivedDocument[] = [
       {
         title: 'İletişim',
         items: [
-          'Şartlarla ilgili sorularınız için marulai.resmi@gmail.com adresinden bize ulaşabilirsiniz.'
+          'Şartlarla ilgili sorularınız için info@marulai.com.tr adresinden bize ulaşabilirsiniz.'
         ]
       }
     ]
@@ -109,7 +109,7 @@ export const ARCHIVED_DOCUMENTS: ArchivedDocument[] = [
           '• Hassas içerik filtrelemesi: kişisel bilgi, sağlık verisi, finansal hesap bilgisi gibi içerikler insan veya otomatik filtre ile temizlenir, eğitim setine girmez.',
           '• Üçüncü tarafa devredilmez: Veriler yalnızca Karakuş Tech bünyesinde, Marul AI modellerinin geliştirilmesi amacıyla kullanılır.',
           '• Hesabınızı sildiğinizde sohbet kayıtlarınız sistemden kalıcı olarak silinir; silmeden önce eğitim setine eklenmiş anonimleştirilmiş kopyalar geri çekilemeyebilir (anonim olduğu için zaten sizinle ilişkilendirilemez).',
-          '• Opt-out: Bu kullanımı tercih etmiyorsanız marulai.resmi@gmail.com adresine yazarak hesabınızı eğitim havuzundan çıkarmamızı talep edebilirsiniz.'
+          '• Opt-out: Bu kullanımı tercih etmiyorsanız info@marulai.com.tr adresine yazarak hesabınızı eğitim havuzundan çıkarmamızı talep edebilirsiniz.'
         ]
       },
       {
@@ -145,7 +145,7 @@ export const ARCHIVED_DOCUMENTS: ArchivedDocument[] = [
           'Hesabınızı uygulama veya web üzerinden kendi başınıza, tek tıkla kalıcı olarak silebilirsiniz:',
           'Web: Sohbet ekranı → sol alttaki profil kartı → Abonelik → Hesabımı sil',
           'Android: Profil ekranı → "Hesabımı sil" → "HESABIMI SIL" onayı',
-          'Alternatif olarak marulai.resmi@gmail.com adresine talep gönderebilirsiniz. 30 gün içinde tüm verileriniz kalıcı olarak silinir.'
+          'Alternatif olarak info@marulai.com.tr adresine talep gönderebilirsiniz. 30 gün içinde tüm verileriniz kalıcı olarak silinir.'
         ]
       },
       {
@@ -157,7 +157,7 @@ export const ARCHIVED_DOCUMENTS: ArchivedDocument[] = [
       {
         title: 'İletişim',
         items: [
-          'Gizlilikle ilgili tüm sorularınızı marulai.resmi@gmail.com adresine iletebilirsiniz.'
+          'Gizlilikle ilgili tüm sorularınızı info@marulai.com.tr adresine iletebilirsiniz.'
         ]
       }
     ]
@@ -200,7 +200,7 @@ export const ARCHIVED_DOCUMENTS: ArchivedDocument[] = [
         title: 'Haklarınız',
         items: [
           'KVKK Madde 11 uyarınca; verilerinize erişme, düzeltme, silme, işlenmesini durdurma haklarına sahipsiniz.',
-          'Başvurularınızı marulai.resmi@gmail.com adresine yazılı olarak iletebilirsiniz.'
+          'Başvurularınızı info@marulai.com.tr adresine yazılı olarak iletebilirsiniz.'
         ]
       }
     ]

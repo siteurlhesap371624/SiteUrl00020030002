@@ -4,10 +4,12 @@ import { SeoHead } from '@/components/ui/SeoHead'
 import { Button } from '@/components/ui/Button'
 import {
   YEDIKULE,
+  YEDIKULE_GENERATION,
   YEDIKULE_LIMITS,
   YEDIKULE_REPOS,
   YEDIKULE_SPECS,
   YEDIKULE_STRENGTHS,
+  YEDIKULE_SYSTEM_PROMPT,
   YEDIKULE_TRAINING,
   YEDIKULE_USE_CASES,
 } from '@/content/yedikule'
@@ -46,7 +48,7 @@ export default function Yedikule() {
             Modeller
           </Link>
           <span className="mx-2">/</span>
-          <span className="text-fg-muted">Yedikule</span>
+          <span className="text-fg-muted">Yedikule 1.4</span>
         </nav>
 
         <header className="mt-6 max-w-3xl">
@@ -54,12 +56,12 @@ export default function Yedikule() {
             Yerli dil modeli
           </p>
           <h1 className="mt-3 text-[clamp(2rem,4.5vw,3.25rem)] font-semibold tracking-[-0.03em] leading-[1.05]">
-            Yedikule: Türkçe için sıfırdan eğitilmiş 202 milyon parametreli dil modeli
+            Yedikule 1.4: Türkçe için sıfırdan eğitilmiş 202 milyon parametreli dil modeli
           </h1>
           <p className="mt-6 text-[16px] leading-relaxed text-fg-muted">{YEDIKULE.summary}</p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Link to="/sohbet?model=yedikule">
-              <Button rightIcon={<ArrowUpRight className="h-4 w-4" />}>Yedikule ile sohbet et</Button>
+              <Button rightIcon={<ArrowUpRight className="h-4 w-4" />}>Yedikule 1.4 ile sohbet et</Button>
             </Link>
             <a href={YEDIKULE_REPOS[0].url} target="_blank" rel="noreferrer">
               <Button variant="outline" rightIcon={<Download className="h-4 w-4" />}>
@@ -70,9 +72,9 @@ export default function Yedikule() {
         </header>
 
         <section className="mt-16 max-w-3xl">
-          <h2 className="text-[22px] font-semibold tracking-[-0.02em]">Yedikule modeli nedir?</h2>
+          <h2 className="text-[22px] font-semibold tracking-[-0.02em]">Yedikule 1.4 nedir?</h2>
           <p className="mt-4 text-[15px] leading-relaxed text-fg-muted">
-            Yedikule, başka bir modelin ince ayarı değildir; mimarisi, tokenizer'ı ve ağırlıklarıyla
+            Yedikule 1.4, başka bir modelin ince ayarı değildir; mimarisi, tokenizer'ı ve ağırlıklarıyla
             Türkçe metin üzerinde sıfırdan eğitilmiştir. Bağımsız bir geliştirici olan{' '}
             {YEDIKULE.developer} tarafından {YEDIKULE.organization} adı altında geliştirilir ve Marul AI
             sohbet uygulamasında varsayılan model olarak sunulur. 202 milyon parametrelik ölçeği, modeli
@@ -80,7 +82,13 @@ export default function Yedikule() {
             yeteneklerini beklemek doğru olmaz.
           </p>
           <p className="mt-4 text-[15px] leading-relaxed text-fg-muted">
-            Model, daha önce yayımlanan Marul V7'nin (258 milyon parametre) devamıdır. Yedikule daha küçük
+            Yedikule 1.4, her yanıtta önce kısa bir iç plan (düşünme) üretir; bu plan sohbet arayüzünde
+            ayrı bir panelde gösterilir. Model ayrıca araç (tool) çağırabilir: tanımları sistem turunda
+            alır, aracı adından çok açıklamasından seçer ve eğitimde görmediği araçlarla da çalışabilir.
+            Marul AI sitesinde araç kullanımı kapalıdır.
+          </p>
+          <p className="mt-4 text-[15px] leading-relaxed text-fg-muted">
+            Model, daha önce yayımlanan Marul V7'nin (258 milyon parametre) devamıdır. Yedikule 1.4 daha küçük
             olmasına rağmen çok daha fazla ve daha temiz veriyle eğitildiği için Türkçede belirgin biçimde
             daha tutarlıdır.
           </p>
@@ -88,11 +96,11 @@ export default function Yedikule() {
 
         <section className="mt-14">
           <h2 className="text-[22px] font-semibold tracking-[-0.02em]">
-            Yedikule'nin teknik özellikleri neler?
+            Yedikule 1.4'ün teknik özellikleri neler?
           </h2>
           <div className="mt-6 grid gap-4 lg:grid-cols-2">
-            <SpecTable rows={YEDIKULE_SPECS} caption="Yedikule mimari özellikleri" />
-            <SpecTable rows={YEDIKULE_TRAINING} caption="Yedikule eğitim bilgileri" />
+            <SpecTable rows={YEDIKULE_SPECS} caption="Yedikule 1.4 mimari özellikleri" />
+            <SpecTable rows={YEDIKULE_TRAINING} caption="Yedikule 1.4 eğitim bilgileri" />
           </div>
           <p className="mt-4 max-w-3xl text-[13.5px] leading-relaxed text-fg-dim">
             Doğrulama kayıpları, geliştiricinin kendi ayırdığı doğrulama kümesinde ölçülmüştür; kamuya açık
@@ -100,9 +108,27 @@ export default function Yedikule() {
           </p>
         </section>
 
+        <section className="mt-14 max-w-3xl">
+          <h2 className="text-[22px] font-semibold tracking-[-0.02em]">
+            Önerilen üretim ayarları ve sistem promptu
+          </h2>
+          <p className="mt-4 text-[15px] leading-relaxed text-fg-muted">
+            Model kartındaki önerilen ayarlar aşağıdadır. Tekrar cezası 1,15 üzerine çıkarılmamalı ve
+            no_repeat_ngram kapalı kalmalıdır; aksi halde Türkçe çekim ekleri ve araç adı/JSON kopyalama
+            bozulabilir.
+          </p>
+          <div className="mt-6">
+            <SpecTable rows={YEDIKULE_GENERATION} caption="Yedikule 1.4 önerilen üretim ayarları" />
+          </div>
+          <p className="mt-6 text-[15px] leading-relaxed text-fg-muted">Önerilen sistem promptu:</p>
+          <pre className="mt-3 overflow-x-auto rounded-[var(--radius-lg)] border border-[color:var(--color-border)] bg-[color:var(--color-bg-elevated)] p-4 font-mono text-[12.5px] leading-relaxed text-fg-muted">
+            <code>{YEDIKULE_SYSTEM_PROMPT}</code>
+          </pre>
+        </section>
+
         <section className="mt-14">
           <h2 className="text-[22px] font-semibold tracking-[-0.02em]">
-            Yedikule nasıl indirilir ve çalıştırılır?
+            Yedikule 1.4 nasıl indirilir ve çalıştırılır?
           </h2>
           <p className="mt-4 max-w-3xl text-[15px] leading-relaxed text-fg-muted">
             Ağırlıklar Hugging Face üzerinde üç depoda yayımlanmıştır. Sohbet için talimat ayarlı sürümü,
@@ -131,19 +157,19 @@ export default function Yedikule() {
           <div className="mt-6 max-w-3xl">
             <h3 className="text-[15px] font-semibold">Ollama ile yerel kullanım</h3>
             <pre className="mt-3 overflow-x-auto rounded-[var(--radius-lg)] border border-[color:var(--color-border)] bg-[color:var(--color-bg-elevated)] p-4 font-mono text-[12.5px] leading-relaxed text-fg-muted">
-              <code>{`ollama create yedikule-sft -f Modelfile
-ollama run yedikule-sft`}</code>
+              <code>{`ollama run hf.co/MarulAI/Yedikule-1.4-GGUF:Q8_0`}</code>
             </pre>
             <p className="mt-3 text-[13.5px] leading-relaxed text-fg-dim">
-              llama.cpp kullanıyorsanız önerilen örnekleme ayarları: sıcaklık 0.3, top_k 50, top_p 0.9,
-              tekrar cezası 1.08. Sohbet şablonu ve sistem promptu GGUF üstverisine gömülüdür.
+              llama.cpp kullanıyorsanız --jinja bayrağı gömülü sohbet şablonunu uygular; önerilen ayarlar
+              sıcaklık 0.4, top_k 50, top_p 0.9, min_p 0.05 ve tekrar cezası 1.12'dir. Düşünme çıktısı
+              reasoning_content alanında, yanıt content alanında gelir.
             </p>
           </div>
         </section>
 
         <section className="mt-14">
           <h2 className="text-[22px] font-semibold tracking-[-0.02em]">
-            Yedikule ne yapabilir, ne yapamaz?
+            Yedikule 1.4 ne yapabilir, ne yapamaz?
           </h2>
           <div className="mt-6 grid gap-4 md:grid-cols-2">
             <div className="rounded-[var(--radius-lg)] border border-[color:var(--color-brand)]/30 bg-[color:var(--color-brand)]/[0.05] p-6">
@@ -175,17 +201,18 @@ ollama run yedikule-sft`}</code>
 
         <section className="mt-14 max-w-3xl">
           <h2 className="text-[22px] font-semibold tracking-[-0.02em]">
-            Yedikule kurum içinde, veriyi dışarı çıkarmadan çalıştırılabilir mi?
+            Yedikule 1.4 kurum içinde, veriyi dışarı çıkarmadan çalıştırılabilir mi?
           </h2>
           <p className="mt-4 text-[15px] leading-relaxed text-fg-muted">
-            Evet. Yedikule'nin tasarım amaçlarından biri, Türkçe işlerin kendi bilgisayarınızda veya kurum içi
-            sunucunuzda, veriyi dışarıya göndermeden yapılabilmesidir. GGUF sürümü 406 MB'tır; Ollama veya
+            Evet. Yedikule 1.4'ün tasarım amaçlarından biri, Türkçe işlerin kendi bilgisayarınızda veya kurum içi
+            sunucunuzda, veriyi dışarıya göndermeden yapılabilmesidir. GGUF Q8_0 sürümü 217 MB'tır; Ollama veya
             llama.cpp ile ekran kartı olmadan da çalışır. Bu sayede sözleşme, form ve yazışma gibi kurum içi
             metinler internete çıkmadan işlenebilir.
           </p>
           <p className="mt-4 text-[15px] leading-relaxed text-fg-muted">
-            Modelin bugünkü sürümü araç (tool) çağırmayı desteklemez. Yerel kullanımda araç çağırabilen,
-            yani kurum içi sistemlerle konuşabilen sürümler üzerinde çalışılmaktadır.
+            Yedikule 1.4 araç (tool) çağırmayı destekler: araç tanımlarını sistem turunda alır, uygun aracı
+            açıklamasından seçer ve sonucu ayrı bir araç turunda işleyerek yanıtına katar. Marul AI sitesinde
+            araç kullanımı kapalıdır; yerel kullanımda kurum içi sistemlerle konuşan araçlar tanımlanabilir.
           </p>
           <ul className="mt-5 grid gap-2">
             {YEDIKULE_USE_CASES.map((item) => (
@@ -199,7 +226,7 @@ ollama run yedikule-sft`}</code>
         <section className="mt-14 max-w-3xl">
           <h2 className="text-[22px] font-semibold tracking-[-0.02em]">Lisans ve atıf</h2>
           <p className="mt-4 text-[15px] leading-relaxed text-fg-muted">
-            Yedikule, {YEDIKULE.license} ile yayımlanır. Kişisel kullanım, araştırma, ince ayar, türev model
+            Yedikule 1.4, {YEDIKULE.license} ile yayımlanır. Kişisel kullanım, araştırma, ince ayar, türev model
             üretimi ve biçim dönüştürme serbesttir. Üç şart vardır: modele atıf yapılması, türev modelin
             adında Yedikule geçmesi ve türevlerin aynı lisansa tabi olması. Ticari kullanım için telif hakkı
             sahibinden yazılı izin alınması gerekir. Bu nedenle model{' '}
@@ -207,13 +234,13 @@ ollama run yedikule-sft`}</code>
             lisansı kullanmaz.
           </p>
           <p className="mt-4 text-[15px] leading-relaxed text-fg-muted">
-            Akademik çalışmalarda önerilen atıf: “Yedikule, 202M parametreli Türkçe dil modeli.{' '}
+            Akademik çalışmalarda önerilen atıf: “Yedikule 1.4, 202M parametreli Türkçe dil modeli.{' '}
             {YEDIKULE.developer}, {YEDIKULE.organization}, 2026.”
           </p>
         </section>
 
         <section className="mt-14 max-w-3xl">
-          <h2 className="text-[22px] font-semibold tracking-[-0.02em]">Yedikule nasıl denenir?</h2>
+          <h2 className="text-[22px] font-semibold tracking-[-0.02em]">Yedikule 1.4 nasıl denenir?</h2>
           <p className="mt-4 text-[15px] leading-relaxed text-fg-muted">
             Modeli indirmeden denemek için{' '}
             <Link to="/sohbet?model=yedikule" className="text-fg underline underline-offset-4">

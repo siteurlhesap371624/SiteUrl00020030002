@@ -63,7 +63,7 @@ export default function ExplicitConsent() {
           </SubSection>
           <SubSection title="Amaç">
             <p>
-              Yedikule ve sonraki Marul AI dil modellerinin Türkçe anlama ve yanıt üretme kalitesinin artırılması
+              Yedikule 1.4 ve sonraki Marul AI dil modellerinin Türkçe anlama ve yanıt üretme kalitesinin artırılması
               amacıyla bu modellerin eğitimi, ince ayarı (fine tuning) ve değerlendirilmesi. Veriler reklam, profil
               çıkarma veya satış amacıyla kullanılmaz.
             </p>
@@ -81,7 +81,7 @@ export default function ExplicitConsent() {
               ]}
             />
             <p>
-              Yedikule gibi modellerimizin ağırlıkları Hugging Face gibi platformlarda herkese açık lisansla
+              Yedikule 1.4 gibi modellerimizin ağırlıkları Hugging Face gibi platformlarda herkese açık lisansla
               yayımlanabilir. Bu nedenle eğitime yalnızca anonim hale getirilmiş veri alınır.
             </p>
           </SubSection>
@@ -118,7 +118,7 @@ export default function ExplicitConsent() {
             <p>
               Bu veriler yalnızca mesajınıza yanıt üretilmesi ile sohbet geçmişinizin saklanması ve size gösterilmesi
               amacıyla, diğer mesajlarınızla aynı şekilde işlenir. Yanıt üretilmesi için seçtiğiniz modele iletilir:
-              Yedikule kontrolümüzdeki bir bilgisayarda çalışır; Qwen3.6 ise ABD’deki Groq, Inc. altyapısında çalışır.
+              Yedikule 1.4 Türkiye’deki kendi sunucularımızda çalışır; Qwen3.6 ise ABD’deki Groq, Inc. altyapısında çalışır.
               Bu veriler başka bir amaçla kullanılmaz, sınıflandırılmaz, profil çıkarmak için değerlendirilmez ve model
               geliştirmede kullanılmaz.
             </p>
